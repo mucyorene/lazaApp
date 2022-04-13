@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'Screen3/Screen3.dart';
 
-class CreateAccont extends StatelessWidget {
-  const CreateAccont({Key? key}) : super(key: key);
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

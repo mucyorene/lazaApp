@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen1/ScreenMain.dart';
+import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 import 'package:laza/Screens/screen2.dart';
 
 import 'Screen1/ScreenMain.dart';
@@ -22,7 +23,7 @@ class _SplashState extends State<splash> {
     new Timer(const Duration(milliseconds: 3000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const Screen2()),
+            MaterialPageRoute(builder: (context) => const ForgetScreen()),
             (route) => false);
       });
     });
@@ -32,8 +33,8 @@ class _SplashState extends State<splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0Xff9775FA),
-        child: Center(
+        color: const Color(0Xff9775FA),
+        child: const Center(
           child: Image(
             image: AssetImage('assets/images/Logo.png'),
             width: 70,
