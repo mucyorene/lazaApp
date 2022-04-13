@@ -7,7 +7,7 @@ import 'Screens/screen4.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: WelcomePage(),
+    home: splash(),
   ));
   // runApp(const MyApp());
 }
