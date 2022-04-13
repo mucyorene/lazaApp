@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,27 +14,29 @@ class CreateAccont extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomAppBar(
-        color: Color(0Xff9775FA),
+        color: const Color(0Xff9775FA),
         child: Container(
             height: 50,
             alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const Screen3()));
-                },
-                color: Color(0Xff9775FA),
-                child: Text(
-                  'Create an Account',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+            child: Expanded(
+              child: RaisedButton(
+                  elevation: 0,
+                  onPressed: () {
+                    Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Screen3()));
+                  },
+                  color: Color(0Xff9775FA),
+                  child: Text(
+                    'Create an Account',
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  )),
+            )),
       ),
       appBar: AppBar(
         elevation: 0,
@@ -111,6 +115,7 @@ class CreateAccont extends StatelessWidget {
               padding: EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
+              
                 onPressed: () {},
                 icon: Icon(
                   FontAwesomeIcons.google,
