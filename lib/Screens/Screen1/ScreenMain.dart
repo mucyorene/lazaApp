@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen2.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({Key? key}) : super(key: key);
@@ -107,7 +109,9 @@ class _Screen2State extends State<Screen2> {
                       ),
                       Center(
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, CupertinoPageRoute(builder: (context)=> const CreateAccont()));
+                          },
                           child: const Text(
                             "Skip",
                             style: TextStyle(
