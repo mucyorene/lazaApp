@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen2.dart';
 import 'package:laza/Screens/splash_screen.dart';
 
+import 'Screens/screen4.dart';
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: splash(),
+    home: WelcomePage(),
   ));
   // runApp(const MyApp());
 }
