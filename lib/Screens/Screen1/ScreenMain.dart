@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/screen2.dart';
+import 'package:laza/Screens/screen2/screen2.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:laza/Screens/screen2.dart';
-import 'package:laza/Screens/splash_screen.dart';
+import 'package:laza/Screens/screen2/screen2.dart';
+import 'package:laza/Screens/splash/splash_screen.dart';
 import 'Screens/Screen3/Screen3.dart';
 
 

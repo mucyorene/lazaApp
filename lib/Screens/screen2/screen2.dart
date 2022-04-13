@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:laza/Screens/Screen3/Screen3.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
 
 class CreateAccont extends StatelessWidget {
   const CreateAccont({Key? key}) : super(key: key);
@@ -16,7 +18,13 @@ class CreateAccont extends StatelessWidget {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const Screen3()));
+                },
                 color: Color(0Xff9775FA),
                 child: Text(
                   'Create an Account',
@@ -129,7 +137,11 @@ class CreateAccont extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w300)),
                 TextSpan(
                   text: 'Signin',
-                  recognizer: TapGestureRecognizer()..onTap = () {},
+                  recognizer: TapGestureRecognizer()..onTap = () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                         WelcomePage()));},
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
