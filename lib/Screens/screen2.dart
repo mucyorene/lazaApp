@@ -28,10 +28,9 @@ class CreateAccont extends StatelessWidget {
       ),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
-        leading: SizedBox(child: BackButton()),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        leading: IconButton(icon: Icon(Icons.arrow_back_rounded), onPressed: (){},),
         foregroundColor: Colors.black45,
-        shape: CircleBorder(),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,6 +53,7 @@ class CreateAccont extends StatelessWidget {
               padding: EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
+                
                 onPressed: () {},
                 icon: Icon(
                   FontAwesomeIcons.facebookF,
@@ -65,6 +65,7 @@ class CreateAccont extends StatelessWidget {
                 ),
                 textColor: Colors.white,
                 color: Color(0Xff4267B2),
+                
                 elevation: 0,
               ),
             ),

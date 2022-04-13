@@ -5,7 +5,7 @@ import 'package:laza/Screens/splash_screen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: CreateAccont(),
+    home: splash(),
   ));
   // runApp(const MyApp());
 }
