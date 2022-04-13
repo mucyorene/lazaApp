@@ -25,7 +25,7 @@ class _Screen2State extends State<Screen2> {
               height: 812,
             ),
             Positioned(
-              top: 553,
+              top: 200,
               bottom: 15,
               left: 15,
               right: 15,
@@ -111,6 +111,11 @@ class _Screen2State extends State<Screen2> {
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(context, CupertinoPageRoute(builder: (context)=> const CreateAccont()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CreateAccont()));
                           },
                           child: const Text(
                             "Skip",

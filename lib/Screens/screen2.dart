@@ -36,11 +36,9 @@ class CreateAccont extends StatelessWidget {
       ),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () {},
-        ),
+
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        leading: IconButton(icon: Icon(Icons.arrow_back_rounded), onPressed: (){Navigator.pop(context);},),
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(

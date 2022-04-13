@@ -2,6 +2,7 @@ import 'dart:async';
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen1/ScreenMain.dart';
 import 'package:laza/Screens/screen2.dart';
 
 import 'Screen1/ScreenMain.dart';
@@ -15,6 +16,7 @@ class splash extends StatefulWidget {
 
 class _SplashState extends State<splash> {
   bool _isvisible = false;
+
   _SplashState() {
     // ignore: unnecessary_new
     new Timer(const Duration(milliseconds: 3000), () {
@@ -24,8 +26,6 @@ class _SplashState extends State<splash> {
             (route) => false);
       });
     });
-
-    
   }
 
   @override
