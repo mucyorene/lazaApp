@@ -2,6 +2,7 @@ import 'dart:async';
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen1/ScreenMain.dart';
 import 'package:laza/Screens/screen2.dart';
 
 class splash extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SplashState extends State<splash> {
     new Timer(const Duration(milliseconds: 3000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => CreateAccont()),
+            MaterialPageRoute(builder: (context) => Screen2()),
             (route) => false);
       });
     });
