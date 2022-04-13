@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:laza/Screens/screen2.dart';
+import 'package:laza/Screens/splash_screen.dart';
 
 import 'Screens/Screen3/Screen3.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: splash(),
+  ));
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

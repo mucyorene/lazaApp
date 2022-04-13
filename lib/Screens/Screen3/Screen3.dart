@@ -27,7 +27,7 @@ class _Screen3State extends State<Screen3> {
       ),
       body: Container(
         padding: const EdgeInsets.only(top: 30.0, left: 150.0),
-        height: 300,
+        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: const Text(
           "Sign up",
