@@ -9,6 +9,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<String> categories = [
+    'Category 1',
+    'Category 2',
+    'Category 3',
+    'Category 4',
+    'Category 5',
+    'Category 6',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,8 +93,80 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ],
               ),
-              const SizedBox(height: 20,),
-              CategoriesTitle(title: "Choose Brand")
+              const SizedBox(
+                height: 20,
+              ),
+              CategoriesTitle(title: "Choose Brand"),
+              SizedBox(
+                child: SingleChildScrollView(
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          child: GestureDetector(
+                            child: Card(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              shape:
+                              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Row(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(10.0),
+                                          child: Image.asset(
+                                            "assets/images/screen1ImageGirlSmile.png",
+                                            width: 80.0,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              categories[index],
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold, height: 1.5),
+                                            ),
+                                            const Text("Some Description",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold, height: 1.5)),
+                                            Text("Rwf ${categories[index][1]}",
+                                                style: TextStyle(
+                                                    color: Theme.of(context).primaryColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    height: 1.5))
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: Container(
+                                      padding: EdgeInsets.all(8.0),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.9),
+                                          shape: BoxShape.circle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (_, index) => const SizedBox(
+                            height: 5,
+                          ),
+                      itemCount: categories.length),
+                ),
+              ),
             ],
           ),
         ),
