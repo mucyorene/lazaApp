@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen7/NewPassword.dart';
+import 'package:laza/Screens/screen6/screen6.dart';
 
 class ForgetScreen extends StatefulWidget {
   const ForgetScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _Screen3State extends State<ForgetScreen> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const NewPassword()));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const emailVerification()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(

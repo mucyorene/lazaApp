@@ -1,9 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:laza/Screens/Screen3/Screen3.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
 
-import 'Screen3/Screen3.dart';
+
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -13,7 +17,7 @@ class SignInScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomAppBar(
-        color: Color(0Xff9775FA),
+        color: const Color(0Xff9775FA),
         child: Container(
             height: 50,
             alignment: Alignment.center,
@@ -110,6 +114,7 @@ class SignInScreen extends StatelessWidget {
               padding: EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
+              
                 onPressed: () {},
                 icon: const Icon(
                   FontAwesomeIcons.google,
@@ -136,7 +141,11 @@ class SignInScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w300)),
                 TextSpan(
                   text: 'Sign in',
-                  recognizer: TapGestureRecognizer()..onTap = () {},
+                  recognizer: TapGestureRecognizer()..onTap = () {Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                    const WelcomePage()));},
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
