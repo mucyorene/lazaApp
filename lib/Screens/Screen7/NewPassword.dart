@@ -1,15 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Screen3 extends StatefulWidget {
-  const Screen3({Key? key}) : super(key: key);
+class NewPassword extends StatefulWidget {
+  const NewPassword({Key? key}) : super(key: key);
 
   @override
-  State<Screen3> createState() => _Screen3State();
+  State<NewPassword> createState() => _NewPasswordState();
 }
 
-class _Screen3State extends State<Screen3> {
+class _NewPasswordState extends State<NewPassword> {
   bool _toggled = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class _Screen3State extends State<Screen3> {
                 onPressed: () {},
                 color: const Color(0Xff9775FA),
                 child: const Text(
-                  'Sign up',
+                  'Reset Password',
                   style: TextStyle(
                       fontSize: 17,
                       color: Colors.white,
@@ -59,7 +59,7 @@ class _Screen3State extends State<Screen3> {
               Container(
                 height: 200,
                 child: const Text(
-                  "Sign Up",
+                  "New Password",
                   style: TextStyle(
                       height: 3.0,
                       fontSize: 28,
@@ -72,64 +72,38 @@ class _Screen3State extends State<Screen3> {
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: Column(children: [
                   TextFormField(
-                    initialValue: "Esther Howard",
-                    style: const TextStyle(
-                        color: Color(0xff1D1E20),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0),
-                    decoration: const InputDecoration(
-                        labelText: "Username",
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Color(0xff34C358),
-                        ),
-                        labelStyle:
-                        TextStyle(color: Colors.grey, fontSize: 13.0)),
-                  ),
-                  TextFormField(
                     initialValue: "HJ@#9783kja",
-                    style: const TextStyle(fontSize: 15),
+                    style: const TextStyle(fontSize: 15,),
                     decoration: const InputDecoration(
                         labelText: "Password",
                         suffixText: 'Strong',
                         suffixStyle: TextStyle(color: Colors.green),
                         labelStyle:
-                        TextStyle(color: Colors.grey, fontSize: 13.0)),
+                        TextStyle(color: Color(0xff8F959E), fontSize: 13.0)),
                   ),
                   TextFormField(
-                    initialValue: "bill.senders@example.com",
+                    initialValue: "HJ@#9783kja",
+                    style: const TextStyle(fontSize: 15),
                     decoration: const InputDecoration(
-                        labelText: "Email Address",
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Color(0xff34C358),
-                        ),
+                        labelText: "Confirm Password",
+                        suffixText: 'Strong',
+                        suffixStyle: TextStyle(color: Colors.green),
                         labelStyle:
-                        TextStyle(color: Colors.grey, fontSize: 13.0)),
+                        TextStyle(color: Color(0xff8F959E), fontSize: 13.0)),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: const Text(
-                            "Remember me",
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                          child: SwitchListTile(
-                            activeColor: Colors.green,
-                            onChanged: (bool value) {
-                              setState(() {
-                                _toggled = value;
-                              });
-                            },
-                            value: _toggled,
-                          )),
-                    ],
-                  )
                 ]),
               ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  child: const Text(
+                    "Please write your email to receive a confirmation code to set a new password.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 155,)
             ],
           ),
         ),

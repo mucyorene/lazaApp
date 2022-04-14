@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:laza/Screens/screen2/screen2.dart';
-import 'package:laza/Screens/splash/splash_screen.dart';
-import 'Screens/Screen3/Screen3.dart';
+import 'package:laza/Screens/Screen1/ScreenMain.dart';
+
+import 'Screens/splash/splash_screen.dart';
+
 
 
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // primaryColor: const Color(0xff9775FA),
         scaffoldBackgroundColor: const Color(0x00ffffff),
       ),
-      home: const Screen3(),
+      home: const Screen2(),
     );
   }
 }

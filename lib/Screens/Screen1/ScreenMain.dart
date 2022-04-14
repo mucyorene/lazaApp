@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
+
+import '../Screen5/ForgetScreen.dart';
+import '../Screen7/NewPassword.dart';
+import '../Screen8/HomePage.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({Key? key}) : super(key: key);
@@ -13,8 +19,7 @@ class _Screen2State extends State<Screen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        constraints: const BoxConstraints.expand(),
         color: const Color(0xff9775FA),
         child: Stack(
           children: [
@@ -24,7 +29,6 @@ class _Screen2State extends State<Screen2> {
               height: 812,
             ),
             Positioned(
-              top: 200,
               bottom: 15,
               left: 15,
               right: 15,
@@ -57,52 +61,60 @@ class _Screen2State extends State<Screen2> {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        margin:const EdgeInsets.only(left:15, right: 15),
+                        padding: const EdgeInsets.only(top: 20, bottom: 20,),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          side: BorderSide.none)),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          const Color(0xffF5F6FA)),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.fromLTRB(43, 30, 43, 30),
-                                  child: Text(
-                                    "Men",
-                                    style: TextStyle(
-                                        color: Color(0xff8F959E), fontSize: 17),
+                            Expanded(
+                              child: Container(
+                                height: 80,
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>const HomeScreen()));
+                                    },
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              side: BorderSide.none)),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0xffF5F6FA)),
+                                    ),
+                                    child: const Text(
+                                      "Men",
+                                      style: TextStyle(
+                                          color: Color(0xff8F959E),
+                                          fontSize: 17),
+                                    )),
+                              ),
+                            ),
+                            const SizedBox(width: 10,),
+                            Expanded(
+                                child: Container(
+                              height: 80,
+                              child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            side: BorderSide.none)),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            const Color(0xff9775FA)),
                                   ),
-                                )),
-                            ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          side: BorderSide.none)),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          const Color(0xff9775FA)),
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.fromLTRB(43, 30, 43, 30),
-                                  child: Text(
+                                  child: const Text(
                                     "Women",
                                     style: TextStyle(
                                         color: Color(0xffFFFFFF), fontSize: 17),
-                                  ),
-                                )),
+                                  )),
+                            )),
                           ],
                         ),
                       ),
@@ -111,9 +123,9 @@ class _Screen2State extends State<Screen2> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
+                                CupertinoPageRoute(
                                     builder: (context) =>
-                                        const CreateAccont()));
+                                    const SignInScreen()));
                           },
                           child: const Text(
                             "Skip",

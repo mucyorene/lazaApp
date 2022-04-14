@@ -2,6 +2,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -127,7 +128,7 @@ class _welcomePageState extends State<WelcomePage> {
                       text: 'Forgot password?',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => xyz()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetScreen()));
                         },
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
