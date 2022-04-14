@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
 
@@ -13,8 +14,7 @@ class _Screen2State extends State<Screen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        constraints: const BoxConstraints.expand(),
         color: const Color(0xff9775FA),
         child: Stack(
           children: [
@@ -24,7 +24,6 @@ class _Screen2State extends State<Screen2> {
               height: 812,
             ),
             Positioned(
-              top: 200,
               bottom: 15,
               left: 15,
               right: 15,
@@ -109,11 +108,7 @@ class _Screen2State extends State<Screen2> {
                       Center(
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const CreateAccont()));
+                            Navigator.push(context, CupertinoPageRoute(builder: (context)=> const SignInScreen()));
                           },
                           child: const Text(
                             "Skip",

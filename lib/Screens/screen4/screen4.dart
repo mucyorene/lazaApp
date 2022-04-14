@@ -2,6 +2,7 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -94,6 +95,7 @@ class _welcomePageState extends State<WelcomePage> {
                 Container(
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
+                    obscureText: true,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     cursorColor: const Color(0Xff34C759),
@@ -118,38 +120,37 @@ class _welcomePageState extends State<WelcomePage> {
                   ),
                 ),
                 Container(
-                margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                //child: Text('Don\'t have an account? Create'),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text.rich(
-                    TextSpan(
-                      text: 'Forgot password?',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => xyz()));
-                        },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XffEA4335),
-                          fontSize: 17),
-                    ),
-                  ),
-                )),
-                Container(
-                    
-                    child: SwitchListTile(
-                      activeColor: const Color(0Xff34C759),
-                      title: const Text('Remember Me'),
-                      value: _remember,
-                      onChanged: (bool value) {
-                        setState(() => _remember = value);
-                      },
-                      //can this be selected?
+                    margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                    //child: Text('Don\'t have an account? Create'),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text.rich(
+                        TextSpan(
+                          text: 'Forgot password?',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = (() => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgetScreen()))),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color(0XffEA4335),
+                              fontSize: 17),
+                        ),
+                      ),
                     )),
+                Container(
+                    child: SwitchListTile(
+                  activeColor: const Color(0Xff34C759),
+                  title: const Text('Remember Me'),
+                  value: _remember,
+                  onChanged: (bool value) {
+                    setState(() => _remember = value);
+                  },
+                  //can this be selected?
+                )),
               ],
             )),
-            
             Container(
               padding: const EdgeInsets.only(top: 45),
               alignment: Alignment.bottomCenter,
