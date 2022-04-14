@@ -4,9 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen1/ScreenMain.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
-import 'package:laza/Screens/screen2.dart';
 
-import 'Screen1/ScreenMain.dart';
 
 class splash extends StatefulWidget {
   const splash({Key? key}) : super(key: key);

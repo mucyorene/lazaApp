@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:laza/Screens/Screen1/ScreenMain.dart';
-import 'package:laza/Screens/splash_screen.dart';
+
+import 'Screens/splash/splash_screen.dart';
+
 
 
 

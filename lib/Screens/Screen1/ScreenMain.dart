@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/screen2.dart';
+import 'package:laza/Screens/screen2/screen2.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
 
 import '../Screen5/ForgetScreen.dart';
 import '../Screen7/NewPassword.dart';
@@ -124,7 +125,7 @@ class _Screen2State extends State<Screen2> {
                                 context,
                                 CupertinoPageRoute(
                                     builder: (context) =>
-                                    const ForgetScreen()));
+                                    const SignInScreen()));
                           },
                           child: const Text(
                             "Skip",
