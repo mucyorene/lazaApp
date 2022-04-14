@@ -23,7 +23,7 @@ class _SplashState extends State<splash> {
     new Timer(const Duration(milliseconds: 3000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const ForgetScreen()),
+            MaterialPageRoute(builder: (context) => const Screen2()),
             (route) => false);
       });
     });

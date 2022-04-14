@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen7/NewPassword.dart';
 
 class ForgetScreen extends StatefulWidget {
   const ForgetScreen({Key? key}) : super(key: key);
@@ -9,8 +10,6 @@ class ForgetScreen extends StatefulWidget {
 }
 
 class _Screen3State extends State<ForgetScreen> {
-  bool _toggled = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +21,9 @@ class _Screen3State extends State<ForgetScreen> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const NewPassword()));
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'Confirm Email',
@@ -51,53 +52,51 @@ class _Screen3State extends State<ForgetScreen> {
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.only(top: 30),
-                height: 400,
-                child: Column(
-                  children: [
-                    const Text(
-                      "Forget Password",
-                      style: TextStyle(
-                          height: 2.0,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-                    Container(
-                      child: Image.asset(
-                        "assets/images/cloudLockImage.png",
-                        height: 300,
-                        width: 500,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                child: Column(children: [
-                  TextFormField(
-                    initialValue: "bill.senders@example.com",
-                    decoration: const InputDecoration(
-                        labelText: "Email Address",
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Color(0xff34C358),
-                        ),
-                        labelStyle:
-                            TextStyle(color: Colors.grey, fontSize: 13.0)),
+              Column(
+                children: [
+                  const Text(
+                    "Forget Password",
+                    style: TextStyle(
+                        height: 2.0,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
                   ),
-                ]),
+                  Container(
+                    child: Image.asset(
+                      "assets/images/cloudLockImage.png",
+                    ),
+                  )
+                ],
               ),
-              Container(
-                alignment: Alignment.bottomCenter,
-                margin: const EdgeInsets.only(top: 200, bottom: 0),
-                child: const Text(
-                  "Please write your email to receive a confirmation code to set a new password",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 50, left: 20, right: 20),
+                  child: Column(children: [
+                    TextFormField(
+                      initialValue: "bill.senders@example.com",
+                      decoration: const InputDecoration(
+                          labelText: "Email Address",
+                          suffixIcon: Icon(
+                            Icons.check,
+                            color: Color(0xff34C358),
+                          ),
+                          labelStyle:
+                              TextStyle(color: Colors.grey, fontSize: 13.0)),
+                    ),
+                  ]),
                 ),
               ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  child: const Text(
+                    "Please write your email to receive a confirmation code to set a new password.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 155,)
             ],
           ),
         ),
