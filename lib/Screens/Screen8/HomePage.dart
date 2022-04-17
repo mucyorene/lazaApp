@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen8/Widgets/CustomList.dart';
 
@@ -98,74 +99,57 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               CategoriesTitle(title: "Choose Brand"),
               SizedBox(
-                child: SingleChildScrollView(
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          child: GestureDetector(
-                            child: Card(
-                              margin: const EdgeInsets.symmetric(horizontal: 20),
-                              shape:
-                              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                              child: Stack(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          child: Image.asset(
-                                            "assets/images/screen1ImageGirlSmile.png",
-                                            width: 80.0,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              categories[index],
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold, height: 1.5),
-                                            ),
-                                            const Text("Some Description",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold, height: 1.5)),
-                                            Text("Rwf ${categories[index][1]}",
-                                                style: TextStyle(
-                                                    color: Theme.of(context).primaryColor,
-                                                    fontWeight: FontWeight.bold,
-                                                    height: 1.5))
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Positioned(
-                                    top: 0,
-                                    right: 0,
-                                    child: Container(
+                height: 80,
+                child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            color: const Color(0xffF5F6FA),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Row(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Container(
+                                      height: 80,
+                                      width: 80,
                                       padding: EdgeInsets.all(8.0),
                                       decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.9),
-                                          shape: BoxShape.circle),
+                                        color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                          image: const DecorationImage(
+                                            image: AssetImage(
+                                              "assets/images/adidas.JPG",
+                                            ),
+                                            fit: BoxFit.fitHeight,
+                                          )),
                                     ),
-                                  )
-                                ],
-                              ),
+                                  ],
+                                ),
+                                Container(
+                                  child: Text(
+                                    categories[index],
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold, height: 1.5),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        );
-                      },
-                      separatorBuilder: (_, index) => const SizedBox(
-                            height: 5,
-                          ),
-                      itemCount: categories.length),
-                ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (_, index) => const SizedBox(
+                          height: 5,
+                        ),
+                    itemCount: categories.length),
               ),
             ],
           ),
