@@ -149,10 +149,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                     itemCount: categories.length),
               ),
-              const SizedBox(height:20),
+              const SizedBox(height: 20),
               Container(
-                color: Colors.red
-              ),
+                color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: GridView.count(
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(10),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      Column(
+                        children: [
+                          Expanded(
+                              child: Container(
+                            child: Image.asset(
+                              "assets/images/screen1ImageGirlSmile.png",
+                              height: 400,
+                            ),
+                          )),
+                          Expanded(
+                              child: Container(
+                            height: 200,
+                            color: Colors.teal,
+                          ))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
