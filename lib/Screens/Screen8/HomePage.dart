@@ -11,10 +11,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<String> categories = [
-    'Category 1',
-    'Category 2',
-    'Category 3',
-    'Category 4',
+    'Adidas',
+    'Nike',
+    'Puma',
+    'Fila',
     'Category 5',
     'Category 6',
   ];
@@ -105,7 +105,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Container(
-
                         child: GestureDetector(
                           onTap: () {},
                           child: Card(
@@ -114,30 +113,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(15)),
                             child: Row(
                               children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      height: 80,
-                                      width: 80,
-                                      padding: EdgeInsets.all(8.0),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                          image: const DecorationImage(
-                                            image: AssetImage(
-                                              "assets/images/adidas.JPG",
-                                            ),
-                                            fit: BoxFit.fitHeight,
-                                          )),
-                                    ),
-                                  ],
+                                Container(
+                                  height: 60,
+                                  width: 80,
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      image: const DecorationImage(
+                                          image: AssetImage(
+                                            "assets/images/nike.JPG",
+                                          ),
+                                          fit: BoxFit.cover)),
                                 ),
                                 Container(
-                                  child: Text(
-                                    categories[index],
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold, height: 1.5),
+                                  height: 60,
+                                  width: 80,
+                                  child: Center(
+                                    child: Text(
+                                      categories[index],
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          height: 1.5),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -151,10 +149,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                     itemCount: categories.length),
               ),
+              const SizedBox(height:20),
+              Container(
+                color: Colors.red
+              ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            color: Colors.grey,
+          ),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite_border_outlined,
+              color: Colors.grey,
+            ),
+            label: 'Wishlist'),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.grey,
+            ),
+            label: 'Cart'),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.people,
+              color: Colors.grey,
+            ),
+            label: 'Profile'),
+      ]),
     );
   }
 }
