@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
 import 'package:laza/Screens/screen4/screen4.dart';
 
+import '../Screen10/ReviewScreen.dart';
 import '../Screen5/ForgetScreen.dart';
 import '../Screen7/NewPassword.dart';
 import '../Screen8/HomePage.dart';
@@ -61,8 +62,11 @@ class _Screen2State extends State<Screen2> {
                         ),
                       ),
                       Container(
-                        margin:const EdgeInsets.only(left:15, right: 15),
-                        padding: const EdgeInsets.only(top: 20, bottom: 20,),
+                        margin: const EdgeInsets.only(left: 15, right: 15),
+                        padding: const EdgeInsets.only(
+                          top: 20,
+                          bottom: 20,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -71,7 +75,11 @@ class _Screen2State extends State<Screen2> {
                                 height: 80,
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>const HomeScreen()));
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  const HomeScreen()));
                                     },
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all<
@@ -92,12 +100,20 @@ class _Screen2State extends State<Screen2> {
                                     )),
                               ),
                             ),
-                            const SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                                 child: Container(
                               height: 80,
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) =>
+                                                const ReviewScreen()));
+                                  },
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
                                             RoundedRectangleBorder>(
@@ -125,7 +141,7 @@ class _Screen2State extends State<Screen2> {
                                 context,
                                 CupertinoPageRoute(
                                     builder: (context) =>
-                                    const SignInScreen()));
+                                        const SignInScreen()));
                           },
                           child: const Text(
                             "Skip",
