@@ -18,6 +18,7 @@ class _welcomePageState extends State<WelcomePage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +80,7 @@ class _welcomePageState extends State<WelcomePage> {
                         ),
                         hintText: 'User Name',
                         hintStyle: TextStyle(
-                          color: Colors.grey, // <-- Change this
+                          color: Colors.grey,
                           fontSize: null,
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,

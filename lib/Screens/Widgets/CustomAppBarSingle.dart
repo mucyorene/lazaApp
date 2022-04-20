@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBarSingle extends StatelessWidget {
-  const CustomAppBarSingle({Key? key}) : super(key: key);
+  String title;
+  CustomAppBarSingle(this.title,{Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,22 +11,24 @@ class CustomAppBarSingle extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Row(
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            child: const CircleAvatar(
-                backgroundColor: Color(0xffF5F6FA),
-                child: BackButton(
-                  color: Colors.black,
-                )),
+          Expanded(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: const CircleAvatar(
+                  backgroundColor: Color(0xffF5F6FA),
+                  child: BackButton(
+                    color: Colors.black,
+                  )),
+            ),
           ),
-          const SizedBox(
-            width: 115,
+          Expanded(
+            child: Center(
+                child: Text(
+              title,
+              style: const TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+            )),
           ),
-          const Center(
-              child: Text(
-            "Review",
-            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
-          ))
+          Expanded(child: Container()),
         ],
       ),
     );

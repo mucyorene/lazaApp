@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen15/AddNewCard.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
-import 'package:laza/Screens/screen4/screen4.dart';
-
-import '../Screen10/ReviewScreen.dart';
-import '../Screen5/ForgetScreen.dart';
-import '../Screen7/NewPassword.dart';
+import '../Screen13/AddressScreen.dart';
 import '../Screen8/HomePage.dart';
 
 class Screen2 extends StatefulWidget {
@@ -51,14 +48,17 @@ class _Screen2State extends State<Screen2> {
                             height: 3),
                       )),
                       const Center(
-                        child: Text(
-                          "Create your individual & unique style and look amazing everyday.",
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                              height: 1,
-                              color: Color(0xff8F959E)),
-                          textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                          child: Text(
+                            "Create your individual & unique style and look amazing everyday.",
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                height: 1,
+                                color: Color(0xff8F959E)),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                       Container(
@@ -112,7 +112,7 @@ class _Screen2State extends State<Screen2> {
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) =>
-                                                const ReviewScreen()));
+                                                const AddressScreen()));
                                   },
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
@@ -141,8 +141,15 @@ class _Screen2State extends State<Screen2> {
                                 context,
                                 CupertinoPageRoute(
                                     builder: (context) =>
-                                        const SignInScreen()));
+                                        const AddNewCard()));
                           },
+                          // onPressed: () {
+                          //   Navigator.push(
+                          //       context,
+                          //       CupertinoPageRoute(
+                          //           builder: (context) =>
+                          //               const SignInScreen()));
+                          // },
                           child: const Text(
                             "Skip",
                             style: TextStyle(
