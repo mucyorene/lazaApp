@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen9/screen9.dart';
 
 // ignore: camel_case_types
@@ -23,7 +24,7 @@ class screen11 extends StatelessWidget {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const Screen9()));
+                          builder: (context) => const screen12()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -46,10 +47,12 @@ class screen11 extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text(
-          'Add Reviews',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.black, fontSize: 24),
+        title: const Center(
+          child: Text(
+            'Add Reviews',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
+          ),
         ),
       ),
       body: SingleChildScrollView(

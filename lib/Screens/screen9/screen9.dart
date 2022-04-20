@@ -46,7 +46,6 @@ class Screen9 extends StatelessWidget {
                       left: 0,
                       child: IconButton(
                         onPressed: () => Navigator.pop(context),
-
                         icon: const Icon(
                           Icons.arrow_back_rounded,
                         ),
@@ -273,7 +272,7 @@ class Screen9 extends StatelessWidget {
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w300),
                                               child: Icon(
-                                                Icons.lock_clock_rounded,
+                                                Icons.watch_later_outlined,
                                                 color: Color(0Xff8F959E),
                                                 size: 11,
                                               )),
