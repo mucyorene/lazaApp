@@ -20,7 +20,7 @@ class _BottomNavigationChildScreensState extends State<BottomNavigationChildScre
               // Color(0Xff9775FA)
               child:Text(
                 widget.buttonTitle,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),

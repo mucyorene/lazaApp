@@ -6,7 +6,7 @@ class CustomizedAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 180,
       width: MediaQuery.of(context).size.width,
       child: Row(
         children: [
@@ -14,26 +14,22 @@ class CustomizedAppBar extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               child: CircleAvatar(
+                radius: 25,
                   backgroundColor: const Color(0xffF5F6FA),
                   child: IconButton(
                       onPressed: () {},
-                      icon: const Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                      ))),
+                      icon: Image.asset("assets/images/menuIcon.png"))),
             ),
           ),
           Expanded(
               child: Container(
             alignment: Alignment.centerRight,
             child: CircleAvatar(
+              radius: 25,
               backgroundColor: const Color(0xffF5F6FA),
               child: IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.shopping_bag,
-                  color: Colors.black,
-                ),
+                icon: Image.asset("assets/images/Bag.png"),
               ),
             ),
           ))
