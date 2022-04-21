@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen9/screen9.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({Key? key}) : super(key: key);
@@ -21,7 +22,10 @@ class _NewPasswordState extends State<NewPassword> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Screen9()),
+  );},
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'Reset Password',
