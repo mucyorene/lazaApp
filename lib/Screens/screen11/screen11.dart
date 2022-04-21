@@ -1,9 +1,9 @@
-// ignore_for_file: unnecessary_const
+// ignore_for_file: unnecessary_const, deprecated_member_use
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
-import 'package:laza/Screens/screen9/screen9.dart';
+import 'package:laza/Screens/screen17/navigation_drawer.dart';
 
 // ignore: camel_case_types
 class screen11 extends StatelessWidget {
@@ -36,17 +36,19 @@ class screen11 extends StatelessWidget {
                 ))),
       ),
       appBar: AppBar(
+        foregroundColor: Colors.black,
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black87,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_rounded,
+        //     color: Colors.black87,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
+
         title: const Center(
           child: Text(
             'Add Reviews',
@@ -55,6 +57,7 @@ class screen11 extends StatelessWidget {
           ),
         ),
       ),
+      drawer: const NavigationDrawer(),
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(20),
@@ -142,7 +145,6 @@ class screen11 extends StatelessWidget {
                     child: Container(
                         margin: const EdgeInsets.all(10),
                         height: 15,
-                        // width: double.infinity,
                         decoration: BoxDecoration(
                           color: const Color(0XffF5F6FA),
                           borderRadius: BorderRadius.circular(10),

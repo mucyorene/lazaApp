@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
+import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'package:laza/Screens/screen9/screen9.dart';
-import 'package:laza/common/expConta.dart';
 
 // ignore: camel_case_types
 class screen12 extends StatelessWidget {
@@ -27,7 +27,7 @@ class screen12 extends StatelessWidget {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const Screen9()));
+                          builder: (context) => const NavigationDrawer()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
