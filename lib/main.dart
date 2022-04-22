@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
       title: 'Laza',
       theme: ThemeData(
         backgroundColor: const Color(0xffFFFFFF),
-        primaryColor: Colors.white,
-        // primaryColor: const Color(0xff9775FA),
+        // primaryColor: Colors.white,
+        accentColor: Colors.white,
+        primaryColor: const Color(0xff9775FA),
         scaffoldBackgroundColor: const Color(0x00ffffff),
       ),
       home: const Screen2(),

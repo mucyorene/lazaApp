@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen18/StockScreen.dart';
 import 'package:laza/Screens/Screen8/Widgets/CustomList.dart';
-
-import 'Widgets/CustomAppBar.dart';
+import 'package:laza/Screens/Widgets/Search.dart';
 import 'Widgets/ProductCard.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,6 +25,28 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: CircleAvatar(
+            backgroundColor: const Color(0xffF5F6FA),
+            child: IconButton(
+                onPressed: () {},
+                icon: Image.asset("assets/images/menuIcon.png"))),
+        actions: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: const Color(0xffF5F6FA),
+            child: IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                "assets/images/Bag.png",
+                height: 20,
+              ),
+            ),
+          ),
+        ],
+      ),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
@@ -34,54 +56,31 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Column(
                 children: [
-                  CustomizedAppBar(),
-                  const Text(
-                    "Hello",
-                    style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
-                  ),
-                  const Text(
-                    "Welcome to Laza.",
-                    style: TextStyle(fontSize: 15.0, color: Colors.grey),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Row(
                     children: [
                       Expanded(
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Colors.grey,
-                              ),
-                              prefixIconColor: Colors.grey,
-                              filled: true,
-                              hintText: 'Search...',
-                              hintStyle: TextStyle(fontSize: 15.0),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Hello",
+                              style: TextStyle(
+                                  fontSize: 28.0, fontWeight: FontWeight.bold),
                             ),
-                          )),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(15.0),
-                        decoration: const BoxDecoration(
-                            color: Color(0xff9775FA),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: const Icon(
-                          Icons.mic_none_sharp,
-                          color: Colors.white,
+                            Text(
+                              "Welcome to Laza.",
+                              style:
+                                  TextStyle(fontSize: 15.0, color: Colors.grey),
+                            ),
+                          ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(
                     height: 20,
                   ),
+                  const SearchWidget(),
                   Expanded(
                     child: Column(
                       children: [
@@ -97,11 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemBuilder: (context, index) {
                                 return Container(
                                   child: GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>const MainStock()));
+                                    },
                                     child: Card(
                                       color: const Color(0xffF5F6FA),
                                       shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15)),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
                                       child: Row(
                                         children: [
                                           Container(
@@ -110,7 +112,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             padding: const EdgeInsets.all(8.0),
                                             decoration: BoxDecoration(
                                                 color: Colors.transparent,
-                                                borderRadius: BorderRadius.circular(15.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
                                                 image: const DecorationImage(
                                                     image: AssetImage(
                                                       "assets/images/nike.JPG",
@@ -136,8 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               },
                               separatorBuilder: (_, index) => const SizedBox(
-                                height: 5,
-                              ),
+                                    height: 5,
+                                  ),
                               itemCount: categories.length),
                         ),
                         const SizedBox(height: 10),
@@ -154,12 +157,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               ProductCard("assets/images/homeone.png",
                                   "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard("assets/images/hometwo.png",
-                                  "Trail Running Jacket Nike Windrunner", "\$99"),
+                              ProductCard(
+                                  "assets/images/hometwo.png",
+                                  "Trail Running Jacket Nike Windrunner",
+                                  "\$99"),
                               ProductCard("assets/images/homethree.png",
                                   "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard("assets/images/homefour.png",
-                                  "Trail Running Jacket Nike Windrunner", "\$99"),
+                              ProductCard(
+                                  "assets/images/homefour.png",
+                                  "Trail Running Jacket Nike Windrunner",
+                                  "\$99"),
                             ],
                           ),
                         ),
