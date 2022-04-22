@@ -137,7 +137,7 @@ class _welcomePageState extends State<WelcomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ForgetScreen()));
+                                      builder: (context) => const ForgetScreen()));
                             },
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -146,16 +146,15 @@ class _welcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     )),
-                Container(
-                    child: SwitchListTile(
+                SwitchListTile(
                   activeColor: const Color(0Xff34C759),
                   title: const Text('Remember Me'),
                   value: _remember,
                   onChanged: (bool value) {
-                    setState(() => _remember = value);
+                setState(() => _remember = value);
                   },
                   //can this be selected?
-                )),
+                ),
               ],
             )),
             Container(
