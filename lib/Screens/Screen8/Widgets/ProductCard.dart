@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 
 class ProductCard extends StatefulWidget {
   final String imageString;
@@ -25,9 +27,17 @@ class _ProductCardState extends State<ProductCard> {
           ),
           child: Stack(
             children: [
-              Image.asset(
-                widget.imageString,
-                fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const ReviewScreen()));
+                },
+                child: Image.asset(
+                  widget.imageString,
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
                   child: Container(
@@ -50,7 +60,7 @@ class _ProductCardState extends State<ProductCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                color: Colors.white,
+                color: Colors.transparent,
                 child: Text(
                   widget.descriptionText,
                 ),
@@ -59,10 +69,11 @@ class _ProductCardState extends State<ProductCard> {
                 height: 3.0,
               ),
               Container(
-                color: Colors.white,
+                color: Colors.transparent,
                 child: Text(
                   widget.priceValue,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18.0),
                 ),
               ),
             ],
