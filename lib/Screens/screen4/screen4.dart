@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
+import 'package:laza/Screens/Screen8/HomePage.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -30,7 +32,9 @@ class _welcomePageState extends State<WelcomePage> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const HomeScreen()));
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'LOGIN',

@@ -25,7 +25,6 @@ class _InformationHeaderState extends State<InformationHeader> {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
             Expanded(
@@ -57,21 +56,24 @@ class _InformationHeaderState extends State<InformationHeader> {
                 ),
               ),
             ),
-            Expanded(child: Container()),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                    color: const Color(0xffF5F6FA),
-                    borderRadius: BorderRadius.circular(10.0)),
-                alignment: Alignment.center,
-                child: TextButton.icon(
-                    onPressed: () {},
-                    icon: widget.iconSort,
-                    label: Text(
-                      widget.iconName,
-                      style: const TextStyle(fontSize: 15.0, color: Colors.black),
-                    )),
+                alignment: Alignment.centerRight,
+                child: Container(
+                  decoration: BoxDecoration(
+                      // color: Colors.red,
+                      color: const Color(0xffF5F6FA),
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: TextButton.icon(
+                      onPressed: () {},
+                      icon: widget.iconSort,
+                      label: Text(
+                        widget.iconName,
+                        style: const TextStyle(
+                            fontSize: 15.0, color: Colors.black),
+                      )),
+                ),
               ),
             ),
           ],

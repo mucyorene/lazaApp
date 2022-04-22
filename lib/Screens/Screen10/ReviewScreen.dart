@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
+import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
+
+import '../Screen14/PaymentScreen.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({Key? key}) : super(key: key);
@@ -14,14 +17,30 @@ class _ReviewScreenState extends State<ReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          leadingWidth: 40,
+          centerTitle: true,
+          title: const Text("Review",
+              style: TextStyle(
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black)),
+          backgroundColor: Colors.white,
+          leading: const CircleAvatar(
+              backgroundColor: Color(0xffF5F6FA),
+              child: BackButton(
+                color: Colors.black,
+              )),
+        ),
         backgroundColor: Colors.white,
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          margin: const EdgeInsets.only(left: 20, right: 20),
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Column(
             children: [
-              CustomAppBarSingle("Review"),
+              // CustomAppBarSingle("Review"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -86,19 +105,24 @@ class _ReviewScreenState extends State<ReviewScreen> {
                   Expanded(
                     child: Container(
                       height: 60,
-                      decoration: BoxDecoration(
-                          color: const Color(0xffFF7043),
-                          borderRadius: BorderRadius.circular(10.0)),
-                      alignment: Alignment.center,
-                      child: TextButton.icon(
-                        label: const Text(
-                          "Add New Review",
-                          style: TextStyle(fontSize: 15.0, color: Colors.white),
-                        ),
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.open_in_new,
-                          color: Colors.white,
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: const Color(0xffFF7043),
+                            borderRadius: BorderRadius.circular(10.0)),
+                        child: TextButton.icon(
+                          label: const Text(
+                            "Add New Review",
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, CupertinoPageRoute(builder: (context)=>const Payment()));
+                          },
+                          icon: const Icon(
+                            Icons.open_in_new,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

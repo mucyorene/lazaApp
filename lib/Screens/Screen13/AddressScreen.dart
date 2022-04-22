@@ -18,7 +18,9 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationChildScreens(buttonTitle: 'Save Address',),
+      bottomNavigationBar: BottomNavigationChildScreens(
+        buttonTitle: 'Save Address',
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -30,7 +32,12 @@ class _AddressScreenState extends State<AddressScreen> {
                 children: [
                   SingleInput(inputLable: "Name", hintText: "Mrh Raju"),
                   const SizedBox(height: 15),
-                  DoubleRowInput(label1: 'Country', hintText1: 'Bangladesh', label2: 'City', hintText2: 'Sylhet',),
+                  DoubleRowInput(
+                    label1: 'Country',
+                    hintText1: 'Bangladesh',
+                    label2: 'City',
+                    hintText2: 'Sylhet',
+                  ),
                   const SizedBox(height: 15),
                   SingleInput(
                       inputLable: "Phone Number", hintText: "+880 1453-987533"),

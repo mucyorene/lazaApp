@@ -140,19 +140,19 @@ class _Screen2State extends State<Screen2> {
                       ),
                       Center(
                         child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => const ConfirmScreen()));
-                          },
                           // onPressed: () {
                           //   Navigator.push(
                           //       context,
                           //       CupertinoPageRoute(
-                          //           builder: (context) =>
-                          //               const SignInScreen()));
+                          //           builder: (context) => const ConfirmScreen()));
                           // },
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        const SignInScreen()));
+                          },
                           child: const Text(
                             "Skip",
                             style: TextStyle(
