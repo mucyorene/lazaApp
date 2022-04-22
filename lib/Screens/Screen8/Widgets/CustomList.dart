@@ -18,22 +18,19 @@ class _CategoriesTitleState extends State<CategoriesTitle> {
         children: [
           Expanded(
             child: Container(
-              color: Colors.red,
               child: Text(
-                widget.title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                widget.title,textAlign: TextAlign.left,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 20.0,),
               ),
             ),
           ),
-          const SizedBox(
-            width: 110,
-          ),
           const Expanded(
               child: Text(
-            "View all",
+            "View all",textAlign: TextAlign.right,
             style: TextStyle(),
-          ))
+          )
+          ),
         ],
       ),
     );

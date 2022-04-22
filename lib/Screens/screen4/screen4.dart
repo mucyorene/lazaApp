@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
+import 'package:laza/Screens/Screen8/HomePage.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class _welcomePageState extends State<WelcomePage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +32,9 @@ class _welcomePageState extends State<WelcomePage> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const HomeScreen()));
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'LOGIN',
@@ -79,7 +84,7 @@ class _welcomePageState extends State<WelcomePage> {
                         ),
                         hintText: 'User Name',
                         hintStyle: TextStyle(
-                          color: Colors.grey, // <-- Change this
+                          color: Colors.grey,
                           fontSize: null,
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,

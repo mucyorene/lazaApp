@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
 
 class Screen3 extends StatefulWidget {
   const Screen3({Key? key}) : super(key: key);
@@ -21,7 +22,9 @@ class _Screen3State extends State<Screen3> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: (){
+                  Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context)=>const WelcomePage()));
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'Sign up',
