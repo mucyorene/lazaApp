@@ -17,22 +17,22 @@ class _ReviewScreenState extends State<ReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leadingWidth: 40,
-          centerTitle: true,
-          title: const Text("Review",
-              style: TextStyle(
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
-          backgroundColor: Colors.white,
-          leading: const CircleAvatar(
-              backgroundColor: Color(0xffF5F6FA),
-              child: BackButton(
-                color: Colors.black,
-              )),
-        ),
+        appBar: AppBarCustom.appBarCustom(
+            0.0,
+            Colors.transparent,
+            true,
+            40,
+            const CircleAvatar(
+                backgroundColor: Color(0xffF5F6FA),
+                child: BackButton(
+                  color: Colors.black,
+                )),
+            const Text("Review",
+                style: TextStyle(
+                    fontSize: 17.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+            null),
         backgroundColor: Colors.white,
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -117,7 +117,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                                 TextStyle(fontSize: 14.0, color: Colors.white),
                           ),
                           onPressed: () {
-                            Navigator.push(context, CupertinoPageRoute(builder: (context)=>const Payment()));
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) => const Payment()));
                           },
                           icon: const Icon(
                             Icons.open_in_new,

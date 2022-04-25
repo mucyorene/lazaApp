@@ -5,13 +5,15 @@ class DoubleRowInput extends StatefulWidget {
   String hintText1;
   String label2;
   String hintText2;
+  TextInputType textInputType;
 
   DoubleRowInput(
       {Key? key,
       required this.label1,
       required this.hintText1,
       required this.label2,
-      required this.hintText2})
+      required this.hintText2,
+      required this.textInputType})
       : super(key: key);
 
   @override
@@ -66,41 +68,41 @@ class _DoubleRowInputState extends State<DoubleRowInput> {
               width: 30,
             ),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.label2,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 17),
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.label2,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 17),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color(0XffF5F6FA),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: const Color(0XffF5F6FA),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: TextFormField(
-                      style: const TextStyle(
-                          fontSize: 17, fontWeight: FontWeight.bold),
-                      cursorColor: const Color(0XffF5F6FA),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: widget.hintText2,
-                        hintStyle: const TextStyle(
-                          color: Colors.grey, // <-- Change this
-                          fontSize: null,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: TextFormField(
+                    keyboardType: widget.textInputType,
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.bold),
+                    cursorColor: const Color(0XffF5F6FA),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: widget.hintText2,
+                      hintStyle: const TextStyle(
+                        color: Colors.grey, // <-- Change this
+                        fontSize: null,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
                       ),
                     ),
                   ),
-                ],
-              )
-            ),
+                ),
+              ],
+            )),
           ],
         ),
       ],

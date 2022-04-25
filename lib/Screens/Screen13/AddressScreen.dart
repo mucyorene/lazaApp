@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
-
 import '../Widgets/BottomNavigations.dart';
 import 'Widget/DoubleInputs.dart';
 
@@ -18,6 +17,19 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBarCustom.appBarCustom(
+          0,
+          Colors.transparent,
+          true,
+          40.0,
+          const BackButton(
+            color: Colors.black,
+          ),
+          const Text(
+            'Address',
+            style: TextStyle(color: Colors.black),
+          ),
+          null),
       bottomNavigationBar: BottomNavigationChildScreens(
         buttonTitle: 'Save Address',
       ),
@@ -27,12 +39,17 @@ class _AddressScreenState extends State<AddressScreen> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              CustomAppBarSingle("Address"),
+              // CustomAppBarSingle("Address"),
               Column(
                 children: [
-                  SingleInput(inputLable: "Name", hintText: "Mrh Raju"),
+                  SingleInput(
+                    inputLable: "Name",
+                    hintText: "Mrh Raju",
+                    textInputType: TextInputType.text,
+                  ),
                   const SizedBox(height: 15),
                   DoubleRowInput(
+                    textInputType: TextInputType.text,
                     label1: 'Country',
                     hintText1: 'Bangladesh',
                     label2: 'City',
@@ -40,9 +57,13 @@ class _AddressScreenState extends State<AddressScreen> {
                   ),
                   const SizedBox(height: 15),
                   SingleInput(
-                      inputLable: "Phone Number", hintText: "+880 1453-987533"),
+                    inputLable: "Phone Number",
+                    hintText: "+880 1453-987533",
+                    textInputType: TextInputType.phone,
+                  ),
                   const SizedBox(height: 15),
                   SingleInput(
+                      textInputType: TextInputType.text,
                       inputLable: "Address",
                       hintText: "Chhatak, Sunamgonj 12/8AB"),
                   const SizedBox(height: 15),
