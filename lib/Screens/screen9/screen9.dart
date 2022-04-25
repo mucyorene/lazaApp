@@ -2,12 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
 
 import '../screen11/Screen11.dart';
 
 class Screen9 extends StatelessWidget {
   const Screen9({Key? key}) : super(key: key);
+
   // final clock = const Icon(Icons.punch_clock);
   @override
   Widget build(BuildContext context) {
@@ -215,11 +217,20 @@ class Screen9 extends StatelessWidget {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Expanded(child: Container()),
-                                      const Text(
-                                        'View All',
-                                        style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w300),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      const ReviewScreen()));
+                                        },
+                                        child: const Text(
+                                          'View All',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w300),
+                                        ),
                                       ),
                                     ],
                                   )),

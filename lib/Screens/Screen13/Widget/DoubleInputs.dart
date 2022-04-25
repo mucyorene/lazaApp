@@ -6,10 +6,12 @@ class DoubleRowInput extends StatefulWidget {
   String label2;
   String hintText2;
   TextInputType textInputType;
+  TextInputType textInputType2;
 
   DoubleRowInput(
       {Key? key,
       required this.label1,
+      required this.textInputType2,
       required this.hintText1,
       required this.label2,
       required this.hintText2,
@@ -85,7 +87,7 @@ class _DoubleRowInputState extends State<DoubleRowInput> {
                   ),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
-                    keyboardType: widget.textInputType,
+                    keyboardType: widget.textInputType2,
                     style: const TextStyle(
                         fontSize: 17, fontWeight: FontWeight.bold),
                     cursorColor: const Color(0XffF5F6FA),

@@ -227,7 +227,7 @@ class _PaymentState extends State<Payment> {
                       label1: 'EXP',
                       hintText1: '24/24',
                       label2: 'CVV',
-                      hintText2: '7763', textInputType: TextInputType.text,),
+                      hintText2: '7763', textInputType: TextInputType.text, textInputType2: TextInputType.number,),
                   const SizedBox(
                     height: 10,
                   ),
