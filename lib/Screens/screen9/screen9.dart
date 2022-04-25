@@ -2,13 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen10/ReviewScreen.dart';
+import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
 
 import '../screen11/screen11.dart';
 
 class Screen9 extends StatelessWidget {
   const Screen9({Key? key}) : super(key: key);
-  // final clock = const Icon(Icons.punch_clock);
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -169,6 +170,25 @@ class Screen9 extends StatelessWidget {
                                 height: 60,
                                 child: Row(
                                   children: [
+                                    const Text(
+                                      'Reviews',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Expanded(child: Container()),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    const ReviewScreen()));
+                                      },
+                                      child: const Text('View All',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w300)),
                                     vBox('S'),
                                     vBox('M'),
                                     vBox('L'),

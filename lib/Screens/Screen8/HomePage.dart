@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen18/StockScreen.dart';
 import 'package:laza/Screens/Screen8/Widgets/CustomList.dart';
 import 'package:laza/Screens/Widgets/Search.dart';
+import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'Widgets/ProductCard.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _key = GlobalKey(debugLabel: "Scaffold drawer key");
+
   List<String> categories = [
     'Adidas',
     'Nike',
@@ -25,14 +28,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: CircleAvatar(
-            backgroundColor: const Color(0xffF5F6FA),
-            child: IconButton(
-                onPressed: () {},
-                icon: Image.asset("assets/images/menuIcon.png"))),
+        leading: Builder(builder: (ctx) {
+          return CircleAvatar(
+              backgroundColor: const Color(0xffF5F6FA),
+              child: IconButton(
+                  onPressed: () {
+                    Scaffold.of(ctx).openDrawer();
+                  },
+                  icon: Image.asset("assets/images/menuIcon.png")));
+        }),
         actions: [
           CircleAvatar(
             radius: 30,
@@ -47,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      drawer: const NavigationDrawer(),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
@@ -58,22 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Hello",
-                              style: TextStyle(
-                                  fontSize: 28.0, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "Welcome to Laza.",
-                              style:
-                                  TextStyle(fontSize: 15.0, color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Hello",
+                            style: TextStyle(
+                                fontSize: 28.0, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Welcome to Laza.",
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.grey),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -97,7 +104,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 return Container(
                                   child: GestureDetector(
                                     onTap: () {
-                                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>const MainStock()));
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  const MainStock()));
                                     },
                                     child: Card(
                                       color: const Color(0xffF5F6FA),
@@ -149,7 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: GridView.count(
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.all(8),
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
                             crossAxisCount: 2,

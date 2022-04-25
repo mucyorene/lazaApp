@@ -17,13 +17,26 @@ class _AddNewCardState extends State<AddNewCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationChildScreens(buttonTitle: 'Add Card',),
+      appBar: AppBarCustom.appBarCustom(
+          0.0,
+          Colors.transparent,
+          true,
+          40.0,
+          const BackButton(color: Colors.black,),
+          const Text(
+            'Add New Card',
+            style: TextStyle(color: Colors.black),
+          ),
+          null),
+      bottomNavigationBar: BottomNavigationChildScreens(
+        buttonTitle: 'Add Card',
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(right: 20, left: 20),
+          padding: const EdgeInsets.only(right: 20, left: 20, top: 20.0),
           child: Column(
             children: [
-              CustomAppBarSingle("Add New Card"),
+              // CustomAppBarSingle("Add New Card"),
               Row(
                 children: [
                   SingleCardScreen15(
@@ -49,10 +62,26 @@ class _AddNewCardState extends State<AddNewCard> {
                   ),
                 ],
               ),
-              const SizedBox(height:30.0),
-              SingleInput(inputLable: "Card Owner", hintText: "Mrh Raju"),const SizedBox(height:10.0),
-              SingleInput(inputLable: "Card Number", hintText: "5254 7634 8734 7690"),const SizedBox(height:10.0),
-              DoubleRowInput(label1: "EXP", hintText1: "24/24", label2: "CVV", hintText2: "7763")
+              const SizedBox(height: 30.0),
+              SingleInput(
+                inputLable: "Card Owner",
+                hintText: "Mrh Raju",
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(height: 10.0),
+              SingleInput(
+                inputLable: "Card Number",
+                hintText: "5254 7634 8734 7690",
+                textInputType: TextInputType.number,
+              ),
+              const SizedBox(height: 10.0),
+              DoubleRowInput(
+                label1: "EXP",
+                hintText1: "24/24",
+                label2: "CVV",
+                hintText2: "7763",
+                textInputType: TextInputType.text,
+              )
             ],
           ),
         ),
