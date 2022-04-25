@@ -82,6 +82,7 @@ class _AddNewCardState extends State<AddNewCard> {
                 label2: "CVV",
                 hintText2: "7763",
                 textInputType: TextInputType.text,
+                textInputType2: TextInputType.number,
               )
             ],
           ),
