@@ -36,7 +36,12 @@ class _Screen3State extends State<emailVerification> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {Navigator.push(context, CupertinoPageRoute(builder: (context)=>const NewPassword()));},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const NewPassword()));
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'VERIFICATION ',
@@ -65,164 +70,10 @@ class _Screen3State extends State<emailVerification> {
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black54),
-                              borderRadius: BorderRadius.circular(10)),
-                          
-                          child: SizedBox(
-                            height: 60,
-                            child: TextFormField(
-                              cursorColor: Colors.grey,
-                              keyboardType: TextInputType.number,
-                              style: const TextStyle(fontSize: 30),
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              onChanged: (value) {},
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black54),
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(3),
-                          child: SizedBox(
-                            height: 60,
-                            child: TextFormField(
-                              cursorColor: Colors.grey,
-                              keyboardType: TextInputType.number,
-                              style: const TextStyle(fontSize: 30),
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              onChanged: (value) {},
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black54),
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(3),
-                          child: SizedBox(
-                            height: 60,
-                            child: TextFormField(
-                              cursorColor: Colors.grey,
-                              keyboardType: TextInputType.number,
-                              style: const TextStyle(fontSize: 30),
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              onChanged: (value) {},
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black54),
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(3),
-                          child: SizedBox(
-                            height: 60,
-                            child: TextFormField(
-                              cursorColor: Colors.grey,
-                              keyboardType: TextInputType.number,
-                              style: const TextStyle(fontSize: 30),
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                              onChanged: (value) {},
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Flexible(
-                      //   child: Container(
-                      //     padding: EdgeInsets.all(3),
-                      //     child: SizedBox(
-
-                      //       width: 40,
-                      //       child: TextFormField(
-
-                      //         cursorColor: Color(0Xff6B48D0),
-                      //         keyboardType: TextInputType.number,
-                      //         style: const TextStyle(fontSize: 25),
-                      //         decoration: InputDecoration(
-                      //             contentPadding: const EdgeInsets.symmetric(horizontal: 5,),
-                      //             enabledBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(10),
-                      //                 borderSide:
-                      //                     const BorderSide(color: Colors.black45)
-                      //                     ),
-                      //             focusedBorder: OutlineInputBorder(
-                      //               borderRadius: BorderRadius.circular(10),
-                      //                 borderSide:
-                      //                     const BorderSide(color: Colors.black45),
-                      //             ),
-                      //                     ),
-                      //         onChanged: (value){},
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      // Flexible(
-                      //   child: Container(
-                      //     padding: EdgeInsets.all(3),
-                      //     child: SizedBox(
-
-                      //       width: 40,
-                      //       child: TextFormField(
-
-                      //         cursorColor: Color(0Xff6B48D0),
-                      //         keyboardType: TextInputType.number,
-                      //         style: const TextStyle(fontSize: 25),
-                      //         decoration: InputDecoration(
-                      //             contentPadding: const EdgeInsets.symmetric(horizontal: 5,),
-                      //             enabledBorder: OutlineInputBorder(
-                      //                 borderRadius: BorderRadius.circular(10),
-                      //                 borderSide:
-                      //                     const BorderSide(color: Colors.black45)
-                      //                     ),
-                      //             focusedBorder: OutlineInputBorder(
-                      //               borderRadius: BorderRadius.circular(10),
-                      //                 borderSide:
-                      //                     const BorderSide(color: Colors.black45),
-                      //             ),
-                      //                     ),
-                      //         onChanged: (value){},
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+                      textField(true, false),
+                      textField(true, false),
+                      textField(true, false),
+                      textField(false, true)
                     ],
                   )),
                 ),
@@ -245,6 +96,44 @@ class _Screen3State extends State<emailVerification> {
                 ),
               ]),
             ]),
+          ),
+        ),
+      ),
+    );
+  }
+
+  textField(bool first, last) {
+    return Flexible(
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.black54),
+            borderRadius: BorderRadius.circular(10)),
+        padding: const EdgeInsets.all(3),
+        child: SizedBox(
+          height: 60,
+          child: TextFormField(
+            cursorColor: Colors.grey,
+            keyboardType: TextInputType.number,
+            style: const TextStyle(fontSize: 30),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+            ),
+            onChanged: (value) {
+              if (value.length == 1 && last == false) {
+                FocusScope.of(context).nextFocus();
+              }
+              if (value.length == 1 && first == false) {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => const NewPassword()));
+              }
+            },
           ),
         ),
       ),

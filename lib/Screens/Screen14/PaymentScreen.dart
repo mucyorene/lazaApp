@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
 import 'package:laza/Screens/Widgets/BottomNavigations.dart';
-import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
+
 
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
@@ -76,49 +76,7 @@ class _PaymentState extends State<Payment> {
                           )
                         ],
                       );
-                      // return Container(
-                      //   child: GestureDetector(
-                      //     onTap: () {
-                      //       Navigator.push(context, CupertinoPageRoute(builder: (context)=>const MainStock()));
-                      //     },
-                      //     child: Card(
-                      //       color: const Color(0xffF5F6FA),
-                      //       shape: RoundedRectangleBorder(
-                      //           borderRadius:
-                      //           BorderRadius.circular(15)),
-                      //       child: Row(
-                      //         children: [
-                      //           Container(
-                      //             height: 60,
-                      //             width: 80,
-                      //             padding: const EdgeInsets.all(8.0),
-                      //             decoration: BoxDecoration(
-                      //                 color: Colors.transparent,
-                      //                 borderRadius:
-                      //                 BorderRadius.circular(15.0),
-                      //                 image: const DecorationImage(
-                      //                     image: AssetImage(
-                      //                       "assets/images/nike.JPG",
-                      //                     ),
-                      //                     fit: BoxFit.cover)),
-                      //           ),
-                      //           Container(
-                      //             height: 60,
-                      //             width: 80,
-                      //             child: Center(
-                      //               child: Text(
-                      //                 categories[index],
-                      //                 style: const TextStyle(
-                      //                     fontWeight: FontWeight.bold,
-                      //                     height: 1.5),
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // );
+                      
                     },
                     separatorBuilder: (_, index) => const SizedBox(
                           height: 5,
