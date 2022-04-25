@@ -22,6 +22,15 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           backgroundColor: Colors.white,
         ),
         body: SingleChildScrollView(
