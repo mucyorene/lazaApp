@@ -54,6 +54,7 @@ class _AddressScreenState extends State<AddressScreen> {
                     hintText1: 'Bangladesh',
                     label2: 'City',
                     hintText2: 'Sylhet',
+                    textInputType2: TextInputType.number,
                   ),
                   const SizedBox(height: 15),
                   SingleInput(
