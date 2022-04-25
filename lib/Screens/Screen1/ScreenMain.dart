@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen14/PaymentScreen.dart';
-import 'package:laza/Screens/Screen15/AddNewCard.dart';
-import 'package:laza/Screens/Screen16/ConfirmScreen.dart';
-import 'package:laza/Screens/Screen18/StockScreen.dart';
-import 'package:laza/Screens/Screen19/WishList.dart';
+import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
-import '../Screen13/AddressScreen.dart';
 import '../Screen8/HomePage.dart';
+import '../Widgets/NavigationScreens.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({Key? key}) : super(key: key);
@@ -83,7 +79,7 @@ class _Screen2State extends State<Screen2> {
                                           context,
                                           CupertinoPageRoute(
                                               builder: (context) =>
-                                                  const HomeScreen()));
+                                                  const NavigationScreens()));
                                     },
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all<

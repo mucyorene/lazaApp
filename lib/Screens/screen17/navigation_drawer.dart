@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/screen11/screen11.dart';
+import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:laza/Screens/screen17/pressEnter.dart';
 import 'package:laza/common/expConta.dart';
 

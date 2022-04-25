@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen18/Widgets/InformationHeader.dart';
+import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 
 import '../Screen8/Widgets/ProductCard.dart';
 import '../Widgets/BottomNavigations.dart';
@@ -16,42 +17,60 @@ class _WishListScreenState extends State<WishListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: Colors.grey,
+      // bottomNavigationBar: BottomNavigationBar(items: const [
+      //   // BottomNavigationBarItem(
+      //   //   icon: Icon(
+      //   //     Icons.home,
+      //   //     color: Colors.grey,
+      //   //   ),
+      //   //   label: 'Home',
+      //   // ),
+      //   BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.favorite_border_outlined,
+      //         color: Colors.grey,
+      //       ),
+      //       label: 'Wishlist'),
+      //   BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.shopping_bag_outlined,
+      //         color: Colors.grey,
+      //       ),
+      //       label: 'Cart'),
+      //   BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.people,
+      //         color: Colors.grey,
+      //       ),
+      //       label: 'Profile'),
+      // ]),
+      appBar: AppBarCustom.appBarCustom(
+          0.0,
+          Colors.transparent,
+          true,
+          40.0,
+          const BackButton(
+            color: Colors.black,
           ),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.grey,
+          const Text(
+            "Wishlist",
+            style: TextStyle(color: Colors.black, fontSize: 17.0),
+          ),
+          [
+            Container(
+              alignment: Alignment.centerRight,
+              child: CircleAvatar(
+                  radius: 25,
+                  backgroundColor: const Color(0xffF5F6FA),
+                  child: Image.asset("assets/images/Bag.png")),
             ),
-            label: 'Wishlist'),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag_outlined,
-              color: Colors.grey,
-            ),
-            label: 'Cart'),
-        BottomNavigationBarItem(
-            icon: Icon(
-              Icons.people,
-              color: Colors.grey,
-            ),
-            label: 'Profile'),
-      ]),
+          ]),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppBarTitled(
-              appBarTitle: 'Wishlist',
-            ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10.0),
               child: Column(
                 children: [
                   InformationHeader(

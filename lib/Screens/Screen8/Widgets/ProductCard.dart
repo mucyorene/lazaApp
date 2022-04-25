@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
+import 'package:laza/Screens/screen12/screen12.dart';
+
+import '../../screen11/Screen11.dart';
+import '../../screen9/screen9.dart';
 
 class ProductCard extends StatefulWidget {
   final String imageString;
@@ -32,7 +36,7 @@ class _ProductCardState extends State<ProductCard> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const ReviewScreen()));
+                          builder: (context) => const Screen9()));
                 },
                 child: Image.asset(
                   widget.imageString,

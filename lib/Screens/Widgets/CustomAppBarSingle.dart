@@ -1,36 +1,42 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBarSingle extends StatelessWidget {
-  String title;
-  CustomAppBarSingle(this.title,{Key? key}) : super(key: key);
+class AppBarCustom {
+  double elevation;
+  Color backgroundColor;
+  double leadingWidth;
+  var leading;
+  var title;
+  List<Widget> actions;
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 180,
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: const CircleAvatar(
-                  backgroundColor: Color(0xffF5F6FA),
-                  child: BackButton(
-                    color: Colors.black,
-                  )),
-            ),
-          ),
-          Expanded(
-            child: Center(
-                child: Text(
-              title,
-              style: const TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
-            )),
-          ),
-          Expanded(child: Container()),
-        ],
-      ),
+  AppBarCustom(
+      {required this.elevation,
+      required this.backgroundColor,
+      required this.leadingWidth,
+      required this.leading,
+      required this.title,
+      required this.actions});
+
+  static PreferredSizeWidget appBarCustom(
+      double elevation,
+      Color backgroundColor,
+      bool centerTitled,
+      double leadingWidth,
+      leading,
+      title,
+      actions) {
+    return AppBar(
+      elevation: elevation,
+      backgroundColor: backgroundColor,
+      centerTitle: true,
+      leadingWidth: leadingWidth,
+      leading: leading,
+      title: title,
+      actions: actions,
     );
   }
 }
