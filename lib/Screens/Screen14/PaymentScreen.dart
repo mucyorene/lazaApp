@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
-import 'package:laza/Screens/Screen15/Widgets/SingleCard15.dart';
+
 import 'package:laza/Screens/Widgets/BottomNavigations.dart';
 
 
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
+import '../Widgets/CustomAppBarSingle.dart';
 
 class Payment extends StatefulWidget {
   const Payment({Key? key}) : super(key: key);
