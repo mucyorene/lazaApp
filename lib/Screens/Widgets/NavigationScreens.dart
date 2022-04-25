@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen19/WishList.dart';
 import 'package:laza/Screens/Screen8/HomePage.dart';
+import 'package:laza/Screens/screen12/screen12.dart';
 
 class NavigationScreens extends StatefulWidget {
   const NavigationScreens({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
   List<Widget> get screens => [
         const HomeScreen(),
         const WishListScreen(),
-        const WishListScreen(),
+        const screen12(),
         const WishListScreen(),
       ];
 

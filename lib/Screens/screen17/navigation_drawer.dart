@@ -3,6 +3,7 @@ import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:laza/Screens/screen17/pressEnter.dart';
 import 'package:laza/common/expConta.dart';
 
+import '../Widgets/CustomAppBarSingle.dart';
 import 'drawer_item.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -20,19 +21,31 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     return Drawer(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          backgroundColor: Colors.white,
-        ),
+        appBar: AppBarCustom.appBarCustom(
+            0.0,
+            Colors.transparent,
+            false,
+            40.0,
+            CircleAvatar(
+                backgroundColor: const Color(0xffF5F6FA),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Image.asset("assets/images/closeDrawer.png"))),
+            null,
+            null),
+        // appBar: AppBar(
+        //   elevation: 0,
+        //   leading: CircleAvatar(
+        //       backgroundColor: const Color(0xffF5F6FA),
+        //       child: IconButton(
+        //           onPressed: () {
+        //             Navigator.pop(context);
+        //           },
+        //           icon: Image.asset("assets/images/closeDrawer.png"))),
+        //   backgroundColor: Colors.white,
+        // ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24.0, 10, 24, 0),
