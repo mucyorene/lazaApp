@@ -2,11 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen13/AddressScreen.dart';
+import 'package:laza/Screens/Screen14/PaymentScreen.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
-import 'package:laza/Screens/screen9/screen9.dart';
 
 // ignore: camel_case_types
 class screen12 extends StatelessWidget {
@@ -27,7 +28,7 @@ class screen12 extends StatelessWidget {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const NavigationDrawer()));
+                          builder: (context) => const Payment()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -64,15 +65,29 @@ class screen12 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              cadBox('assets/screen12_images/img1.png', const Color(0XffFEFEFE),
-                  const Color(0XffF5F6FA)),
+              InkWell(
+                  child: cadBox('assets/screen12_images/img1.png',
+                      const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const AddressScreen()));
+                  }),
               cadBox('assets/screen12_images/img2.png', const Color(0XffF5F6FA),
                   const Color.fromRGBO(254, 254, 254, 1)),
-              addressBox(
-                  'Delivery Address',
-                  'assets/screen12_images/map_img.png',
-                  'Chhatak, Sunamgonj 12/8AB',
-                  'Sylhet'),
+              InkWell(
+                  child: addressBox(
+                      'Delivery Address',
+                      'assets/screen12_images/map_img.png',
+                      'Chhatak, Sunamgonj 12/8AB',
+                      'Sylhet'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const AddressScreen()));
+                  }),
               addressBox('Payment Method', 'assets/screen12_images/visa.png',
                   'Visa Classic', '****2690'),
               Container(

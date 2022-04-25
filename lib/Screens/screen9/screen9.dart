@@ -3,9 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
+import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
-
-import '../screen11/Screen11.dart';
 
 class Screen9 extends StatelessWidget {
   const Screen9({Key? key}) : super(key: key);
@@ -14,7 +13,7 @@ class Screen9 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.white,
         body: NestedScrollView(
@@ -26,7 +25,7 @@ class Screen9 extends StatelessWidget {
               floating: true,
               snap: true,
               foregroundColor: Colors.black,
-              backgroundColor: Color(0XffF2F2F2),
+              backgroundColor: const Color(0XffF2F2F2),
               bottom: TabBar(indicatorColor: Colors.transparent, tabs: [
                 Tab(
                     icon: IconButton(
@@ -38,6 +37,12 @@ class Screen9 extends StatelessWidget {
                     color: Colors.black,
                   ),
                 )),
+                const Tab(
+                  text: '',
+                ),
+                const Tab(
+                  text: '',
+                ),
                 Tab(
                     icon: IconButton(
                   onPressed: () {
@@ -383,7 +388,7 @@ class Screen9 extends StatelessWidget {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => const screen11()));
+                            builder: (context) => const screen12()));
                   },
                   color: const Color(0Xff9775FA),
                   child: const Text(
