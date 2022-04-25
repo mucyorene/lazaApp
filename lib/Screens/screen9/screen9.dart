@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
 
-import '../screen11/screen11.dart';
+import '../screen11/Screen11.dart';
+
 
 class Screen9 extends StatelessWidget {
   const Screen9({Key? key}) : super(key: key);
@@ -230,7 +231,7 @@ class Screen9 extends StatelessWidget {
                                       CircleAvatar(
                                           backgroundColor:
                                               const Color(0XffF2F2F2),
-                                          radius: 20,
+                                          radius: 30,
                                           child: Image.asset(
                                             'assets/screen9_images/circ1.png',
                                             fit: BoxFit.contain,
