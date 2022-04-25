@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/DoubleInputs.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
@@ -22,7 +21,9 @@ class _AddNewCardState extends State<AddNewCard> {
           Colors.transparent,
           true,
           40.0,
-          const BackButton(color: Colors.black,),
+          const BackButton(
+            color: Colors.black,
+          ),
           const Text(
             'Add New Card',
             style: TextStyle(color: Colors.black),
