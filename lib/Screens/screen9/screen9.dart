@@ -230,7 +230,7 @@ class Screen9 extends StatelessWidget {
                                       CircleAvatar(
                                           backgroundColor:
                                               const Color(0XffF2F2F2),
-                                          radius: 30,
+                                          radius: 20,
                                           child: Image.asset(
                                             'assets/screen9_images/circ1.png',
                                             fit: BoxFit.contain,

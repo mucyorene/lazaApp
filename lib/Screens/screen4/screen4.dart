@@ -17,6 +17,8 @@ class WelcomePage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _welcomePageState extends State<WelcomePage> {
+  final _formKey = GlobalKey<FormState>();
+
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
@@ -33,10 +35,12 @@ class _welcomePageState extends State<WelcomePage> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const HomeScreen()));
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  }
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -59,129 +63,174 @@ class _welcomePageState extends State<WelcomePage> {
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                height: 150,
-                alignment: Alignment.topCenter,
-                padding: const EdgeInsets.all(15),
-                child: const Text(
-                  'Welcome',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                )),
-            Form(
-                child: Column(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: TextFormField(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                  height: 150,
+                  alignment: Alignment.topCenter,
+                  padding: const EdgeInsets.all(15),
+                  child: const Text(
+                    'Welcome',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  )),
+              Form(
+                  child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: TextFormField(
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      cursorColor: const Color(0Xff34C759),
+                      decoration: const InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black45)),
+                          labelStyle: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black54,
+                          ),
+                          hintText: 'User Name',
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                            fontSize: null,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          ),
+                          labelText: 'User Name',
+                          suffixIcon: Icon(
+                            Icons.check,
+                            color: Color(0Xff34C759),
+                          )),
+                      // controller: _usernameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'your name';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: TextFormField(
+                        obscureText: true,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                        cursorColor: const Color(0Xff34C759),
+                        decoration: const InputDecoration(
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black45)),
+                            labelStyle: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black54,
+                            ),
+                            hintText: 'password',
+                            hintStyle: TextStyle(
+                              color: Colors.grey, // <-- Change this
+                              fontSize: null,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                            ),
+                            labelText: 'password',
+                            suffixText: 'strong',
+                            suffixStyle: TextStyle(color: Color(0Xff34C759))),
+                        controller: _passwordController,
+                        validator: (value) {
+                          RegExp regex = RegExp(
+                              r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                          if (value!.isEmpty) {
+                            return 'Please enter password';
+                          } else {
+                            if (!regex.hasMatch(value)) {
+                              return 'Enter a strong password';
+                            } else {
+                              return null;
+                            }
+                          }
+                        }),
+                  ),
+                  Container(
+                      margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                      //child: Text('Don\'t have an account? Create'),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text.rich(
+                          TextSpan(
+                            text: 'Forgot password?',
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ForgetScreen()));
+                              },
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0XffEA4335),
+                                fontSize: 17),
+                          ),
+                        ),
+                      )),
+                  SwitchListTile(
+                    activeColor: const Color(0Xff34C759),
+                    title: const Text('Remember Me'),
+                    value: _remember,
+                    onChanged: (bool value) {
+                      setState(() => _remember = value);
+                    },
+                    //can this be selected?
+                  ),
+                ],
+              )),
+              Container(
+                padding: const EdgeInsets.only(top: 45),
+                alignment: Alignment.bottomCenter,
+                margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                //child: Text('Don\'t have an account? Create'),
+                child: Text.rich(
+                    TextSpan(style: const TextStyle(fontSize: 14), children: [
+                  const TextSpan(
+                      text:
+                          "by connecting your account, confirm that you agree with our ",
+                      style: TextStyle(fontWeight: FontWeight.w300)),
+                  TextSpan(
+                    text: 'Terms and services',
+                    recognizer: TapGestureRecognizer()..onTap = () {},
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                    cursorColor: const Color(0Xff34C759),
-                    decoration: const InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black45)),
-                        labelStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                        ),
-                        hintText: 'User Name',
-                        hintStyle: TextStyle(
-                          color: Colors.grey,
-                          fontSize: null,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
-                        labelText: 'User Name',
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Color(0Xff34C759),
-                        )),
-                    controller: _usernameController,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: TextFormField(
-                    obscureText: true,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                    cursorColor: const Color(0Xff34C759),
-                    decoration: const InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black45)),
-                        labelStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                        ),
-                        hintText: 'password',
-                        hintStyle: TextStyle(
-                          color: Colors.grey, // <-- Change this
-                          fontSize: null,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
-                        labelText: 'password',
-                        suffixText: 'strong',
-                        suffixStyle: TextStyle(color: Color(0Xff34C759))),
-                    controller: _passwordController,
-                  ),
-                ),
-                Container(
-                    margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                    //child: Text('Don\'t have an account? Create'),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text.rich(
-                        TextSpan(
-                          text: 'Forgot password?',
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ForgetScreen()));
-                            },
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color(0XffEA4335),
-                              fontSize: 17),
-                        ),
-                      ),
-                    )),
-                SwitchListTile(
-                  activeColor: const Color(0Xff34C759),
-                  title: const Text('Remember Me'),
-                  value: _remember,
-                  onChanged: (bool value) {
-                    setState(() => _remember = value);
-                  },
-                  //can this be selected?
-                ),
-              ],
-            )),
-            Container(
-              padding: const EdgeInsets.only(top: 45),
-              alignment: Alignment.bottomCenter,
-              margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-              //child: Text('Don\'t have an account? Create'),
-              child: Text.rich(
-                  TextSpan(style: const TextStyle(fontSize: 14), children: [
-                const TextSpan(
-                    text:
-                        "by connecting your account, confirm that you agree with our ",
-                    style: TextStyle(fontWeight: FontWeight.w300)),
-                TextSpan(
-                  text: 'Terms and services',
-                  recognizer: TapGestureRecognizer()..onTap = () {},
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ])),
-            ),
-          ],
+                ])),
+              ),
+              Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: RaisedButton(
+                      elevation: 0,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print('validated');
+                          // Navigator.push(
+                          //     context,
+                          //     CupertinoPageRoute(
+                          //         builder: (context) => const HomeScreen()));
+                        } else {
+                          print('not validated');
+                        }
+                      },
+                      color: const Color(0Xff9775FA),
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ))),
+            ],
+          ),
         ),
       ),
     );
