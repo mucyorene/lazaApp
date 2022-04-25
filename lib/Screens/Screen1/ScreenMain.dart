@@ -79,7 +79,7 @@ class _Screen2State extends State<Screen2> {
                                           context,
                                           CupertinoPageRoute(
                                               builder: (context) =>
-                                                  const HomeScreen()));
+                                                  const NavigationScreens()));
                                     },
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all<

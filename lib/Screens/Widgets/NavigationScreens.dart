@@ -14,6 +14,8 @@ class _NavigationScreensState extends State<NavigationScreens> {
   List<Widget> get screens => [
         const HomeScreen(),
         const WishListScreen(),
+        const WishListScreen(),
+        const WishListScreen(),
       ];
 
   @override
@@ -25,7 +27,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
         onTap: (index) => setState(() {
           currentIndex = index;
         }),
-        showSelectedLabels: false,
+        showSelectedLabels: true,
         showUnselectedLabels: false,
         selectedItemColor: Colors.deepPurpleAccent,
         type: BottomNavigationBarType.fixed,
