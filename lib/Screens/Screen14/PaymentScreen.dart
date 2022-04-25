@@ -7,6 +7,7 @@ import 'package:laza/Screens/Widgets/BottomNavigations.dart';
 
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
+import '../Widgets/CustomAppBarSingle.dart';
 
 class Payment extends StatefulWidget {
   const Payment({Key? key}) : super(key: key);
