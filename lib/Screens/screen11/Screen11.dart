@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 
+import '../Widgets/CustomAppBarSingle.dart';
+
 // ignore: camel_case_types
 class screen11 extends StatelessWidget {
   const screen11({Key? key}) : super(key: key);
@@ -35,29 +37,43 @@ class screen11 extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ))),
       ),
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        // leading: IconButton(
-        //   icon: const Icon(
-        //     Icons.arrow_back_rounded,
-        //     color: Colors.black87,
-        //   ),
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        // ),
-
-        title: const Center(
-          child: Text(
+      // appBar: AppBar(
+      //   foregroundColor: Colors.black,
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      //   // leading: IconButton(
+      //   //   icon: const Icon(
+      //   //     Icons.arrow_back_rounded,
+      //   //     color: Colors.black87,
+      //   //   ),
+      //   //   onPressed: () {
+      //   //     Navigator.pop(context);
+      //   //   },
+      //   // ),
+      //
+      //   title: const Center(
+      //     child: Text(
+      //       'Add Reviews',
+      //       style: TextStyle(
+      //           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
+      //     ),
+      //   ),
+      // ),
+      drawer: const NavigationDrawer(),
+      appBar: AppBarCustom.appBarCustom(
+          0.0,
+          Colors.transparent,
+          true,
+          40.0,
+          const BackButton(
+            color: Colors.black,
+          ),
+          const Text(
             'Add Reviews',
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
           ),
-        ),
-      ),
-      drawer: const NavigationDrawer(),
+          null),
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(20),
@@ -112,6 +128,7 @@ class screen11 extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: TextFormField(
+                  keyboardType: TextInputType.multiline,
                   style: const TextStyle(
                       fontSize: 17, fontWeight: FontWeight.bold),
                   cursorColor: const Color(0XffF5F6FA),

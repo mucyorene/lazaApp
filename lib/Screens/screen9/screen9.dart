@@ -26,7 +26,7 @@ class Screen9 extends StatelessWidget {
               floating: true,
               snap: true,
               foregroundColor: Colors.black,
-              backgroundColor: Color(0XffF2F2F2),
+              backgroundColor: const Color(0XffF2F2F2),
               bottom: TabBar(indicatorColor: Colors.transparent, tabs: [
                 Tab(
                     icon: IconButton(
