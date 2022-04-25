@@ -2,12 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen13/AddressScreen.dart';
-import 'package:laza/Screens/Screen14/PaymentScreen.dart';
+import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
-import 'package:laza/Screens/screen17/navigation_drawer.dart';
+
+import '../Screen13/AddressScreen.dart';
+import '../Screen14/PaymentScreen.dart';
+
 
 // ignore: camel_case_types
 class screen12 extends StatelessWidget {
@@ -39,26 +41,20 @@ class screen12 extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ))),
       ),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color(0XffE5E5E5),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black87,
+      appBar: AppBarCustom.appBarCustom(
+          0.0,
+          Colors.transparent,
+          true,
+          40,
+          const BackButton(
+            color: Colors.black,
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: const Center(
-          child: Text(
+          const Text(
             'Cart',
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
           ),
-        ),
-      ),
+          null),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(10),

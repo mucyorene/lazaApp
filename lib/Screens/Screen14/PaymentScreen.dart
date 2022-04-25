@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
-
 import 'package:laza/Screens/Widgets/BottomNavigations.dart';
-
-
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
 import '../Widgets/CustomAppBarSingle.dart';
