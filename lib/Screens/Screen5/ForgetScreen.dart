@@ -23,7 +23,10 @@ class _Screen3State extends State<ForgetScreen> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const emailVerification()));
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const emailVerification()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -82,7 +85,7 @@ class _Screen3State extends State<ForgetScreen> {
                             color: Color(0xff34C358),
                           ),
                           labelStyle:
-                              TextStyle(color: Colors.grey, fontSize: 13.0)),
+                              TextStyle(color: Colors.grey, fontSize: 11.0)),
                     ),
                   ]),
                 ),
@@ -97,7 +100,6 @@ class _Screen3State extends State<ForgetScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 155,)
             ],
           ),
         ),

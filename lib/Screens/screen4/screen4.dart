@@ -33,7 +33,10 @@ class _welcomePageState extends State<WelcomePage> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context)=>const HomeScreen()));
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const HomeScreen()));
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -137,7 +140,8 @@ class _welcomePageState extends State<WelcomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const ForgetScreen()));
+                                      builder: (context) =>
+                                          const ForgetScreen()));
                             },
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
@@ -151,7 +155,7 @@ class _welcomePageState extends State<WelcomePage> {
                   title: const Text('Remember Me'),
                   value: _remember,
                   onChanged: (bool value) {
-                setState(() => _remember = value);
+                    setState(() => _remember = value);
                   },
                   //can this be selected?
                 ),

@@ -7,8 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:laza/Screens/Screen3/Screen3.dart';
 import 'package:laza/Screens/screen4/screen4.dart';
 
-
-
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -40,9 +38,13 @@ class SignInScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         elevation: 0,
-
-        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-        leading: IconButton(icon: Icon(Icons.arrow_back_rounded), onPressed: (){Navigator.pop(context);},),
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(
@@ -63,7 +65,6 @@ class SignInScreen extends StatelessWidget {
               ),
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              padding: EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
                 onPressed: () {},
@@ -87,10 +88,10 @@ class SignInScreen extends StatelessWidget {
               ),
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              padding: const EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
                 onPressed: () {},
+                onHighlightChanged: null,
                 icon: const Icon(
                   FontAwesomeIcons.twitter,
                   color: Colors.white,
@@ -111,10 +112,8 @@ class SignInScreen extends StatelessWidget {
               ),
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              padding: EdgeInsets.all(10),
               width: double.infinity,
               child: RaisedButton.icon(
-              
                 onPressed: () {},
                 icon: const Icon(
                   FontAwesomeIcons.google,
@@ -141,11 +140,13 @@ class SignInScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w300)),
                 TextSpan(
                   text: 'Sign in',
-                  recognizer: TapGestureRecognizer()..onTap = () {Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                    const WelcomePage()));},
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const WelcomePage()));
+                    },
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
