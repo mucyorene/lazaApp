@@ -73,7 +73,8 @@ class _PaymentState extends State<Payment> {
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
                             color: Colors.amber,
-                            borderRadius: BorderRadiusDirectional.circular(15.0)),
+                            borderRadius:
+                                BorderRadiusDirectional.circular(15.0)),
                         child: Stack(
                           children: [
                             Positioned(
@@ -83,7 +84,8 @@ class _PaymentState extends State<Payment> {
                                 height: 200,
                                 width: 200,
                                 decoration: const BoxDecoration(
-                                    color: Colors.orange, shape: BoxShape.circle),
+                                    color: Colors.orange,
+                                    shape: BoxShape.circle),
                               ),
                             ),
                             Positioned(
@@ -105,8 +107,9 @@ class _PaymentState extends State<Payment> {
                                             horizontal: 20.0, vertical: 20.0),
                                         child: const Text(
                                           "Mrh Raju",
-                                          style:
-                                          TextStyle(fontSize: 15.0, color: Color(0xffFFFFFF)),
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Color(0xffFFFFFF)),
                                         )),
                                     const SizedBox(
                                       width: 140,
@@ -115,8 +118,9 @@ class _PaymentState extends State<Payment> {
                                       child: Container(
                                         child: const Text(
                                           "Visa",
-                                          style:
-                                          TextStyle(fontSize: 15.0, color: Color(0xffFFFFFF)),
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Color(0xffFFFFFF)),
                                         ),
                                       ),
                                     )
@@ -131,8 +135,9 @@ class _PaymentState extends State<Payment> {
                                       margin: const EdgeInsets.only(left: 20),
                                       child: const Text(
                                         "Visa Classic",
-                                        style:
-                                        TextStyle(fontSize: 13.0, color: Color(0xffFFFFFF)),
+                                        style: TextStyle(
+                                            fontSize: 13.0,
+                                            color: Color(0xffFFFFFF)),
                                       ),
                                     ),
                                   ],
@@ -163,8 +168,9 @@ class _PaymentState extends State<Payment> {
                                       margin: const EdgeInsets.only(left: 20),
                                       child: const Text(
                                         "\$3,763.87",
-                                        style:
-                                        TextStyle(fontSize: 15.0, color: Color(0xffFFFFFF)),
+                                        style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Color(0xffFFFFFF)),
                                       ),
                                     ),
                                   ],
@@ -210,21 +216,30 @@ class _PaymentState extends State<Payment> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SingleInput(inputLable: "Card Owner", hintText: "Mrh Raju", textInputType: TextInputType.text,),
+                  SingleInput(
+                    inputLable: "Card Owner",
+                    hintText: "Mrh Raju",
+                    textInputType: TextInputType.text,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
                   SingleInput(
-                      inputLable: "Card Number",
-                      hintText: "5254 7634 8734 7690", textInputType: TextInputType.number,),
+                    inputLable: "Card Number",
+                    hintText: "5254 7634 8734 7690",
+                    textInputType: TextInputType.number,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
                   DoubleRowInput(
-                      label1: 'EXP',
-                      hintText1: '24/24',
-                      label2: 'CVV',
-                      hintText2: '7763', textInputType: TextInputType.text, textInputType2: TextInputType.number,),
+                    label1: 'EXP',
+                    hintText1: '24/24',
+                    label2: 'CVV',
+                    hintText2: '7763',
+                    textInputType: TextInputType.text,
+                    textInputType2: TextInputType.number,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
