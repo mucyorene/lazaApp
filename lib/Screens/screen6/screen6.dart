@@ -1,8 +1,10 @@
+// ignore_for_file: deprecated_member_use
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen7/NewPassword.dart';
 
+// ignore: camel_case_types
 class emailVerification extends StatefulWidget {
   const emailVerification({Key? key}) : super(key: key);
 
@@ -10,9 +12,9 @@ class emailVerification extends StatefulWidget {
   State<emailVerification> createState() => _Screen3State();
 }
 
-class _Screen3State extends State<emailVerification> {
-  bool _toggled = true;
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+class _Screen3State extends State<emailVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,50 +55,46 @@ class _Screen3State extends State<emailVerification> {
       ),
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Container(
-            child: Stack(children: [
-              Column(children: [
-                Container(
-                  // padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    'Verification Code',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Image.asset('assets/images/cloudLockImage.png'),
-                Container(
-                  padding: EdgeInsets.all(40),
-                  child: Form(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      textField(true, false),
-                      textField(true, false),
-                      textField(true, false),
-                      textField(false, true)
-                    ],
-                  )),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Text.rich(
-                      TextSpan(style: const TextStyle(fontSize: 14), children: [
-                    TextSpan(
-                      text: '00 : 20 ',
-                      recognizer: TapGestureRecognizer()..onTap = () {},
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
+          child: Stack(children: [
+            Column(children: [
+              const Text(
+                'Verification Code',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              Image.asset('assets/images/cloudLockImage.png'),
+              Container(
+                padding: const EdgeInsets.all(40),
+                child: Form(
+                    key: _formKey,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        textField(true, false),
+                        textField(true, false),
+                        textField(true, false),
+                        textField(false, true)
+                      ],
+                    )),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Text.rich(
+                    TextSpan(style: const TextStyle(fontSize: 14), children: [
+                  TextSpan(
+                    text: '00 : 20 ',
+                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const TextSpan(
-                        text: "Resend Confirmation Code ",
-                        style: TextStyle(fontWeight: FontWeight.w300)),
-                  ])),
-                ),
-              ]),
+                  ),
+                  const TextSpan(
+                      text: "Resend Confirmation Code ",
+                      style: TextStyle(fontWeight: FontWeight.w300)),
+                ])),
+              ),
             ]),
-          ),
+          ]),
         ),
       ),
     );
@@ -132,6 +130,9 @@ class _Screen3State extends State<emailVerification> {
                     context,
                     CupertinoPageRoute(
                         builder: (context) => const NewPassword()));
+
+                _formKey.currentState!.reset();
+                _formKey.currentState!.save();
               }
             },
           ),
