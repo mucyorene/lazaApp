@@ -129,6 +129,8 @@ class screen11 extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: TextFormField(
                   keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  minLines: 2,
                   style: const TextStyle(
                       fontSize: 17, fontWeight: FontWeight.bold),
                   cursorColor: const Color(0XffF5F6FA),

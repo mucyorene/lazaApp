@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 import 'package:laza/Screens/Screen8/HomePage.dart';
+import 'package:laza/common/validator.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -15,6 +16,10 @@ class WelcomePage extends StatefulWidget {
   }
 }
 
+// validator(){
+
+// }
+
 // ignore: camel_case_types
 class _welcomePageState extends State<WelcomePage> {
   final _formKey = GlobalKey<FormState>();
@@ -23,6 +28,8 @@ class _welcomePageState extends State<WelcomePage> {
   final _passwordController = TextEditingController();
   bool _remember = false;
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final Validators _validate = Validators();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +42,7 @@ class _welcomePageState extends State<WelcomePage> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
+                  _formKey.currentState!.validate();
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
                         context,
@@ -63,28 +71,39 @@ class _welcomePageState extends State<WelcomePage> {
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Container(
-                  height: 150,
-                  alignment: Alignment.topCenter,
-                  padding: const EdgeInsets.all(15),
-                  child: const Text(
-                    'Welcome',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  )),
-              Form(
-                  child: Column(
+
+        child: Column(
+          children: [
+            Container(
+                height: 150,
+                alignment: Alignment.topCenter,
+                padding: const EdgeInsets.all(15),
+                child: const Text(
+                  'Welcome',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                )),
+            Form(
+              key: _formKey,
+              child: Column(
                 children: <Widget>[
                   Container(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    padding:
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 10),
                     child: TextFormField(
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
                       decoration: const InputDecoration(
+
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 0.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.0),
+                          ),
+
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black45)),
                           labelStyle: TextStyle(
@@ -103,53 +122,61 @@ class _welcomePageState extends State<WelcomePage> {
                             Icons.check,
                             color: Color(0Xff34C759),
                           )),
+
+                      controller: _usernameController,
+
+                      validator: _validate.validateEmail,
+                      // (value) {
+                      //   if (value!.isEmpty) {
+                      //     return 'username is required';
+                      //   } else {
+                      //     return null;
+                      //   }
+                      // },
+
                       // controller: _usernameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'your name';
-                        }
-                        return null;
-                      },
+                      
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: TextFormField(
-                        obscureText: true,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                        cursorColor: const Color(0Xff34C759),
-                        decoration: const InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black45)),
-                            labelStyle: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black54,
-                            ),
-                            hintText: 'password',
-                            hintStyle: TextStyle(
-                              color: Colors.grey, // <-- Change this
-                              fontSize: null,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                            ),
-                            labelText: 'password',
-                            suffixText: 'strong',
-                            suffixStyle: TextStyle(color: Color(0Xff34C759))),
-                        controller: _passwordController,
-                        validator: (value) {
-                          RegExp regex = RegExp(
-                              r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                          if (value!.isEmpty) {
-                            return 'Please enter password';
-                          } else {
-                            if (!regex.hasMatch(value)) {
-                              return 'Enter a strong password';
-                            } else {
-                              return null;
-                            }
-                          }
-                        }),
+
+                      onChanged: ((value) => value),
+                      obscureText: true,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      cursorColor: const Color(0Xff34C759),
+                      decoration: const InputDecoration(
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 0.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.0),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black45)),
+                          labelStyle: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black54,
+                          ),
+                          hintText: 'password',
+                          hintStyle: TextStyle(
+                            color: Colors.grey, // <-- Change this
+                            fontSize: null,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          ),
+                          labelText: 'password',
+                          suffixText: 'strong',
+                          suffixStyle: TextStyle(color: Color(0Xff34C759))),
+                      controller: _passwordController,
+                      validator: _validate.validatePassword,
+                    ),
+
+                       
                   ),
                   Container(
                       margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -184,25 +211,28 @@ class _welcomePageState extends State<WelcomePage> {
                     //can this be selected?
                   ),
                 ],
+
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 45),
+              alignment: Alignment.bottomCenter,
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+              //child: Text('Don\'t have an account? Create'),
+              child: Text.rich(
+                  TextSpan(style: const TextStyle(fontSize: 14), children: [
+                const TextSpan(
+                    text:
+                        "by connecting your account, confirm that you agree with our ",
+                    style: TextStyle(fontWeight: FontWeight.w300)),
+                TextSpan(
+                  text: 'Terms and services',
+                  recognizer: TapGestureRecognizer()..onTap = () {},
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+
               )),
-              Container(
-                padding: const EdgeInsets.only(top: 45),
-                alignment: Alignment.bottomCenter,
-                margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-                //child: Text('Don\'t have an account? Create'),
-                child: Text.rich(
-                    TextSpan(style: const TextStyle(fontSize: 14), children: [
-                  const TextSpan(
-                      text:
-                          "by connecting your account, confirm that you agree with our ",
-                      style: TextStyle(fontWeight: FontWeight.w300)),
-                  TextSpan(
-                    text: 'Terms and services',
-                    recognizer: TapGestureRecognizer()..onTap = () {},
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+              
                 ])),
               ),
               Container(
