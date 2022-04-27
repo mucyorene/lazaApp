@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
 import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
+import 'package:laza/Screens/screen11/screen11.dart';
 
 import '../Screen14/PaymentScreen.dart';
 
@@ -120,7 +121,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                             Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (context) => const Payment()));
+                                    builder: (context) => const screen11()));
                           },
                           icon: const Icon(
                             Icons.open_in_new,

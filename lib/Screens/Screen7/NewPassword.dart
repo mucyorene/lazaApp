@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen8/HomePage.dart';
 import 'package:laza/Screens/screen9/screen9.dart';
 
 class NewPassword extends StatefulWidget {
@@ -24,7 +25,7 @@ class _NewPasswordState extends State<NewPassword> {
                 elevation: 0,
                 onPressed: () {Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Screen9()),
+    MaterialPageRoute(builder: (context) => const HomeScreen()),
   );},
                 color: const Color(0Xff9775FA),
                 child: const Text(
