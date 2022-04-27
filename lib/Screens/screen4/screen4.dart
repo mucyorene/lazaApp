@@ -22,8 +22,7 @@ class WelcomePage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _welcomePageState extends State<WelcomePage> {
-  final _formKey = GlobalKey<FormState>();
-
+  // final _formKeys = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
@@ -262,7 +261,6 @@ class _welcomePageState extends State<WelcomePage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
