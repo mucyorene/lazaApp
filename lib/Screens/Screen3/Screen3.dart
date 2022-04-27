@@ -88,6 +88,12 @@ class _Screen3State extends State<Screen3> {
                         ),
                         labelStyle:
                         TextStyle(color: Colors.grey, fontSize: 13.0)),
+                    validator: (value){
+                      if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)){
+                        return "Enter correct user username";
+                      }
+                      return null;
+                    },
                   ),
                   TextFormField(
                     initialValue: "HJ@#9783kja",
