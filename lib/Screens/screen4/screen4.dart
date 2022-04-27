@@ -22,6 +22,8 @@ class WelcomePage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _welcomePageState extends State<WelcomePage> {
+  final _formKey = GlobalKey<FormState>();
+
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
@@ -41,7 +43,6 @@ class _welcomePageState extends State<WelcomePage> {
                 elevation: 0,
                 onPressed: () {
                   _formKey.currentState!.validate();
-
                   if (_formKey.currentState!.validate()) {
                     Navigator.push(
                         context,
@@ -70,6 +71,7 @@ class _welcomePageState extends State<WelcomePage> {
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(
+
         child: Column(
           children: [
             Container(
@@ -92,6 +94,7 @@ class _welcomePageState extends State<WelcomePage> {
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
                       decoration: const InputDecoration(
+
                           errorBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 0.0),
@@ -100,6 +103,7 @@ class _welcomePageState extends State<WelcomePage> {
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 0.0),
                           ),
+
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black45)),
                           labelStyle: TextStyle(
@@ -118,6 +122,7 @@ class _welcomePageState extends State<WelcomePage> {
                             Icons.check,
                             color: Color(0Xff34C759),
                           )),
+
                       controller: _usernameController,
 
                       validator: _validate.validateEmail,
@@ -128,11 +133,15 @@ class _welcomePageState extends State<WelcomePage> {
                       //     return null;
                       //   }
                       // },
+
+                      // controller: _usernameController,
+                      
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: TextFormField(
+
                       onChanged: ((value) => value),
                       obscureText: true,
                       style: const TextStyle(
@@ -166,6 +175,8 @@ class _welcomePageState extends State<WelcomePage> {
                       controller: _passwordController,
                       validator: _validate.validatePassword,
                     ),
+
+                       
                   ),
                   Container(
                       margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -200,6 +211,7 @@ class _welcomePageState extends State<WelcomePage> {
                     //can this be selected?
                   ),
                 ],
+
               ),
             ),
             Container(
@@ -218,11 +230,37 @@ class _welcomePageState extends State<WelcomePage> {
                   recognizer: TapGestureRecognizer()..onTap = () {},
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ])),
-            ),
-          ],
+
+              )),
+              
+                ])),
+              ),
+              Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: RaisedButton(
+                      elevation: 0,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print('validated');
+                          // Navigator.push(
+                          //     context,
+                          //     CupertinoPageRoute(
+                          //         builder: (context) => const HomeScreen()));
+                        } else {
+                          print('not validated');
+                        }
+                      },
+                      color: const Color(0Xff9775FA),
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ))),
+            ],
+          ),
         ),
       ),
     );
