@@ -128,30 +128,22 @@ class SignInScreen extends StatelessWidget {
                 elevation: 0,
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(top: 45),
-              alignment: Alignment.bottomCenter,
-              margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-              //child: Text('Don\'t have an account? Create'),
-              child: Text.rich(
-                  TextSpan(style: const TextStyle(fontSize: 14), children: [
-                const TextSpan(
-                    text: "Already have an account? ",
-                    style: TextStyle(fontWeight: FontWeight.w300)),
-                TextSpan(
-                  text: 'Sign in',
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Already have an account ?'),
+                TextButton(
+                    onPressed: () {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
                               builder: (context) => const WelcomePage()));
                     },
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ])),
+                    child: const Text(
+                      'Sign in',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ))
+              ],
             ),
           ],
         ),
