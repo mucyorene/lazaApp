@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 import 'package:laza/Screens/Screen8/HomePage.dart';
+
 import 'package:laza/common/validator.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -16,18 +17,30 @@ class WelcomePage extends StatefulWidget {
   }
 }
 
-// validator(){
-
-// }
-
 // ignore: camel_case_types
 class _welcomePageState extends State<WelcomePage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _remember = false;
+  String strongPwd = '';
+  Widget? correctName;
+
+  String isPwdStrong(String? validationValue) {
+    if (validationValue == null) {
+      return 'strong';
+    }
+    return 'weak';
+  }
+
+  isNameValid(String? nameResult) {
+    if (nameResult == null) {
+      return 'valid';
+    }
+    return '';
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final Validators _validate = Validators();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +101,13 @@ class _welcomePageState extends State<WelcomePage> {
                     padding:
                         const EdgeInsets.only(left: 15, right: 15, bottom: 10),
                     child: TextFormField(
+                      onChanged: (value) {
+                        _formKey.currentState!.validate();
+                      },
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           errorBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 0.0),
@@ -107,64 +123,75 @@ class _welcomePageState extends State<WelcomePage> {
                             color: Colors.black54,
                           ),
                           hintText: 'User Name',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.grey,
                             fontSize: null,
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                           ),
                           labelText: 'User Name',
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Color(0Xff34C759),
-                          )),
+                          suffixIcon: correctName == 'valid'
+                              ? const Icon(
+                                  Icons.check,
+                                  color: Color(0Xff34C759),
+                                )
+                              : null),
                       controller: _usernameController,
+                      validator: (value) {
+                        String? validName = Validators.validateName(value);
+                        setState(() {
+                          correctName = isNameValid(validName);
+                        });
 
-                      validator: _validate.validateEmail,
-                      // (value) {
-                      //   if (value!.isEmpty) {
-                      //     return 'username is required';
-                      //   } else {
-                      //     return null;
-                      //   }
-                      // },
+                        return Validators.validateName(value);
+                      },
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: TextFormField(
-                      onChanged: ((value) => value),
+                      onChanged: (values) {
+                        _formKey.currentState!.validate();
+                      },
                       obscureText: true,
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
-                      decoration: const InputDecoration(
-                          errorBorder: OutlineInputBorder(
+                      decoration: InputDecoration(
+                          errorBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 0.0),
                           ),
-                          focusedErrorBorder: OutlineInputBorder(
+                          focusedErrorBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 0.0),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black45)),
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.black54,
                           ),
                           hintText: 'password',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.grey, // <-- Change this
                             fontSize: null,
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                           ),
                           labelText: 'password',
-                          suffixText: 'strong',
-                          suffixStyle: TextStyle(color: Color(0Xff34C759))),
+                          suffixText: strongPwd == 'strong' ? 'Strong' : null,
+                          suffixStyle:
+                              const TextStyle(color: Color(0Xff34C759))),
                       controller: _passwordController,
-                      validator: _validate.validatePassword,
+                      validator: (value) {
+                        String? pwdPassed = Validators.validatePassword(value);
+                        setState(() {
+                          strongPwd = isPwdStrong(pwdPassed);
+                        });
+
+                        return Validators.validatePassword(value);
+                      },
                     ),
                   ),
                   Container(

@@ -8,8 +8,15 @@ import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
-class screen11 extends StatelessWidget {
+class screen11 extends StatefulWidget {
   const screen11({Key? key}) : super(key: key);
+
+  @override
+  State<screen11> createState() => _screen11State();
+}
+
+class _screen11State extends State<screen11> {
+  dynamic sliderValue = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -161,30 +168,28 @@ class screen11 extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 11),
                   ),
                   Expanded(
-                    child: Container(
-                        margin: const EdgeInsets.all(10),
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: const Color(0XffF5F6FA),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        child: SizedBox(
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0Xff9775FA)),
-                          ),
-                          height: 5,
-                          width: 3,
-                        )),
-                  ),
+                      child: SliderTheme(
+                    data:const SliderThemeData(
+                        trackHeight: 10,
+                        valueIndicatorColor: const Color(0Xff9775FA)),
+                    child: Slider(
+                        activeColor: const Color(0XffF5F6FA),
+                        inactiveColor: const Color(0XffF5F6FA),
+                        value: sliderValue,
+                        thumbColor: const Color(0Xff9775FA),
+                        min: 0.0,
+                        divisions: 100,
+                        max: 5.0,
+                        label: sliderValue.round().toString(),
+                        onChanged: (value) =>
+                            setState(() => sliderValue = value)),
+                  )),
                   const Text(
                     '5.0',
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 11),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
