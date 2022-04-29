@@ -29,6 +29,7 @@ class _welcomePageState extends State<WelcomePage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final Validators _validate = Validators();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +71,6 @@ class _welcomePageState extends State<WelcomePage> {
         foregroundColor: Colors.black45,
       ),
       body: SingleChildScrollView(
-
         child: Column(
           children: [
             Container(
@@ -93,7 +93,6 @@ class _welcomePageState extends State<WelcomePage> {
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
                       decoration: const InputDecoration(
-
                           errorBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 0.0),
@@ -102,7 +101,6 @@ class _welcomePageState extends State<WelcomePage> {
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 0.0),
                           ),
-
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black45)),
                           labelStyle: TextStyle(
@@ -134,13 +132,11 @@ class _welcomePageState extends State<WelcomePage> {
                       // },
 
                       // controller: _usernameController,
-                      
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: TextFormField(
-
                       onChanged: ((value) => value),
                       obscureText: true,
                       style: const TextStyle(
@@ -174,8 +170,6 @@ class _welcomePageState extends State<WelcomePage> {
                       controller: _passwordController,
                       validator: _validate.validatePassword,
                     ),
-
-                       
                   ),
                   Container(
                       margin: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -210,7 +204,6 @@ class _welcomePageState extends State<WelcomePage> {
                     //can this be selected?
                   ),
                 ],
-
               ),
             ),
             Container(
@@ -225,42 +218,40 @@ class _welcomePageState extends State<WelcomePage> {
                         "by connecting your account, confirm that you agree with our ",
                     style: TextStyle(fontWeight: FontWeight.w300)),
                 TextSpan(
-                  text: 'Terms and services',
-                  recognizer: TapGestureRecognizer()..onTap = () {},
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-
-              )),
-              
-                ])),
-              ),
-              Container(
-                  height: 50,
-                  alignment: Alignment.center,
-                  child: RaisedButton(
-                      elevation: 0,
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          print('validated');
-                          // Navigator.push(
-                          //     context,
-                          //     CupertinoPageRoute(
-                          //         builder: (context) => const HomeScreen()));
-                        } else {
-                          print('not validated');
-                        }
-                      },
-                      color: const Color(0Xff9775FA),
-                      child: const Text(
-                        'LOGIN',
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ))),
-            ],
-          ),
+                    text: 'Terms and services',
+                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+              ])),
+            ),
+            Container(
+                height: 50,
+                alignment: Alignment.center,
+                child: RaisedButton(
+                    elevation: 0,
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print('validated');
+                        // Navigator.push(
+                        //     context,
+                        //     CupertinoPageRoute(
+                        //         builder: (context) => const HomeScreen()));
+                      } else {
+                        print('not validated');
+                      }
+                    },
+                    color: const Color(0Xff9775FA),
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ))),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

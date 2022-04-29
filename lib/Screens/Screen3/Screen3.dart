@@ -75,7 +75,6 @@ class _Screen3State extends State<Screen3> {
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: Column(children: [
                   TextFormField(
-                    initialValue: "Esther Howard",
                     style: const TextStyle(
                         color: Color(0xff1D1E20),
                         fontWeight: FontWeight.bold,
@@ -96,7 +95,6 @@ class _Screen3State extends State<Screen3> {
                     },
                   ),
                   TextFormField(
-                    initialValue: "HJ@#9783kja",
                     style: const TextStyle(fontSize: 15),
                     decoration: const InputDecoration(
                         labelText: "Password",
@@ -106,7 +104,6 @@ class _Screen3State extends State<Screen3> {
                         TextStyle(color: Colors.grey, fontSize: 13.0)),
                   ),
                   TextFormField(
-                    initialValue: "bill.senders@example.com",
                     decoration: const InputDecoration(
                         labelText: "Email Address",
                         suffixIcon: Icon(
