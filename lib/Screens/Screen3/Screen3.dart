@@ -16,6 +16,31 @@ class _Screen3State extends State<Screen3> {
   Validators validators = Validators();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  String strongPwd = '';
+  String? email;
+  String? correctName;
+
+  String isPwdStrong(String? validationValue) {
+    if (validationValue == null) {
+      return 'strong';
+    }
+    return 'weak';
+  }
+
+  isNameValid(String? nameResult) {
+    if (nameResult == null) {
+      return 'valid';
+    }
+    return '';
+  }
+
+  isEmailValid(String? emailResult) {
+    if (emailResult == null) {
+      return 'valid';
+    }
+    return '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +108,14 @@ class _Screen3State extends State<Screen3> {
                   key: _formKey,
                   child: Column(children: [
                     TextFormField(
-                      validator: Validators.validateName,
+                      validator: (value) {
+                        var validName = Validators.validateName(value);
+                        setState(() {
+                          correctName = isNameValid(validName);
+                        });
+
+                        return Validators.validateName(value);
+                      },
                       onChanged: (value) {
                         _formKey.currentState!.validate();
                       },
@@ -92,40 +124,58 @@ class _Screen3State extends State<Screen3> {
                           color: Color(0xff1D1E20),
                           fontWeight: FontWeight.bold,
                           fontSize: 15.0),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           labelText: "Username",
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Color(0xff34C358),
-                          ),
-                          labelStyle:
-                              TextStyle(color: Colors.grey, fontSize: 13.0)),
+                          suffixIcon: correctName == 'valid'
+                              ? const Icon(
+                                  Icons.check,
+                                  color: Color(0xff34C358),
+                                )
+                              : null,
+                          labelStyle: const TextStyle(
+                              color: Colors.grey, fontSize: 13.0)),
                     ),
                     TextFormField(
-                      validator: Validators.validatePassword,
+                      validator: (value) {
+                        String? pwdPassed = Validators.validatePassword(value);
+                        setState(() {
+                          strongPwd = isPwdStrong(pwdPassed);
+                        });
+
+                        return Validators.validatePassword(value);
+                      },
                       onChanged: (value) {
                         _formKey.currentState!.validate();
                       },
                       initialValue: "HJ@#9783kja",
                       style: const TextStyle(fontSize: 15),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           labelText: "Password",
-                          suffixText: 'Strong',
-                          suffixStyle: TextStyle(color: Colors.green),
-                          labelStyle:
-                              TextStyle(color: Colors.grey, fontSize: 13.0)),
+                          suffixText: strongPwd == 'strong' ? 'Strong' : null,
+                          suffixStyle: const TextStyle(color: Colors.green),
+                          labelStyle: const TextStyle(
+                              color: Colors.grey, fontSize: 13.0)),
                     ),
                     TextFormField(
                       initialValue: "bill.senders@example.com",
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           labelText: "Email Address",
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Color(0xff34C358),
-                          ),
-                          labelStyle:
-                              TextStyle(color: Colors.grey, fontSize: 13.0)),
-                      validator: Validators.validateEmail,
+                          suffixIcon: email == 'valid'
+                              ? const Icon(
+                                  Icons.check,
+                                  color: Color(0xff34C358),
+                                )
+                              : null,
+                          labelStyle: const TextStyle(
+                              color: Colors.grey, fontSize: 13.0)),
+                      validator: (value) {
+                        String? validEmail = Validators.validateEmail(value);
+                        setState(() {
+                          email = isEmailValid(validEmail);
+                        });
+
+                        return Validators.validateEmail(value);
+                      },
                       onChanged: (value) {
                         _formKey.currentState!.validate();
                       },
