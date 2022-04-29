@@ -23,7 +23,7 @@ class _welcomePageState extends State<WelcomePage> {
   final _passwordController = TextEditingController();
   bool _remember = false;
   String strongPwd = '';
-  Widget? correctName;
+  String? correctName;
 
   String isPwdStrong(String? validationValue) {
     if (validationValue == null) {
@@ -108,17 +108,17 @@ class _welcomePageState extends State<WelcomePage> {
                           fontSize: 20, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0Xff34C759),
                       decoration: InputDecoration(
-                          errorBorder: OutlineInputBorder(
+                          errorBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 0.0),
                           ),
-                          focusedErrorBorder: OutlineInputBorder(
+                          focusedErrorBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 0.0),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black45)),
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.black54,
                           ),
@@ -138,7 +138,7 @@ class _welcomePageState extends State<WelcomePage> {
                               : null),
                       controller: _usernameController,
                       validator: (value) {
-                        String? validName = Validators.validateName(value);
+                        var validName = Validators.validateName(value);
                         setState(() {
                           correctName = isNameValid(validName);
                         });
@@ -152,6 +152,14 @@ class _welcomePageState extends State<WelcomePage> {
                     child: TextFormField(
                       onChanged: (values) {
                         _formKey.currentState!.validate();
+                      },
+                      validator: (value) {
+                        String? pwdPassed = Validators.validatePassword(value);
+                        setState(() {
+                          strongPwd = isPwdStrong(pwdPassed);
+                        });
+
+                        return Validators.validatePassword(value);
                       },
                       obscureText: true,
                       style: const TextStyle(
@@ -184,14 +192,6 @@ class _welcomePageState extends State<WelcomePage> {
                           suffixStyle:
                               const TextStyle(color: Color(0Xff34C759))),
                       controller: _passwordController,
-                      validator: (value) {
-                        String? pwdPassed = Validators.validatePassword(value);
-                        setState(() {
-                          strongPwd = isPwdStrong(pwdPassed);
-                        });
-
-                        return Validators.validatePassword(value);
-                      },
                     ),
                   ),
                   Container(
