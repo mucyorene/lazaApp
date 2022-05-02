@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
-import '../Screen8/HomePage.dart';
 import '../Widgets/NavigationScreens.dart';
 
 class Screen2 extends StatefulWidget {
@@ -112,7 +111,13 @@ class _Screen2State extends State<Screen2> {
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) =>
-                                                const AddressScreen()));
+                                                const NavigationScreens()));
+
+                                    // Navigator.push(
+                                    //     context,
+                                    //     CupertinoPageRoute(
+                                    //         builder: (context) =>
+                                    //             const AddressScreen()));
                                   },
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<

@@ -87,7 +87,7 @@ class screen12 extends StatelessWidget {
               addressBox('Payment Method', 'assets/screen12_images/visa.png',
                   'Visa Classic', '****2690'),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: const Text(
                   'Order Info',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
