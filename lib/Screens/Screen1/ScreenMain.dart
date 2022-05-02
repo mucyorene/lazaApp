@@ -107,18 +107,17 @@ class _Screen2State extends State<Screen2> {
                               height: 80,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     CupertinoPageRoute(
-                                    //         builder: (context) =>
-                                    //             const NavigationScreens()));
-
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) =>
-                                                const AddressScreen()));
+                                                const NavigationScreens()));
 
+                                    // Navigator.push(
+                                    //     context,
+                                    //     CupertinoPageRoute(
+                                    //         builder: (context) =>
+                                    //             const AddressScreen()));
                                   },
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
