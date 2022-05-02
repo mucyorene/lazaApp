@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             "Welcome to Laza.",
                             style:
-                                TextStyle(fontSize: 15.0, color: Colors.grey),
+                            TextStyle(fontSize: 15.0, color: Colors.grey),
                           ),
                         ],
                       ),
@@ -89,7 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SearchWidget(),
                   Expanded(
-                    child: Column(
+                    child: ListView(
+                      physics: const BouncingScrollPhysics(),
                       children: [
                         CategoriesTitle(title: "Choose Brand"),
                         const SizedBox(
@@ -108,13 +109,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           context,
                                           CupertinoPageRoute(
                                               builder: (context) =>
-                                                  const MainStock()));
+                                              const MainStock()));
                                     },
                                     child: Card(
                                       color: const Color(0xffF5F6FA),
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(15)),
+                                          BorderRadius.circular(15)),
                                       child: Row(
                                         children: [
                                           Container(
@@ -124,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             decoration: BoxDecoration(
                                                 color: Colors.transparent,
                                                 borderRadius:
-                                                    BorderRadius.circular(15.0),
+                                                BorderRadius.circular(15.0),
                                                 image: const DecorationImage(
                                                     image: AssetImage(
                                                       "assets/images/nike.JPG",
@@ -149,36 +150,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 );
                               },
-                              separatorBuilder: (_, index) => const SizedBox(
-                                    height: 5,
-                                  ),
+                              separatorBuilder: (_, index) =>
+                              const SizedBox(
+                                height: 5,
+                              ),
                               itemCount: categories.length),
                         ),
                         const SizedBox(height: 10),
-                        CategoriesTitle(title: "New Arraival"),
+                        CategoriesTitle(title: "New Arrival"),
                         const SizedBox(height: 10),
-                        Expanded(
-                          child: GridView.count(
-                            physics: const BouncingScrollPhysics(),
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            crossAxisCount: 2,
-                            childAspectRatio: 5 / 9,
-                            children: <Widget>[
-                              ProductCard("assets/images/homeone.png",
-                                  "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard(
-                                  "assets/images/hometwo.png",
-                                  "Trail Running Jacket Nike Windrunner",
-                                  "\$99"),
-                              ProductCard("assets/images/homethree.png",
-                                  "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard(
-                                  "assets/images/homefour.png",
-                                  "Trail Running Jacket Nike Windrunner",
-                                  "\$99"),
-                            ],
-                          ),
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          childAspectRatio: 5 / 9,
+                          children: <Widget>[
+                            ProductCard("assets/images/homeone.png",
+                                "Nike Sportswear Club Fleece", "\$99"),
+                            ProductCard("assets/images/hometwo.png",
+                                "Trail Running Jacket Nike Windrunner", "\$99"),
+                            ProductCard("assets/images/homethree.png",
+                                "Nike Sportswear Club Fleece", "\$99"),
+                            ProductCard("assets/images/homefour.png",
+                                "Trail Running Jacket Nike Windrunner", "\$99"),
+                          ],
                         ),
                       ],
                     ),

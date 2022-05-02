@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
 import '../Widgets/NavigationScreens.dart';
 
@@ -106,11 +107,18 @@ class _Screen2State extends State<Screen2> {
                               height: 80,
                               child: ElevatedButton(
                                   onPressed: () {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     CupertinoPageRoute(
+                                    //         builder: (context) =>
+                                    //             const NavigationScreens()));
+
                                     Navigator.push(
                                         context,
                                         CupertinoPageRoute(
                                             builder: (context) =>
-                                                const NavigationScreens()));
+                                                const AddressScreen()));
+
                                   },
                                   style: ButtonStyle(
                                     shape: MaterialStateProperty.all<
