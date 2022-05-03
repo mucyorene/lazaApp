@@ -1,8 +1,12 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:laza/Screens/Screen7/NewPassword.dart';
+import 'package:laza/Screens/Screen8/HomePage.dart';
+import 'package:laza/Screens/screen4/screen4.dart';
+import 'package:laza/common/validator.dart';
 
 // ignore: camel_case_types
 class emailVerification extends StatefulWidget {
@@ -14,9 +18,33 @@ class emailVerification extends StatefulWidget {
 
 GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-class _Screen3State extends State<emailVerification> {
+class _Screen3State extends State<emailVerification>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+
+  String get countText {
+    Duration count = controller.duration! * controller.value;
+    return ' ${count.inHours}${(count.inMinutes % 60).toString()}:${count.inSeconds}';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 60));
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    controller.reverse(from: controller.value == 0 ? 1.0 : controller.value);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -39,10 +67,14 @@ class _Screen3State extends State<emailVerification> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const NewPassword()));
+                  _formKey.currentState!.validate();
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.reset();
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const HomeScreen()));
+                  }
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(
@@ -76,22 +108,29 @@ class _Screen3State extends State<emailVerification> {
                       ],
                     )),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Text.rich(
-                    TextSpan(style: const TextStyle(fontSize: 14), children: [
-                  TextSpan(
-                    text: '00 : 20 ',
-                    recognizer: TapGestureRecognizer()..onTap = () {},
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedBuilder(
+                    animation: controller,
+                    builder: (context, child) => Text(
+                      countText,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const TextSpan(
-                      text: "Resend Confirmation Code ",
-                      style: TextStyle(fontWeight: FontWeight.w300)),
-                ])),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => const WelcomePage()));
+                      },
+                      child: const Text(
+                        'Resend Confirmation Code',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ))
+                ],
               ),
             ]),
           ]),
@@ -121,17 +160,14 @@ class _Screen3State extends State<emailVerification> {
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
             ),
+            validator: Validators.validateVerificationField,
             onChanged: (value) {
               if (value.length == 1 && last == false) {
                 FocusScope.of(context).nextFocus();
               }
               if (value.length == 1 && first == false) {
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => const NewPassword()));
+                // FocusScope.of(context).nextFocus();
 
-                _formKey.currentState!.reset();
                 _formKey.currentState!.save();
               }
             },

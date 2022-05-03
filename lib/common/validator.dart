@@ -37,6 +37,14 @@ class Validators {
       }
     }
   }
+
+  static String? validateVerificationField(value) {
+    if (value.isEmpty) {
+      return '';
+    } else {
+      return null;
+    }
+  }
 }
 
 final validatorBlock = Validators();

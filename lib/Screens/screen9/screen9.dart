@@ -6,6 +6,7 @@ import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
 import '../screen11/Screen11.dart';
+
 class Screen9 extends StatelessWidget {
   const Screen9({Key? key}) : super(key: key);
 
@@ -172,18 +173,7 @@ class Screen9 extends StatelessWidget {
                                           fontSize: 15)),
                                 ],
                               ),
-                              SizedBox(
-                                height: 60,
-                                child: Row(
-                                  children: [
-                                    vBox('S'),
-                                    vBox('M'),
-                                    vBox('L'),
-                                    vBox('XL'),
-                                    vBox('2XL'),
-                                  ],
-                                ),
-                              ),
+                              SizedList(),
                               Container(
                                   margin:
                                       const EdgeInsets.symmetric(vertical: 10),
