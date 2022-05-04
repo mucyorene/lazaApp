@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen1/ScreenMain.dart';
+import 'package:laza/Screens/Screen14/PaymentScreen.dart';
 import 'package:laza/Screens/screen11/Screen11.dart';
+import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen17/pressEnter.dart';
 import 'package:laza/common/expConta.dart';
 
@@ -42,24 +46,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               const SizedBox(
                 height: 40,
               ),
-              // Row(
-              //   children: [
-              //     DrawerItem(
-              //       name: 'Dark Mode',
-              //       icon: Icons.wb_sunny_outlined,
-              //       onPressed: () => onItemPressed(context, index: 0),
-              //     ),
-              //     exconta(),
-              //     Switch.adaptive(
-              //       activeColor: Colors.black,
-              //       value: _isInDarkMode,
-              //       onChanged: (bool value) {
-              //         setState(() => _isInDarkMode = value);
-              //       },
-              //     )
-              //     //can this be selected?
-              //   ],
-              // ),
               ListTile(
                 leading: const Icon(
                   Icons.wb_sunny_outlined,
@@ -78,7 +64,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   },
                 ),
               ),
-
               const ListTile(
                 leading: Icon(
                   Icons.info_outline,
@@ -90,11 +75,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   style: TextStyle(color: Colors.black87, fontSize: 17),
                 ),
               ),
-              // DrawerItem(
-              //     name: 'Account Information',
-              //     icon: Icons.info_outline,
-              //     onPressed: () => onItemPressed(context, index: 1)),
-              // jump(),
               const ListTile(
                 leading: Icon(
                   Icons.lock_outline,
@@ -106,48 +86,42 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   style: TextStyle(color: Colors.black87, fontSize: 17),
                 ),
               ),
-              // DrawerItem(
-              //     name: 'Password',
-              //     icon: Icons.lock_outline,
-              //     onPressed: () => onItemPressed(context, index: 2)),
-              // jump(),
-              const ListTile(
-                leading: Icon(
+              ListTile(
+                leading: const Icon(
                   Icons.shopping_bag_outlined,
                   size: 25,
                   color: Colors.black87,
                 ),
-                title: Text(
+                title: const Text(
                   'Order',
                   style: TextStyle(color: Colors.black87, fontSize: 17),
                 ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const screen12(),
+                      ));
+                },
               ),
-              // DrawerItem(
-              //     name: 'Order',
-              //     icon: Icons.shopping_bag_outlined,
-              //     onPressed: () => onItemPressed(context, index: 3)),
-              // jump(),
-              const ListTile(
-                leading: Icon(
+              ListTile(
+                leading: const Icon(
                   Icons.card_membership,
                   size: 25,
                   color: Colors.black87,
                 ),
-                title: Text(
+                title: const Text(
                   'My Cards',
                   style: TextStyle(color: Colors.black87, fontSize: 17),
                 ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const Payment(),
+                      ));
+                },
               ),
-              // DrawerItem(
-              //     name: 'My Cards',
-              //     icon: Icons.card_giftcard_outlined,
-              //     onPressed: () => onItemPressed(context, index: 3)),
-              // jump(),
-              // DrawerItem(
-              //     name: 'Wishlist',
-              //     icon: Icons.favorite_border_outlined,
-              //     onPressed: () => onItemPressed(context, index: 3)),
-              // jump(),
               const ListTile(
                 leading: Icon(
                   Icons.favorite_outline_outlined,
@@ -170,29 +144,25 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   style: TextStyle(color: Colors.black87, fontSize: 17),
                 ),
               ),
-              // DrawerItem(
-              //     name: 'Settings',
-              //     icon: Icons.settings_outlined,
-              //     onPressed: () => onItemPressed(context, index: 4)),
-              // const SizedBox(
-              //   height: 50,
-              // ),
               jump(),
-              const ListTile(
-                leading: Icon(
+              ListTile(
+                leading: const Icon(
                   Icons.logout_sharp,
                   size: 25,
                   color: Color(0XffFF5757),
                 ),
-                title: Text(
+                title: const Text(
                   'Logout',
                   style: TextStyle(color: Color(0XffFF5757), fontSize: 17),
                 ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const Screen2(),
+                      ));
+                },
               ),
-              // CallLogout(
-              //     name: 'Logout',
-              //     icon: Icons.logout_sharp,
-              //     onPressed: () => onItemPressed(context, index: 5)),
             ],
           ),
         ),

@@ -29,7 +29,7 @@ class _SizedListState extends State<SizedList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       // padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
       child: ListView.separated(
