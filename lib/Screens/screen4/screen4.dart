@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 import 'package:laza/Screens/Screen8/HomePage.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 
 import 'package:laza/common/validator.dart';
 
@@ -45,31 +46,17 @@ class _welcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  _formKey.currentState!.validate();
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          _formKey.currentState!.validate();
 
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  }
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'LOGIN',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+          if (_formKey.currentState!.validate()) {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => const HomeScreen()));
+          }
+        },
+        buttonBackgroundColor: 0Xff9775FA,
+        buttonTextValue: 'Login',
       ),
       appBar: AppBar(
         elevation: 0,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/DoubleInputs.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
 import 'package:laza/Screens/Screen15/Widgets/SingleCard15.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/Widgets/BottomNavigations.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 
@@ -30,9 +31,14 @@ class _AddNewCardState extends State<AddNewCard> {
             style: TextStyle(color: Colors.black),
           ),
           null),
-      bottomNavigationBar: BottomNavigationChildScreens(
-        buttonTitle: 'Add Card',
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {},
+        buttonBackgroundColor: 0Xff9775FA,
+        buttonTextValue: 'Add Card',
       ),
+      // bottomNavigationBar: BottomNavigationChildScreens(
+      //   buttonTitle: 'Add Card',
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(right: 20, left: 20, top: 20.0),

@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Widgets/BottomNavigations.dart';
 
+import '../Screen8/HomePage.dart';
+import '../Widgets/BottomAppBarCustom.dart';
 import '../Widgets/CustomAppBarNull.dart';
 
 class ConfirmScreen extends StatefulWidget {
@@ -14,9 +17,17 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationChildScreens(
-        buttonTitle: 'Continue Shopping',
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (cxt) => const HomeScreen()));
+        },
+        buttonTextValue: 'Continue Shopping',
+        buttonBackgroundColor: 0Xff9775FA,
       ),
+      // bottomNavigationBar: BottomNavigationChildScreens(
+      //   buttonTitle: '',
+      // ),
       body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(children: [

@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 
@@ -22,50 +23,14 @@ class _screen11State extends State<screen11> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const screen12()));
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'Submit Review',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+      bottomNavigationBar: BottomAppBarWidget(
+        buttonTextValue: 'Submit Review',
+        buttonBackgroundColor: 0Xff9775FA,
+        validationCallBack: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => const screen12()));
+        },
       ),
-      // appBar: AppBar(
-      //   foregroundColor: Colors.black,
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   // leading: IconButton(
-      //   //   icon: const Icon(
-      //   //     Icons.arrow_back_rounded,
-      //   //     color: Colors.black87,
-      //   //   ),
-      //   //   onPressed: () {
-      //   //     Navigator.pop(context);
-      //   //   },
-      //   // ),
-      //
-      //   title: const Center(
-      //     child: Text(
-      //       'Add Reviews',
-      //       style: TextStyle(
-      //           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
-      //     ),
-      //   ),
-      // ),
       drawer: const NavigationDrawer(),
       appBar: AppBarCustom.appBarCustom(
           0.0,

@@ -9,6 +9,7 @@ import 'package:laza/Screens/screen12/order.dart';
 
 import '../Screen13/AddressScreen.dart';
 import '../Screen14/PaymentScreen.dart';
+import '../Widgets/BottomAppBarCustom.dart';
 
 // ignore: camel_case_types
 class screen12 extends StatelessWidget {
@@ -18,27 +19,13 @@ class screen12 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0XffE5E5E5),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const Payment()));
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'Check Out',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => const Payment()));
+        },
+        buttonBackgroundColor: 0Xff9775FA,
+        buttonTextValue: 'Check Out',
       ),
       appBar: AppBarCustom.appBarCustom(
           0.0,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen6/screen6.dart';
 
 class ForgetScreen extends StatefulWidget {
@@ -14,27 +15,15 @@ class _Screen3State extends State<ForgetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const emailVerification()));
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'Confirm Email',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                  builder: (context) => const emailVerification()));
+        },
+        buttonTextValue: 'Confirm Email',
+        buttonBackgroundColor: 0Xff9775FA,
       ),
       appBar: AppBar(
         backgroundColor: const Color(0xffFFFFFF),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/common/validator.dart';
 import '../screen4/screen4.dart';
 
@@ -29,35 +30,49 @@ class _NewPasswordState extends State<NewPassword> {
     print("in build original password $_originalPwdText");
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  _formKey.currentState!.validate();
-                  if (_formKey.currentState!.validate() && _confirmPass == _originalPwdText) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const WelcomePage()),
-                    );
-                  }
-                  else{
-                    print("Password not match");
-                  }
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'Reset Password',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          _formKey.currentState!.validate();
+          if (_formKey.currentState!.validate() &&
+              _confirmPass == _originalPwdText) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WelcomePage()),
+            );
+          }
+        },
+        buttonBackgroundColor: 0Xff9775FA,
+        buttonTextValue: 'Reset Password',
       ),
+      // bottomNavigationBar: BottomAppBar(
+      //   color: const Color(0Xff9775FA),
+      //   child: Container(
+      //       height: 50,
+      //       alignment: Alignment.center,
+      //       child: RaisedButton(
+      //           elevation: 0,
+      //           onPressed: () {
+      //             _formKey.currentState!.validate();
+      //             if (_formKey.currentState!.validate() && _confirmPass == _originalPwdText) {
+      //               Navigator.push(
+      //                 context,
+      //                 MaterialPageRoute(
+      //                     builder: (context) => const WelcomePage()),
+      //               );
+      //             }
+      //             else{
+      //               print("Password not match");
+      //             }
+      //           },
+      //           color: const Color(0Xff9775FA),
+      //           child: const Text(
+      //             'Reset Password',
+      //             style: TextStyle(
+      //                 fontSize: 17,
+      //                 color: Colors.white,
+      //                 fontWeight: FontWeight.bold),
+      //           ))),
+      // ),
       appBar: AppBar(
         backgroundColor: const Color(0xffFFFFFF),
         elevation: 0,
@@ -73,14 +88,8 @@ class _NewPasswordState extends State<NewPassword> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Container(
@@ -121,7 +130,7 @@ class _NewPasswordState extends State<NewPassword> {
                       decoration: InputDecoration(
                           labelText: "Password",
                           suffixText:
-                          strongPassword == 'strong' ? 'Strong' : null,
+                              strongPassword == 'strong' ? 'Strong' : null,
                           suffixStyle: const TextStyle(color: Colors.green),
                           labelStyle: const TextStyle(
                               color: Color(0xff8F959E), fontSize: 13.0)),
