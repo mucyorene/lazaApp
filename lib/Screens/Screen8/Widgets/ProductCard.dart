@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen10/ReviewScreen.dart';
-import 'package:laza/Screens/screen12/screen12.dart';
-
-import '../../screen11/Screen11.dart';
 import '../../screen9/screen9.dart';
 
 class ProductCard extends StatefulWidget {
   final String imageString;
   final String descriptionText;
   final String priceValue;
+  VoidCallback addToFavorite;
 
-  ProductCard(this.imageString, this.descriptionText, this.priceValue,
-      {Key? key})
-      : super(key: key);
+  ProductCard({
+    Key? key,
+    required this.addToFavorite,
+    required this.imageString,
+    required this.descriptionText,
+    required this.priceValue,
+  }) : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -44,15 +45,17 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
               Positioned(
+                  top: -15.0,
+                  left: 85.0,
                   child: Container(
-                      alignment: Alignment.topRight,
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.favorite_border_outlined,
-                          color: Colors.grey,
-                        ),
-                      ))),
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                      color: Colors.grey,
+                      onPressed: widget.addToFavorite,
+                      icon: const Icon(Icons.favorite_border_outlined),
+                    ),
+                  ))),
             ],
           ),
         ),

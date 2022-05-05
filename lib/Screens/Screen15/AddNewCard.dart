@@ -20,6 +20,7 @@ class _AddNewCardState extends State<AddNewCard> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40.0,
           const BackButton(
             color: Colors.black,

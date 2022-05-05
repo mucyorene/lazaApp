@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen7/NewPassword.dart';
 import 'package:laza/Screens/screen6/screen6.dart';
 import 'package:laza/common/validator.dart';
 
@@ -55,6 +54,11 @@ class _Screen3State extends State<ForgetScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xffFFFFFF),
         elevation: 0,
+        title: const Text(
+          "Forget Password",
+          style: TextStyle(
+              height: 2.0, fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
         leading: Container(
           decoration: const BoxDecoration(
               color: Color(0xffF5F6FA),
@@ -73,13 +77,6 @@ class _Screen3State extends State<ForgetScreen> {
             children: [
               Column(
                 children: [
-                  const Text(
-                    "Forget Password",
-                    style: TextStyle(
-                        height: 2.0,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
-                  ),
                   Container(
                     child: Image.asset(
                       "assets/images/cloudLockImage.png",

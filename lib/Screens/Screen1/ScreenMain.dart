@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen1/NavigationButtons.dart';
 import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
-import '../Screen8/HomePage.dart';
 import '../Widgets/NavigationScreens.dart';
 
 class Screen2 extends StatefulWidget {
@@ -70,78 +70,37 @@ class _Screen2State extends State<Screen2> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Expanded(
-                              child: Container(
-                                height: 80,
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  const NavigationScreens()));
-                                    },
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              side: BorderSide.none)),
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              const Color(0xffF5F6FA)),
-                                    ),
-                                    child: const Text(
-                                      "Men",
-                                      style: TextStyle(
-                                          color: Color(0xff8F959E),
-                                          fontSize: 17),
-                                    )),
-                              ),
+                            NavigationButtons(
+                              navigationCallBack: () => Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const NavigationScreens())),
+                              height: 80.0,
+                              backgroundColor: 0xffF5F6FA,
+                              textColor: 0xff8F959E,
+                              buttonString: 'Men',
                             ),
                             const SizedBox(
                               width: 10,
                             ),
-                            Expanded(
-                                child: Container(
-                              height: 80,
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (context) =>
-                                                const AddressScreen()));
-                                  },
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            side: BorderSide.none)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            const Color(0xff9775FA)),
-                                  ),
-                                  child: const Text(
-                                    "Women",
-                                    style: TextStyle(
-                                        color: Color(0xffFFFFFF), fontSize: 17),
-                                  )),
-                            )),
+                            NavigationButtons(
+                              navigationCallBack: () => Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const NavigationScreens())),
+                              height: 80.0,
+                              backgroundColor: 0xff9775FA,
+                              textColor: 0xffFFFFFF,
+                              buttonString: 'Women',
+                            )
+                            // const Color(0xff9775FA)),
                           ],
                         ),
                       ),
                       Center(
                         child: TextButton(
-                          // onPressed: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       CupertinoPageRoute(
-                          //           builder: (context) => const ConfirmScreen()));
-                          // },
                           onPressed: () {
                             Navigator.push(
                                 context,

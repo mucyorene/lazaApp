@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen8/HomePage.dart';
-import 'package:laza/Screens/screen9/screen9.dart';
+import 'package:laza/common/validator.dart';
+import '../screen4/screen4.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({Key? key}) : super(key: key);
@@ -11,9 +11,22 @@ class NewPassword extends StatefulWidget {
 
 class _NewPasswordState extends State<NewPassword> {
   bool _toggled = true;
+  String strongPassword = '';
+  String _confirmPass = '';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  String? _originalPwdText = '';
+
+  String isPwdStrong(String? validationValue) {
+    if (validationValue == null) {
+      return 'strong';
+    }
+    return 'weak';
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("in build original password $_originalPwdText");
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       bottomNavigationBar: BottomAppBar(
@@ -23,10 +36,19 @@ class _NewPasswordState extends State<NewPassword> {
             alignment: Alignment.center,
             child: RaisedButton(
                 elevation: 0,
-                onPressed: () {Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const HomeScreen()),
-  );},
+                onPressed: () {
+                  _formKey.currentState!.validate();
+                  if (_formKey.currentState!.validate() && _confirmPass == _originalPwdText) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const WelcomePage()),
+                    );
+                  }
+                  else{
+                    print("Password not match");
+                  }
+                },
                 color: const Color(0Xff9775FA),
                 child: const Text(
                   'Reset Password',
@@ -75,28 +97,65 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
-                child: Column(children: [
-                  TextFormField(
-                    initialValue: "HJ@#9783kja",
-                    style: const TextStyle(fontSize: 15,),
-                    decoration: const InputDecoration(
-                        labelText: "Password",
-                        suffixText: 'Strong',
-                        suffixStyle: TextStyle(color: Colors.green),
-                        labelStyle:
-                        TextStyle(color: Color(0xff8F959E), fontSize: 13.0)),
-                  ),
-                  TextFormField(
-                    initialValue: "HJ@#9783kja",
-                    style: const TextStyle(fontSize: 15),
-                    decoration: const InputDecoration(
-                        labelText: "Confirm Password",
-                        suffixText: 'Strong',
-                        suffixStyle: TextStyle(color: Colors.green),
-                        labelStyle:
-                        TextStyle(color: Color(0xff8F959E), fontSize: 13.0)),
-                  ),
-                ]),
+                child: Form(
+                  key: _formKey,
+                  child: Column(children: [
+                    TextFormField(
+                      validator: (value) {
+                        String? pwdPassed = Validators.validatePassword(value);
+                        setState(() {
+                          // print(strongPassword);
+                          strongPassword = isPwdStrong(pwdPassed);
+                          strongPassword == 'strong'
+                              ? _originalPwdText = value
+                              : '';
+                        });
+                        return Validators.validatePassword(value);
+                      },
+                      onChanged: (value) {
+                        _formKey.currentState!.validate();
+                      },
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                      decoration: InputDecoration(
+                          labelText: "Password",
+                          suffixText:
+                          strongPassword == 'strong' ? 'Strong' : null,
+                          suffixStyle: const TextStyle(color: Colors.green),
+                          labelStyle: const TextStyle(
+                              color: Color(0xff8F959E), fontSize: 13.0)),
+                    ),
+                    TextFormField(
+                      onChanged: (value) {
+                        print(
+                            "Changed value $value and Strong password is: $_originalPwdText");
+                        if (value == _originalPwdText) {
+                          setState(() {
+                            _confirmPass = value;
+                            print("$_confirmPass this is it");
+                          });
+                        }
+                      },
+                      validator: (value) {
+                        if (value == strongPassword) {
+                          setState(() {
+                            _confirmPass = value!;
+                          });
+                        }
+                      },
+                      style: const TextStyle(fontSize: 15),
+                      decoration: InputDecoration(
+                          labelText: "Confirm Password",
+                          suffixText: strongPassword == _confirmPass
+                              ? 'Similar'
+                              : 'Not',
+                          suffixStyle: const TextStyle(color: Colors.green),
+                          labelStyle: const TextStyle(
+                              color: Color(0xff8F959E), fontSize: 13.0)),
+                    ),
+                  ]),
+                ),
               ),
               Expanded(
                 child: Container(
@@ -108,7 +167,9 @@ class _NewPasswordState extends State<NewPassword> {
                   ),
                 ),
               ),
-              const SizedBox(height: 155,)
+              const SizedBox(
+                height: 155,
+              )
             ],
           ),
         ),

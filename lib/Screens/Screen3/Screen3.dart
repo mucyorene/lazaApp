@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen8/HomePage.dart';
-import 'package:laza/Screens/screen4/screen4.dart';
 import 'package:laza/common/validator.dart';
 
 class Screen3 extends StatefulWidget {
@@ -119,7 +118,6 @@ class _Screen3State extends State<Screen3> {
                       onChanged: (value) {
                         _formKey.currentState!.validate();
                       },
-                      initialValue: "Esther Howard",
                       style: const TextStyle(
                           color: Color(0xff1D1E20),
                           fontWeight: FontWeight.bold,
@@ -147,7 +145,6 @@ class _Screen3State extends State<Screen3> {
                       onChanged: (value) {
                         _formKey.currentState!.validate();
                       },
-                      initialValue: "HJ@#9783kja",
                       style: const TextStyle(fontSize: 15),
                       decoration: InputDecoration(
                           labelText: "Password",
@@ -157,7 +154,6 @@ class _Screen3State extends State<Screen3> {
                               color: Colors.grey, fontSize: 13.0)),
                     ),
                     TextFormField(
-                      initialValue: "bill.senders@example.com",
                       decoration: InputDecoration(
                           labelText: "Email Address",
                           suffixIcon: email == 'valid'

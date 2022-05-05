@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen18/StockScreen.dart';
+import 'package:laza/Screens/Screen8/Widgets/BrandCard.dart';
 import 'package:laza/Screens/Screen8/Widgets/CustomList.dart';
+import 'package:laza/Screens/Screen8/Widgets/EndDrawerNavigation.dart';
+import 'package:laza/Screens/Screen8/Widgets/HeaderTitles.dart';
 import 'package:laza/Screens/Widgets/Search.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'Widgets/ProductCard.dart';
@@ -16,22 +19,23 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _key = GlobalKey(debugLabel: "Scaffold drawer key");
 
-  List<String> categories = [
-    'Adidas',
-    'Nike',
-    'Puma',
-    'Fila',
-    'Category 5',
-    'Category 6',
+  List<String> categories = ['Adidas', 'Nike'];
+  List<String> brandImage = [
+    "assets/images/adidas.JPG",
+    "assets/images/nike.JPG"
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawerEnableOpenDragGesture: true,
+      endDrawerEnableOpenDragGesture: true,
       key: _key,
       appBar: AppBar(
         elevation: 0,
+        toolbarHeight: 50,
         backgroundColor: Colors.transparent,
+        leadingWidth: 35,
         leading: Builder(builder: (ctx) {
           return CircleAvatar(
               backgroundColor: const Color(0xffF5F6FA),
@@ -42,20 +46,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Image.asset("assets/images/menuIcon.png")));
         }),
         actions: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: const Color(0xffF5F6FA),
-            child: IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                "assets/images/Bag.png",
-                height: 20,
+          Builder(
+            builder: (endCxt) => CircleAvatar(
+              radius: 18,
+              backgroundColor: const Color(0xffF5F6FA),
+              child: IconButton(
+                onPressed: () => Scaffold.of(endCxt).openEndDrawer(),
+                icon: Image.asset(
+                  "assets/images/Bag.png",
+                  height: 20,
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
       drawer: const NavigationDrawer(),
+      endDrawer: const EndDrawerNav(),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
@@ -65,31 +72,14 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Hello",
-                            style: TextStyle(
-                                fontSize: 28.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Welcome to Laza.",
-                            style:
-                                TextStyle(fontSize: 15.0, color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  TopHeader("Hello", "Welcome to Laza."),
                   const SizedBox(
                     height: 20,
                   ),
                   const SearchWidget(),
                   Expanded(
-                    child: Column(
+                    child: ListView(
+                      physics: const BouncingScrollPhysics(),
                       children: [
                         CategoriesTitle(title: "Choose Brand"),
                         const SizedBox(
@@ -101,53 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               physics: const BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                return Container(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  const MainStock()));
-                                    },
-                                    child: Card(
-                                      color: const Color(0xffF5F6FA),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 60,
-                                            width: 80,
-                                            padding: const EdgeInsets.all(8.0),
-                                            decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                image: const DecorationImage(
-                                                    image: AssetImage(
-                                                      "assets/images/nike.JPG",
-                                                    ),
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                          Container(
-                                            height: 60,
-                                            width: 80,
-                                            child: Center(
-                                              child: Text(
-                                                categories[index],
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    height: 1.5),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
+                                return HomeBrandCard(
+                                    brandIcon: brandImage[index],
+                                    category: categories[index],
+                                    navigateToBrandIcon: () => Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (ctx) =>
+                                                const MainStock())));
                               },
                               separatorBuilder: (_, index) => const SizedBox(
                                     height: 5,
@@ -155,30 +106,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               itemCount: categories.length),
                         ),
                         const SizedBox(height: 10),
-                        CategoriesTitle(title: "New Arraival"),
+                        CategoriesTitle(title: "New Arrival"),
                         const SizedBox(height: 10),
-                        Expanded(
-                          child: GridView.count(
-                            physics: const BouncingScrollPhysics(),
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            crossAxisCount: 2,
-                            childAspectRatio: 5 / 9,
-                            children: <Widget>[
-                              ProductCard("assets/images/homeone.png",
-                                  "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard(
-                                  "assets/images/hometwo.png",
-                                  "Trail Running Jacket Nike Windrunner",
-                                  "\$99"),
-                              ProductCard("assets/images/homethree.png",
-                                  "Nike Sportswear Club Fleece", "\$99"),
-                              ProductCard(
-                                  "assets/images/homefour.png",
-                                  "Trail Running Jacket Nike Windrunner",
-                                  "\$99"),
-                            ],
-                          ),
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          childAspectRatio: 5 / 9,
+                          children: <Widget>[
+                            ProductCard(
+                                addToFavorite: () {},
+                                imageString: "assets/images/homeone.png",
+                                descriptionText: "Nike Sportswear Club Fleece",
+                                priceValue: "\$99"),
+                            ProductCard(
+                                addToFavorite: () {},
+                                imageString: "assets/images/hometwo.png",
+                                descriptionText:
+                                    "Trail Running Jacket Nike Windrunner",
+                                priceValue: "\$99"),
+                            ProductCard(
+                                addToFavorite: () {},
+                                imageString: "assets/images/homethree.png",
+                                descriptionText: "Nike Sportswear Club Fleece",
+                                priceValue: "\$99"),
+                            ProductCard(
+                                addToFavorite: () {},
+                                imageString: "assets/images/homefour.png",
+                                descriptionText:
+                                    "Trail Running Jacket Nike Windrunner",
+                                priceValue: "\$99"),
+                          ],
                         ),
                       ],
                     ),
@@ -189,33 +149,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(items: const [
-      //   BottomNavigationBarItem(
-      //     icon: Icon(
-      //       Icons.home,
-      //       color: Colors.grey,
-      //     ),
-      //     label: 'Home',
-      //   ),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.favorite_border_outlined,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Wishlist'),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.shopping_bag_outlined,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Cart'),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.people,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Profile'),
-      // ]),
     );
   }
 }

@@ -22,6 +22,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
             0.0,
             Colors.transparent,
             true,
+            50.0,
             40,
             const CircleAvatar(
                 backgroundColor: Color(0xffF5F6FA),

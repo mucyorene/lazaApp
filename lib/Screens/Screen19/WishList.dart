@@ -3,8 +3,6 @@ import 'package:laza/Screens/Screen18/Widgets/InformationHeader.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 
 import '../Screen8/Widgets/ProductCard.dart';
-import '../Widgets/BottomNavigations.dart';
-import 'Widgets/TitledAppBar.dart';
 
 class WishListScreen extends StatefulWidget {
   const WishListScreen({Key? key}) : super(key: key);
@@ -48,6 +46,7 @@ class _WishListScreenState extends State<WishListScreen> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40.0,
           const BackButton(
             color: Colors.black,
@@ -97,14 +96,26 @@ class _WishListScreenState extends State<WishListScreen> {
                   crossAxisCount: 2,
                   childAspectRatio: 5 / 9,
                   children: <Widget>[
-                    ProductCard("assets/images/homeone.png",
-                        "Nike Sportswear Club Fleece", "\$99"),
-                    ProductCard("assets/images/hometwo.png",
-                        "Trail Running Jacket Nike Windrunner", "\$95"),
-                    ProductCard("assets/images/stockImageFour.png",
-                        "Nike Sportswear Club Fleece", "\$49"),
-                    ProductCard("assets/images/stockImageFive.png",
-                        "Trail Running Jacket Nike Windrunner", "\$20"),
+                    ProductCard(
+                        addToFavorite: () {},
+                        imageString: "assets/images/homeone.png",
+                        descriptionText: "Nike Sportswear Club Fleece",
+                        priceValue: "\$99"),
+                    ProductCard(
+                        addToFavorite: () {},
+                        imageString: "assets/images/hometwo.png",
+                        descriptionText: "Trail Running Jacket Nike Windrunner",
+                        priceValue: "\$95"),
+                    ProductCard(
+                        addToFavorite: () {},
+                        imageString: "assets/images/stockImageFour.png",
+                        descriptionText: "Nike Sportswear Club Fleece",
+                        priceValue: "\$49"),
+                    ProductCard(
+                        addToFavorite: () {},
+                        imageString: "assets/images/stockImageFive.png",
+                        descriptionText: "assets/images/stockImageFive.png",
+                        priceValue: "\$20")
                   ],
                 ),
               ),

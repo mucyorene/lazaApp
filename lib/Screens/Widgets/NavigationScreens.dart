@@ -5,6 +5,7 @@ import 'package:laza/Screens/screen12/screen12.dart';
 
 class NavigationScreens extends StatefulWidget {
   const NavigationScreens({Key? key}) : super(key: key);
+
   @override
   State<NavigationScreens> createState() => _NavigationScreensState();
 }
@@ -28,14 +29,17 @@ class _NavigationScreensState extends State<NavigationScreens> {
         onTap: (index) => setState(() {
           currentIndex = index;
         }),
-        showSelectedLabels: true,
+        showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedItemColor: Colors.deepPurpleAccent,
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorite'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favorite'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: 'Cart'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

@@ -6,7 +6,6 @@ import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen17/pressEnter.dart';
 import 'package:laza/common/expConta.dart';
-
 import '../Widgets/CustomAppBarSingle.dart';
 import 'drawer_item.dart';
 
@@ -29,6 +28,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             0.0,
             Colors.transparent,
             false,
+            50.0,
             40.0,
             CircleAvatar(
                 backgroundColor: const Color(0xffF5F6FA),

@@ -49,6 +49,7 @@ class _screen12State extends State<screen12> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40,
           const BackButton(
             color: Colors.black,
@@ -91,7 +92,7 @@ class _screen12State extends State<screen12> {
                 'Add Method',
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: const Text(
                   'Order Info',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),

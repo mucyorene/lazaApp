@@ -19,6 +19,7 @@ class _MainStockState extends State<MainStock> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40,
           const CircleAvatar(
               backgroundColor: Color(0xffF5F6FA),
@@ -76,16 +77,31 @@ class _MainStockState extends State<MainStock> {
                 crossAxisCount: 2,
                 childAspectRatio: 5 / 9,
                 children: <Widget>[
-                  ProductCard("assets/images/homeone.png",
-                      "Nike Sportswear Club Fleece", "\$99"),
-                  ProductCard("assets/images/hometwo.png",
-                      "Trail Running Jacket Nike Windrunner", "\$95"),
-                  ProductCard("assets/images/stockImageFour.png",
-                      "Nike Sportswear Club Fleece", "\$49"),
-                  ProductCard("assets/images/stockImageFive.png",
-                      "Trail Running Jacket Nike Windrunner", "\$20"),
-                  ProductCard("assets/images/homeone.png",
-                      "Nike Sportswear Club Fleece", "\$99"),
+                  ProductCard(
+                      addToFavorite: () {},
+                      imageString: "assets/images/homeone.png",
+                      descriptionText: "Nike Sportswear Club Fleece",
+                      priceValue: "\$99"),
+                  ProductCard(
+                      addToFavorite: () {},
+                      imageString: "assets/images/hometwo.png",
+                      descriptionText: "Trail Running Jacket Nike Windrunner",
+                      priceValue: "\$95"),
+                  ProductCard(
+                      addToFavorite: () {},
+                      imageString: "assets/images/stockImageFour.png",
+                      descriptionText: "Nike Sportswear Club Fleece",
+                      priceValue: "\$49"),
+                  ProductCard(
+                      addToFavorite: () {},
+                      imageString: "assets/images/stockImageFive.png",
+                      descriptionText: "Trail Running Jacket Nike Windrunner",
+                      priceValue: "\$20"),
+                  ProductCard(
+                      addToFavorite: () {},
+                      imageString: "assets/images/homeone.png",
+                      descriptionText: "Nike Sportswear Club Fleece",
+                      priceValue: "\$99")
                 ],
               ),
             ),
