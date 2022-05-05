@@ -2,12 +2,10 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-
 import 'package:laza/Screens/Screen7/NewPassword.dart';
-import 'package:laza/Screens/Screen8/HomePage.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen4/screen4.dart';
 import 'package:laza/common/validator.dart';
-
 // ignore: camel_case_types
 class emailVerification extends StatefulWidget {
   const emailVerification({Key? key}) : super(key: key);
@@ -59,31 +57,13 @@ class _Screen3State extends State<emailVerification>
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            child: RaisedButton(
-                elevation: 0,
-                onPressed: () {
-                  _formKey.currentState!.validate();
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.reset();
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  }
-                },
-                color: const Color(0Xff9775FA),
-                child: const Text(
-                  'VERIFICATION ',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (context) => const NewPassword()));
+        },
+        buttonTextValue: 'Confirm Code',
+        buttonBackgroundColor: 0Xff9775FA,
       ),
       body: SingleChildScrollView(
         child: SafeArea(

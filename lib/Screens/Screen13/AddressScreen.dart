@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/common/validator.dart';
 import '../Screen8/HomePage.dart';
@@ -37,30 +38,10 @@ class _AddressScreenState extends State<AddressScreen> {
             style: TextStyle(color: Colors.black),
           ),
           null),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0Xff9775FA),
-        child: Container(
-            height: 75,
-            alignment: Alignment.center,
-            child: TextButton(
-                onPressed: () {
-                  _formKey.currentState!.validate();
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  }
-                },
-                // Color(0Xff9775FA)
-                child: const Text(
-                  'Save Address',
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ))),
-      ),
+      bottomNavigationBar: BottomAppBarWidget(
+          validationCallBack: () {},
+          buttonTextValue: 'Save Card',
+          buttonBackgroundColor: 0Xff9775FA),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(

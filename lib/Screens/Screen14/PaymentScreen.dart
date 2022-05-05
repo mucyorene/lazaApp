@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
-import 'package:laza/Screens/Widgets/BottomNavigations.dart';
+import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
-import '../Widgets/CustomAppBarSingle.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 class Payment extends StatefulWidget {
@@ -35,25 +34,13 @@ class _PaymentState extends State<Payment> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
           null),
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   leadingWidth: 40,
-      //   centerTitle: true,
-      //   title: const Text("Payment",
-      //       style: TextStyle(
-      //           fontSize: 17.0,
-      //           fontWeight: FontWeight.bold,
-      //           color: Colors.black)),
-      //   backgroundColor: Colors.white,
-      //   leading: const CircleAvatar(
-      //       backgroundColor: Color(0xffF5F6FA),
-      //       child: BackButton(
-      //         color: Colors.black,
-      //       )),
-      // ),
-
-      bottomNavigationBar: BottomNavigationChildScreens(
-        buttonTitle: 'Save Card',
+      bottomNavigationBar: BottomAppBarWidget(
+        validationCallBack: () {
+          Navigator.push(context,
+              CupertinoPageRoute(builder: (ctx) => const AddNewCard()));
+        },
+        buttonBackgroundColor: 0Xff9775FA,
+        buttonTextValue: 'Save Card',
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
