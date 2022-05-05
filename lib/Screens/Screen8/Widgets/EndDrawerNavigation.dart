@@ -76,10 +76,13 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                     const Color.fromRGBO(254, 254, 254, 1)),
                 InkWell(
                     child: addressBox(
+                    
                         'Delivery Address',
                         'assets/screen12_images/map_img.png',
                         'Chhatak, Sunamgonj 12/8AB',
-                        'Sylhet'),
+                        'Sylhet',
+                        'Add Address'
+                        ),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -87,7 +90,7 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                               builder: (context) => const AddressScreen()));
                     }),
                 addressBox('Payment Method', 'assets/screen12_images/visa.png',
-                    'Visa Classic', '****2690'),
+                    'Visa Classic', '****2690','Add Method'),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: const Text(

@@ -27,7 +27,7 @@ class _NewPasswordState extends State<NewPassword> {
 
   @override
   Widget build(BuildContext context) {
-    print("in build original password $_originalPwdText");
+    // print("in build original password $_originalPwdText");
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       bottomNavigationBar: BottomAppBarWidget(
