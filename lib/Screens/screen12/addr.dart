@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza/common/expConta.dart';
 
-addressBox(String title, String img, String bodi, String fut) {
+addressBox(String title, String img, String bodi, String fut, String link) {
   return Column(
     children: [
       Container(
@@ -45,10 +45,22 @@ addressBox(String title, String img, String bodi, String fut) {
                         fontSize: 15, fontWeight: FontWeight.w400),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    child: Text(fut,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 13)),
+                    margin: const EdgeInsets.only(top: 4),
+                    child: Row(
+                      children: [
+                        Text(fut,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w300, fontSize: 13)),
+                        Expanded(
+                            child: Container(
+                          alignment: Alignment.center,
+                          child: TextButton(
+                            child: Text(link),
+                            onPressed: () {},
+                          ),
+                        )),
+                      ],
+                    ),
                   ),
                 ],
               ),

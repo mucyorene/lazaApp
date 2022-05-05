@@ -14,7 +14,20 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return
+        // ListTile(
+        //   onTap: onPressed,
+        //   leading: Icon(
+        //     icon,
+        //     size: 20,
+        //     color: Colors.black87,
+        //   ),
+        //   title: Text(
+        //     name,
+        //     style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+        //   ),
+        // );
+        InkWell(
       onTap: onPressed,
       child: SizedBox(
         height: 20,
