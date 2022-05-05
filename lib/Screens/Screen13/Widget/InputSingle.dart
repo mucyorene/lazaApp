@@ -4,7 +4,12 @@ class SingleInput extends StatefulWidget {
   String inputLable;
   String hintText;
   TextInputType textInputType;
-  SingleInput({required this.inputLable, required this.hintText, required this.textInputType, Key? key})
+
+  SingleInput(
+      {required this.inputLable,
+      required this.hintText,
+      required this.textInputType,
+      Key? key})
       : super(key: key);
 
   @override

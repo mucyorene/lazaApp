@@ -56,14 +56,8 @@ class _Screen3State extends State<ForgetScreen> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Column(
@@ -98,9 +92,9 @@ class _Screen3State extends State<ForgetScreen> {
                             labelText: "Email Address",
                             suffixIcon: email == 'valid'
                                 ? const Icon(
-                              Icons.check,
-                              color: Color(0xff34C358),
-                            )
+                                    Icons.check,
+                                    color: Color(0xff34C358),
+                                  )
                                 : null,
                             labelStyle: const TextStyle(
                                 color: Colors.grey, fontSize: 11.0)),
