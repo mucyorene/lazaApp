@@ -10,7 +10,6 @@ import 'package:laza/Screens/screen12/order.dart';
 import '../Screen13/AddressScreen.dart';
 import '../Screen14/PaymentScreen.dart';
 
-
 // ignore: camel_case_types
 class screen12 extends StatelessWidget {
   const screen12({Key? key}) : super(key: key);
@@ -45,6 +44,7 @@ class screen12 extends StatelessWidget {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40,
           const BackButton(
             color: Colors.black,

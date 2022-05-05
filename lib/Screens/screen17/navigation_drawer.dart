@@ -24,6 +24,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             0.0,
             Colors.transparent,
             false,
+            50.0,
             40.0,
             CircleAvatar(
                 backgroundColor: const Color(0xffF5F6FA),

@@ -24,6 +24,7 @@ class _PaymentState extends State<Payment> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40,
           const BackButton(
             color: Colors.black,

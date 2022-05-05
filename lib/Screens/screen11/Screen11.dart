@@ -71,6 +71,7 @@ class _screen11State extends State<screen11> {
           0.0,
           Colors.transparent,
           true,
+          50.0,
           40.0,
           const BackButton(
             color: Colors.black,
@@ -169,7 +170,7 @@ class _screen11State extends State<screen11> {
                   ),
                   Expanded(
                       child: SliderTheme(
-                    data:const SliderThemeData(
+                    data: const SliderThemeData(
                         trackHeight: 10,
                         valueIndicatorColor: const Color(0Xff9775FA)),
                     child: Slider(

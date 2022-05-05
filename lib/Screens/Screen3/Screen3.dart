@@ -85,14 +85,8 @@ class _Screen3State extends State<Screen3> {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Container(
@@ -132,9 +126,9 @@ class _Screen3State extends State<Screen3> {
                           labelText: "Username",
                           suffixIcon: correctName == 'valid'
                               ? const Icon(
-                            Icons.check,
-                            color: Color(0xff34C358),
-                          )
+                                  Icons.check,
+                                  color: Color(0xff34C358),
+                                )
                               : null,
                           labelStyle: const TextStyle(
                               color: Colors.grey, fontSize: 13.0)),
@@ -164,9 +158,9 @@ class _Screen3State extends State<Screen3> {
                           labelText: "Email Address",
                           suffixIcon: email == 'valid'
                               ? const Icon(
-                            Icons.check,
-                            color: Color(0xff34C358),
-                          )
+                                  Icons.check,
+                                  color: Color(0xff34C358),
+                                )
                               : null,
                           labelStyle: const TextStyle(
                               color: Colors.grey, fontSize: 13.0)),
@@ -193,14 +187,14 @@ class _Screen3State extends State<Screen3> {
                         ),
                         Expanded(
                             child: SwitchListTile(
-                              activeColor: Colors.green,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  _toggled = value;
-                                });
-                              },
-                              value: _toggled,
-                            )),
+                          activeColor: Colors.green,
+                          onChanged: (bool value) {
+                            setState(() {
+                              _toggled = value;
+                            });
+                          },
+                          value: _toggled,
+                        )),
                       ],
                     )
                   ]),

@@ -10,11 +10,13 @@ class AppBarCustom {
   Color backgroundColor;
   double leadingWidth;
   var leading;
+  int toolbarHeight;
   var title;
   List<Widget> actions;
 
   AppBarCustom(
       {required this.elevation,
+      required this.toolbarHeight,
       required this.backgroundColor,
       required this.leadingWidth,
       required this.leading,
@@ -26,6 +28,7 @@ class AppBarCustom {
       Color backgroundColor,
       bool centerTitled,
       double leadingWidth,
+      double toolbarHeight,
       leading,
       title,
       actions) {
@@ -33,6 +36,7 @@ class AppBarCustom {
       elevation: elevation,
       backgroundColor: backgroundColor,
       centerTitle: true,
+      toolbarHeight: toolbarHeight,
       leadingWidth: leadingWidth,
       leading: leading,
       title: title,
