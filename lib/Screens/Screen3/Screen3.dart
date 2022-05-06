@@ -127,7 +127,6 @@ class _Screen3State extends State<Screen3> {
                         setState(() {
                           correctName = isNameValid(validName);
                         });
-
                         return Validators.validateName(value);
                       },
                       onChanged: (value) {

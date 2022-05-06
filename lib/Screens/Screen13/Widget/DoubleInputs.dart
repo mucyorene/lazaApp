@@ -7,9 +7,13 @@ class DoubleRowInput extends StatefulWidget {
   String hintText2;
   TextInputType textInputType;
   TextInputType textInputType2;
+  String? Function(String?) textField1Validation;
+  String? Function(String?) textField2Validation;
 
   DoubleRowInput(
       {Key? key,
+      required this.textField1Validation,
+      required this.textField2Validation,
       required this.label1,
       required this.textInputType2,
       required this.hintText1,
@@ -48,6 +52,7 @@ class _DoubleRowInputState extends State<DoubleRowInput> {
                     ),
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     child: TextFormField(
+                      validator: widget.textField1Validation,
                       style: const TextStyle(
                           fontSize: 17, fontWeight: FontWeight.bold),
                       cursorColor: const Color(0XffF5F6FA),
@@ -87,6 +92,7 @@ class _DoubleRowInputState extends State<DoubleRowInput> {
                   ),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
+                    validator: widget.textField2Validation,
                     keyboardType: widget.textInputType2,
                     style: const TextStyle(
                         fontSize: 17, fontWeight: FontWeight.bold),

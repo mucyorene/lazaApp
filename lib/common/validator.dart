@@ -45,6 +45,15 @@ class Validators {
       return null;
     }
   }
+
+  // static Function(String? value) validateForm{
+  //   if (value!.isEmpty) {
+  //     return "This field is required";
+  //   } else if (value.length < 24 || value.length > 24) {
+  //     return 'Card number should have 12 digits';
+  //   }
+  //   return null;
+  // }
 }
 
 final validatorBlock = Validators();
