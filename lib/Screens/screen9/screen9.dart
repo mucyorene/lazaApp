@@ -37,11 +37,11 @@ class Screen9 extends StatelessWidget {
                     color: const Color(0XffF2F2F2),
                     height: 387,
                     width: double.infinity,
-                    alignment: Alignment.topCenter,
+                    // alignment: Alignment.center,
                     padding: const EdgeInsets.only(top: 15),
-                    child: Stack(children: [
+                    child: Stack(alignment: Alignment.center, children: [
                       Positioned(
-                        top: 30,
+                        top: 40,
                         child: Image.asset(
                           'assets/screen9_images/bigImg.png',
                           fit: BoxFit.cover,

@@ -58,7 +58,7 @@ class _ImageBoxState extends State<ImageBox> {
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(
-                width: 5,
+                width: 15,
               ),
           itemCount: ImageBox.length),
     );
