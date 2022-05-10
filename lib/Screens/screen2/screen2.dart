@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:laza/Screens/Screen3/Screen3.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
+import 'package:laza/Screens/screen2/widgets/socialMediaButtons.dart';
 import 'package:laza/Screens/screen4/screen4.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -45,76 +46,18 @@ class SignInScreen extends StatelessWidget {
                   'Let\'s Get Started',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 )),
-            Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0Xff4267B2),
-              ),
-              height: 50,
-              margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              width: double.infinity,
-              child: RaisedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  FontAwesomeIcons.facebookF,
-                  color: Colors.white,
-                ),
-                label: const Text(
-                  'Facebook',
-                  style: TextStyle(fontSize: 17),
-                ),
-                textColor: Colors.white,
-                color: const Color(0Xff4267B2),
-                elevation: 0,
-              ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0Xff1DA1F2),
-              ),
-              height: 50,
-              margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              width: double.infinity,
-              child: RaisedButton.icon(
-                onPressed: () {},
-                onHighlightChanged: null,
-                icon: const Icon(
-                  FontAwesomeIcons.twitter,
-                  color: Colors.white,
-                ),
-                label: const Text(
-                  'Twitter',
-                  style: TextStyle(fontSize: 17),
-                ),
-                textColor: Colors.white,
-                color: const Color(0Xff1DA1F2),
-                elevation: 0,
-              ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0XffEA4335),
-              ),
-              height: 50,
-              margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-              width: double.infinity,
-              child: RaisedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  FontAwesomeIcons.google,
-                  color: Colors.white,
-                ),
-                label: const Text(
-                  'Google',
-                  style: TextStyle(fontSize: 17),
-                ),
-                textColor: Colors.white,
-                color: const Color(0XfFEA4335),
-                elevation: 0,
-              ),
-            ),
+            const SocialMediaButtons(
+                buttonColor: Color(0Xff4267B2),
+                mediaIcon: FontAwesomeIcons.facebookF,
+                media: 'Facebook'),
+            const SocialMediaButtons(
+                buttonColor: Color(0Xff1DA1F2),
+                mediaIcon: FontAwesomeIcons.twitter,
+                media: 'Tweeter'),
+            const SocialMediaButtons(
+                buttonColor: Color(0XfFEA4335),
+                mediaIcon: FontAwesomeIcons.google,
+                media: 'Google'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

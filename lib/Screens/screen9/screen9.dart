@@ -1,55 +1,33 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
+import 'package:laza/Screens/screen9/Model/clothesModel.dart';
 import 'package:laza/Screens/screen9/imageBox.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
+import 'package:laza/Screens/screen9/widgets/app_bar.dart';
+import 'package:laza/Screens/screen9/widgets/description_body.dart';
+import 'package:laza/Screens/screen9/widgets/description_title.dart';
+import 'package:laza/Screens/screen9/widgets/hoddie_title.dart';
+import 'package:laza/Screens/screen9/widgets/sizeTitle.dart';
+import 'package:laza/common/expConta.dart';
 
 class Screen9 extends StatelessWidget {
-  const Screen9({Key? key}) : super(key: key);
+ const Screen9({Key? key}) : super(key: key);
 
-  // final clock = const Icon(Icons.punch_clock);
+  //  List<Clothes> clothes = Clothes.generateClothes();
+  // Screen9(this.clothes);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
         floatHeaderSlivers: true,
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverAppBar(
-              elevation: 0,
-              pinned: true,
-              foregroundColor: Colors.black,
-              backgroundColor: const Color(0XffF2F2F2),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.shopping_bag,
-                      color: Colors.black,
-                    ))
-              ],
-              expandedHeight: 400,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Container(
-                    color: const Color(0XffF2F2F2),
-                    height: 387,
-                    width: double.infinity,
-                    // alignment: Alignment.center,
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Stack(alignment: Alignment.center, children: [
-                      Positioned(
-                        top: 40,
-                        child: Image.asset(
-                          'assets/screen9_images/bigImg.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ])),
-              )),
-        ],
+        headerSliverBuilder: (context, innerBoxIsScrolled) =>
+            [const CustomAppBar()],
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -64,84 +42,12 @@ class Screen9 extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Column(
                           children: [
-                            Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    const Text('Men\'s printed Pullover Hoddie',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w200,
-                                            fontSize: 13)),
-                                    Container(
-                                      padding: const EdgeInsets.only(top: 8),
-                                      child: const Text(
-                                        'Nike Club Fleece',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 22),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Expanded(child: Container()),
-                                Column(
-                                  children: [
-                                    const Text('price',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w200,
-                                            fontSize: 13)),
-                                    Container(
-                                      padding: const EdgeInsets.only(top: 8),
-                                      child: const Text("\$120",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 22)),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
+                            const HoddieTitle(),
                             ImageBox(),
-                            Row(
-                              children: [
-                                const Text("Size",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17)),
-                                Expanded(child: Container()),
-                                const Text('Size Guide',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w200,
-                                        fontSize: 15)),
-                              ],
-                            ),
+                            const SizeTitle(),
                             SizedList(),
-                            Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                alignment: Alignment.centerLeft,
-                                child: const Text(
-                                  'Description',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                            const Text.rich(TextSpan(
-                                style: TextStyle(fontSize: 15),
-                                children: [
-                                  TextSpan(
-                                    text:
-                                        'The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with ',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                  TextSpan(
-                                    text: 'Read More ...',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )
-                                ])),
+                            const DescriptionTitle(),
+                            const DescriptionDetails(),
                             Container(
                                 margin:
                                     const EdgeInsets.symmetric(vertical: 10),
@@ -289,13 +195,19 @@ class Screen9 extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Expanded(child: Container()),
+                                    exconta(),
                                     const Text("\$120",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17)),
                                   ],
-                                ))
+                                )),
+                            // ListView.builder(
+                            //     itemBuilder: ((context, index) => Row(
+                            //           children: [
+                            //             Text(clothes.toList()[index].title)
+                            //           ],
+                            //         )))
                           ],
                         ),
                       ),

@@ -1,19 +1,5 @@
-// import 'package:flutter/cupertino.dart';
-
-// class ImageBox {
-//   final dynamic path;
-//   ImageBox({required this.path});
-
-//  @override
-// Widget build(BuildContext context) {
-//   return Expanded(
-//                                         child: Container(
-//                                       margin: const EdgeInsets.all(2),
-//                                       child: Image.asset(path)) );
-// }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen9/Model/clothesModel.dart';
 
 class ImageBox extends StatefulWidget {
   @override
@@ -21,14 +7,26 @@ class ImageBox extends StatefulWidget {
 }
 
 class _ImageBoxState extends State<ImageBox> {
-  final List<String> ImageBox = [
+  String silverImage() {
+    return clothes.image[currentSelected];
+  }
+
+  // final List<String> ImageBox = [
+  //   'assets/screen9_images/rect1.png',
+  //   'assets/screen9_images/rect2.png',
+  //   'assets/screen9_images/rect3.png',
+  //   'assets/screen9_images/rect4.png'
+  // ];
+  int currentSelected = 0;
+  Clothes clothes = Clothes(title: 'Nike Club Fleece', price: '\$120', image: [
     'assets/screen9_images/rect1.png',
     'assets/screen9_images/rect2.png',
     'assets/screen9_images/rect3.png',
     'assets/screen9_images/rect4.png'
-  ];
-  int currentSelected = 0;
+  ]);
+  List<Clothes> listImages = Clothes.generateClothes();
 
+  // Clothes productItem= listImages[index];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,6 +41,7 @@ class _ImageBoxState extends State<ImageBox> {
                   setState(() {
                     currentSelected = index;
                   });
+                  print(listImages.toList());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -53,14 +52,15 @@ class _ImageBoxState extends State<ImageBox> {
                       border: Border.all(
                           color: Colors.grey.withOpacity(0.1), width: 2)),
                   child: Image.asset(
-                    ImageBox[index],
+                    // listImages.toList()[index].image[index]
+                    clothes.image[index],
                   ),
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(
                 width: 15,
               ),
-          itemCount: ImageBox.length),
+          itemCount: clothes.image.length),
     );
   }
 }
