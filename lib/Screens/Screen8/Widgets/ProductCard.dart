@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/ProductModel/Product.dart';
 import '../../screen9/screen9.dart';
 
 class ProductCard extends StatefulWidget {
-  final String imageString;
-  final String descriptionText;
-  final String priceValue;
   VoidCallback addToFavorite;
+  Product product;
 
   ProductCard({
     Key? key,
+    required this.product,
     required this.addToFavorite,
-    required this.imageString,
-    required this.descriptionText,
-    required this.priceValue,
   }) : super(key: key);
 
   @override
@@ -37,25 +34,26 @@ class _ProductCardState extends State<ProductCard> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const Screen9()));
+                          builder: (context) => Screen9(
+                                product: widget.product,
+                              )));
                 },
                 child: Image.asset(
-                  widget.imageString,
+                  widget.product.thumbnails,
                   fit: BoxFit.cover,
                 ),
               ),
               Positioned(
                   top: -15.0,
                   left: 85.0,
-                  child: Container(
-                      child: Padding(
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(
                       color: Colors.grey,
                       onPressed: widget.addToFavorite,
                       icon: const Icon(Icons.favorite_border_outlined),
                     ),
-                  ))),
+                  )),
             ],
           ),
         ),
@@ -69,7 +67,13 @@ class _ProductCardState extends State<ProductCard> {
               Container(
                 color: Colors.transparent,
                 child: Text(
-                  widget.descriptionText,
+                  widget.product.name,
+                ),
+              ),
+              Container(
+                color: Colors.transparent,
+                child: Text(
+                  widget.product.descriptions!,
                 ),
               ),
               const SizedBox(
@@ -78,7 +82,7 @@ class _ProductCardState extends State<ProductCard> {
               Container(
                 color: Colors.transparent,
                 child: Text(
-                  widget.priceValue,
+                  widget.product.price.toString(),
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 18.0),
                 ),
@@ -88,75 +92,5 @@ class _ProductCardState extends State<ProductCard> {
         )
       ],
     );
-    // return Container(
-    //   padding: const EdgeInsets.all(8),
-    //   decoration: BoxDecoration(
-    //     color: const Color(0xffF5F6FA),
-    //     borderRadius: BorderRadius.circular(10.0),
-    //   ),
-    //   child:Image.asset(
-    //         "assets/images/screen1ImageGirlSmile.png",fit: BoxFit.cover,
-    //       ),
-    //   // child: Column(
-    //   //   children: [
-    //   //     Expanded(
-    //   //       child: Image.asset(
-    //   //         "assets/images/screen1ImageGirlSmile.png",
-    //   //       ),
-    //   //     ),
-    //   //     const Positioned(
-    //   //       left: 30.0,
-    //   //         child: Icon(Icons.favorite_border_outlined,
-    //   //             color: Colors.grey)),
-    //   //     Container(
-    //   //       color: Colors.white,
-    //   //       child: Column(
-    //   //         children: const [
-    //   //           Text(
-    //   //             "Product Name",
-    //   //           ),
-    //   //           Text(
-    //   //             "Categ",
-    //   //           ),
-    //   //           Text(
-    //   //             "Price",
-    //   //           ),
-    //   //         ],
-    //   //       ),
-    //   //     ),
-    //   //   ],
-    //   // ),
-    // );
   }
 }
-
-// Expanded(
-// child: Container(
-// padding: const EdgeInsets.all(8),
-// decoration: BoxDecoration(
-// color: const Color(0xffF5F6FA),
-// borderRadius: BorderRadius.circular(10.0),
-// ),
-// child: Stack(
-// children: [
-// Center(
-// child: Image.asset(
-// "assets/images/screen1ImageGirlSmile.png",
-// ),
-// ),
-// const Positioned(
-// left: 108,
-// child: Icon(
-// Icons.favorite_border_outlined,
-// color: Colors.grey,
-// )),
-// Positioned(
-// top: 100,
-// child: Container(
-// color: Colors.white,
-// child: const Center(child: Text("Price",)),
-// ))
-// ],
-// ),
-// ),
-// ),

@@ -2,11 +2,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
-
 import '../Screen13/AddressScreen.dart';
 import '../Screen14/PaymentScreen.dart';
 import '../Widgets/BottomAppBarCustom.dart';
@@ -20,6 +20,8 @@ class screen12 extends StatefulWidget {
 }
 
 class _screen12State extends State<screen12> {
+  List<Cart> cartList = Cart.generatedCart();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +55,27 @@ class _screen12State extends State<screen12> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (cxt, index) => (cartList.length % 2 == 0)
+                      ? InkWell(
+                          child: cadBox(cartList.toList()[index].thumbnail,
+                              const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        const AddressScreen()));
+                          })
+                      : cadBox(
+                          cartList.toList()[index].thumbnail,
+                          const Color(0XffF5F6FA),
+                          const Color.fromRGBO(254, 254, 254, 1)),
+                  separatorBuilder: (_, varIndex) => const SizedBox(
+                        height: 3,
+                      ),
+                  itemCount: cartList.length),
               InkWell(
                   child: cadBox('assets/screen12_images/img1.png',
                       const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
@@ -94,7 +117,4 @@ class _screen12State extends State<screen12> {
       ),
     );
   }
-
-
-  
 }
