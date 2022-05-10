@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Screens/Screen18/Widgets/InformationHeader.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 
@@ -12,6 +13,8 @@ class WishListScreen extends StatefulWidget {
 }
 
 class _WishListScreenState extends State<WishListScreen> {
+  List<Product> productsList = Product.generatedList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,26 +99,15 @@ class _WishListScreenState extends State<WishListScreen> {
                   crossAxisCount: 2,
                   childAspectRatio: 5 / 9,
                   children: <Widget>[
-                    ProductCard(
-                        addToFavorite: () {},
-                        imageString: "assets/images/homeone.png",
-                        descriptionText: "Nike Sportswear Club Fleece",
-                        priceValue: "\$99"),
-                    ProductCard(
-                        addToFavorite: () {},
-                        imageString: "assets/images/hometwo.png",
-                        descriptionText: "Trail Running Jacket Nike Windrunner",
-                        priceValue: "\$95"),
-                    ProductCard(
-                        addToFavorite: () {},
-                        imageString: "assets/images/stockImageFour.png",
-                        descriptionText: "Nike Sportswear Club Fleece",
-                        priceValue: "\$49"),
-                    ProductCard(
-                        addToFavorite: () {},
-                        imageString: "assets/images/stockImageFive.png",
-                        descriptionText: "assets/images/stockImageFive.png",
-                        priceValue: "\$20")
+                    ListView.separated(
+                        itemBuilder: (context, index) => ProductCard(
+                              product: productsList.reversed.toList()[index],
+                              addToFavorite: () {},
+                            ),
+                        separatorBuilder: (_, indexes) => const SizedBox(
+                              width: 5.0,
+                            ),
+                        itemCount: productsList.length)
                   ],
                 ),
               ),

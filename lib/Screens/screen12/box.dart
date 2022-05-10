@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/CartModel.dart';
 
 cadBox(dynamic img, dynamic bgcolor, dynamic cardcolor) {
   return Container(
@@ -46,16 +47,24 @@ cadBox(dynamic img, dynamic bgcolor, dynamic cardcolor) {
                     style:
                         TextStyle(fontWeight: FontWeight.w300, fontSize: 11)),
               ),
-              Row(
-                children: [
-                  const Icon(Icons.arrow_circle_down),
-                  Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      child: const Text('1')),
-                  const Icon(Icons.arrow_circle_up),
-                  Expanded(child: Container()),
-                  const Icon(Icons.delete_rounded)
-                ],
+              Flexible(
+                child: Row(
+                  children: [
+                    const Icon(Icons.arrow_circle_down),
+                    Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: const Text('1')),
+                    const Icon(Icons.arrow_circle_up),
+                    Expanded(child: Container()),
+                    IconButton(
+                        onPressed: () {
+                          // print("Clicked");
+                          List<Cart> cartLists = Cart.generatedCart();
+                          cartLists.clear();
+                        },
+                        icon: const Icon(Icons.delete_rounded))
+                  ],
+                ),
               )
             ]),
           ),

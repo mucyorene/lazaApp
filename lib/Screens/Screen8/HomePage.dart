@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Screens/Screen18/StockScreen.dart';
 import 'package:laza/Screens/Screen8/Widgets/BrandCard.dart';
 import 'package:laza/Screens/Screen8/Widgets/CustomList.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _key = GlobalKey(debugLabel: "Scaffold drawer key");
-
+  List<Product> products = Product.generatedList();
   List<String> categories = ['Adidas', 'Nike'];
   List<String> brandImage = [
     "assets/images/adidas.JPG",
@@ -108,38 +109,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 10),
                         CategoriesTitle(title: "New Arrival"),
                         const SizedBox(height: 10),
-                        GridView.count(
-                          shrinkWrap: true,
+                        GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 2,
-                          childAspectRatio: 5 / 9,
-                          children: <Widget>[
-                            ProductCard(
-                                addToFavorite: () {},
-                                imageString: "assets/images/homeone.png",
-                                descriptionText: "Nike Sportswear Club Fleece",
-                                priceValue: "\$99"),
-                            ProductCard(
-                                addToFavorite: () {},
-                                imageString: "assets/images/hometwo.png",
-                                descriptionText:
-                                    "Trail Running Jacket Nike Windrunner",
-                                priceValue: "\$99"),
-                            ProductCard(
-                                addToFavorite: () {},
-                                imageString: "assets/images/homethree.png",
-                                descriptionText: "Nike Sportswear Club Fleece",
-                                priceValue: "\$99"),
-                            ProductCard(
-                                addToFavorite: () {},
-                                imageString: "assets/images/homefour.png",
-                                descriptionText:
-                                    "Trail Running Jacket Nike Windrunner",
-                                priceValue: "\$99"),
-                          ],
-                        ),
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 5 / 10),
+                          itemBuilder: (cxt, index) {
+                            // print("${products.length} this is the lenght");
+                            return InkWell(
+                              child: ProductCard(
+                                  product: products.toList()[index],
+                                  addToFavorite: () {}),
+                            );
+                          },
+                          itemCount: products.length,
+                        )
                       ],
                     ),
                   )

@@ -2,13 +2,17 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/CartModel.dart';
+import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen9/imageBox.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
 
 class Screen9 extends StatelessWidget {
-  const Screen9({Key? key}) : super(key: key);
+  Product product;
+
+  Screen9({Key? key, required this.product}) : super(key: key);
 
   // final clock = const Icon(Icons.punch_clock);
   @override
@@ -43,7 +47,7 @@ class Screen9 extends StatelessWidget {
                       Positioned(
                         top: 30,
                         child: Image.asset(
-                          'assets/screen9_images/bigImg.png',
+                          "assets/screen9_images/bigImg.png",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -68,15 +72,15 @@ class Screen9 extends StatelessWidget {
                               children: [
                                 Column(
                                   children: [
-                                    const Text('Men\'s printed Pullover Hoddie',
-                                        style: TextStyle(
+                                    Text(product.descriptions!,
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.w200,
                                             fontSize: 13)),
                                     Container(
                                       padding: const EdgeInsets.only(top: 8),
-                                      child: const Text(
-                                        'Nike Club Fleece',
-                                        style: TextStyle(
+                                      child: Text(
+                                        product.name,
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 22),
                                       ),
@@ -92,8 +96,8 @@ class Screen9 extends StatelessWidget {
                                             fontSize: 13)),
                                     Container(
                                       padding: const EdgeInsets.only(top: 8),
-                                      child: const Text("\$120",
-                                          style: TextStyle(
+                                      child: Text(product.price.toString(),
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 22)),
                                     )
@@ -101,7 +105,9 @@ class Screen9 extends StatelessWidget {
                                 )
                               ],
                             ),
-                            ImageBox(),
+                            ImageBox(
+                              images: product.images,
+                            ),
                             Row(
                               children: [
                                 const Text("Size",
@@ -126,17 +132,16 @@ class Screen9 extends StatelessWidget {
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold),
                                 )),
-                            const Text.rich(TextSpan(
-                                style: TextStyle(fontSize: 15),
+                            Text.rich(TextSpan(
+                                style: const TextStyle(fontSize: 15),
                                 children: [
                                   TextSpan(
-                                    text:
-                                        'The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with ',
-                                    style: TextStyle(
+                                    text: "${product.descriptions} ",
+                                    style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300),
                                   ),
-                                  TextSpan(
+                                  const TextSpan(
                                     text: 'Read More ...',
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
@@ -315,6 +320,17 @@ class Screen9 extends StatelessWidget {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
+                  List<Cart> allCart = Cart.generatedCart();
+
+                  allCart.add(Cart(
+                      id: (allCart.isNotEmpty ? (allCart.length) + 1 : 1),
+                      name: product.name,
+                      price: product.price,
+                      size: product.size,
+                      productId: product.id,
+                      thumbnail: product.thumbnails,
+                      shippingCost: 12.0));
+                  // print(allCart.length);
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
