@@ -1,26 +1,39 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
+import 'package:laza/Screens/screen9/Model/clothesModel.dart';
 import 'package:laza/Screens/screen9/imageBox.dart';
 import 'package:laza/Screens/screen9/vBoxes.dart';
+import 'package:laza/Screens/screen9/widgets/app_bar.dart';
+import 'package:laza/Screens/screen9/widgets/description_body.dart';
+import 'package:laza/Screens/screen9/widgets/description_title.dart';
+import 'package:laza/Screens/screen9/widgets/hoddie_title.dart';
+import 'package:laza/Screens/screen9/widgets/sizeTitle.dart';
+import 'package:laza/common/expConta.dart';
 
 class Screen9 extends StatelessWidget {
+
   Product product;
 
   Screen9({Key? key, required this.product}) : super(key: key);
 
-  // final clock = const Icon(Icons.punch_clock);
+
+
+  //  List<Clothes> clothes = Clothes.generateClothes();
+  // Screen9(this.clothes);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
         floatHeaderSlivers: true,
+
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
               elevation: 0,
@@ -54,6 +67,7 @@ class Screen9 extends StatelessWidget {
                     ])),
               )),
         ],
+
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -68,6 +82,7 @@ class Screen9 extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Column(
                           children: [
+
                             Row(
                               children: [
                                 Column(
@@ -147,6 +162,7 @@ class Screen9 extends StatelessWidget {
                                         TextStyle(fontWeight: FontWeight.bold),
                                   )
                                 ])),
+
                             Container(
                                 margin:
                                     const EdgeInsets.symmetric(vertical: 10),
@@ -294,13 +310,19 @@ class Screen9 extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Expanded(child: Container()),
+                                    exconta(),
                                     const Text("\$120",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17)),
                                   ],
-                                ))
+                                )),
+                            // ListView.builder(
+                            //     itemBuilder: ((context, index) => Row(
+                            //           children: [
+                            //             Text(clothes.toList()[index].title)
+                            //           ],
+                            //         )))
                           ],
                         ),
                       ),

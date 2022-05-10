@@ -7,6 +7,7 @@ import 'package:laza/Screens/screen12/order.dart';
 
 import '../../Screen14/PaymentScreen.dart';
 import '../../Widgets/CustomAppBarSingle.dart';
+
 class EndDrawerNav extends StatefulWidget {
   const EndDrawerNav({Key? key}) : super(key: key);
 
@@ -54,7 +55,9 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
             const Text(
               'Cart',
               style: TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.black, fontSize: 17),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 17),
             ),
             null),
         body: SingleChildScrollView(
@@ -72,17 +75,17 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                           CupertinoPageRoute(
                               builder: (context) => const AddressScreen()));
                     }),
-                cadBox('assets/screen12_images/img2.png', const Color(0XffF5F6FA),
+                cadBox(
+                    'assets/screen12_images/img2.png',
+                    const Color(0XffF5F6FA),
                     const Color.fromRGBO(254, 254, 254, 1)),
                 InkWell(
                     child: addressBox(
-                    
                         'Delivery Address',
                         'assets/screen12_images/map_img.png',
                         'Chhatak, Sunamgonj 12/8AB',
                         'Sylhet',
-                        'Add Address'
-                        ),
+                        'Add Address'),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -90,7 +93,7 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                               builder: (context) => const AddressScreen()));
                     }),
                 addressBox('Payment Method', 'assets/screen12_images/visa.png',
-                    'Visa Classic', '****2690','Add Method'),
+                    'Visa Classic', '****2690', 'Add Method'),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: const Text(
