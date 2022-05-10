@@ -76,11 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const SearchWidget(),
                   Expanded(
                     child: ListView(
                       physics: const BouncingScrollPhysics(),
                       children: [
+                        const SearchWidget(),
                         CategoriesTitle(title: "Choose Brand"),
                         const SizedBox(
                           height: 10,

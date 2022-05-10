@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
+import 'package:laza/Screens/Screen14/SingleCard.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import '../Screen13/Widget/DoubleInputs.dart';
 import '../Screen15/AddNewCard.dart';
@@ -15,6 +16,7 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
   bool _toggled = false;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,11 @@ class _PaymentState extends State<Payment> {
           null),
       bottomNavigationBar: BottomAppBarWidget(
         validationCallBack: () {
-          Navigator.push(context,
-              CupertinoPageRoute(builder: (ctx) => const AddNewCard()));
+          _formKey.currentState!.validate();
+          if (_formKey.currentState!.validate()) {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (ctx) => const AddNewCard()));
+          }
         },
         buttonBackgroundColor: 0Xff9775FA,
         buttonTextValue: 'Save Card',
@@ -55,119 +60,15 @@ class _PaymentState extends State<Payment> {
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 180,
-                        width: 300,
-                        margin: const EdgeInsets.symmetric(horizontal: 15),
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius:
-                                BorderRadiusDirectional.circular(15.0)),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              bottom: -80,
-                              left: -50,
-                              child: Container(
-                                height: 200,
-                                width: 200,
-                                decoration: const BoxDecoration(
-                                    color: Colors.orange,
-                                    shape: BoxShape.circle),
-                              ),
-                            ),
-                            Positioned(
-                              bottom: -170,
-                              right: -150,
-                              child: Container(
-                                height: 350,
-                                width: 350,
-                                decoration: const BoxDecoration(
-                                    color: Colors.red, shape: BoxShape.circle),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 20.0, vertical: 20.0),
-                                        child: const Text(
-                                          "Mrh Raju",
-                                          style: TextStyle(
-                                              fontSize: 15.0,
-                                              color: Color(0xffFFFFFF)),
-                                        )),
-                                    const SizedBox(
-                                      width: 140,
-                                    ),
-                                    Container(
-                                      child: Container(
-                                        child: const Text(
-                                          "Visa",
-                                          style: TextStyle(
-                                              fontSize: 15.0,
-                                              color: Color(0xffFFFFFF)),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 40.0,
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(left: 20),
-                                      child: const Text(
-                                        "Visa Classic",
-                                        style: TextStyle(
-                                            fontSize: 13.0,
-                                            color: Color(0xffFFFFFF)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(left: 20),
-                                      child: const Text(
-                                        "5254 **** **** 7690",
-                                        style: TextStyle(
-                                            fontSize: 15.0,
-                                            color: Color(0xffFFFFFF),
-                                            letterSpacing: 2.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(left: 20),
-                                      child: const Text(
-                                        "\$3,763.87",
-                                        style: TextStyle(
-                                            fontSize: 15.0,
-                                            color: Color(0xffFFFFFF)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                      return SinglePaymentCard(
+                        cardContainerCard: Colors.amber,
+                        cardContainerTwo: Colors.orange,
+                        cardContainerThree: Colors.red,
+                        ownerName: "Mrh Raju",
+                        cardType: "Visa",
+                        cardNumber: "Visa Classic",
+                        amount: "\$3,763.87",
+                        cardLevel: '',
                       );
                     },
                     separatorBuilder: (_, index) => const SizedBox(
@@ -202,51 +103,90 @@ class _PaymentState extends State<Payment> {
               const SizedBox(
                 height: 20,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SingleInput(
-                    inputLable: "Card Owner",
-                    hintText: "Mrh Raju",
-                    textInputType: TextInputType.text,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SingleInput(
-                    inputLable: "Card Number",
-                    hintText: "5254 7634 8734 7690",
-                    textInputType: TextInputType.number,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  DoubleRowInput(
-                    label1: 'EXP',
-                    hintText1: '24/24',
-                    label2: 'CVV',
-                    hintText2: '7763',
-                    textInputType: TextInputType.text,
-                    textInputType2: TextInputType.number,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SwitchListTile(
-                    activeColor: Colors.green,
-                    title: const Text(
-                      "Save card info",
-                      style: TextStyle(
-                          fontSize: 15.0, fontWeight: FontWeight.bold),
+              Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SingleInput(
+                      formValidations: (value) {
+                        if (value!.isEmpty || value == '') {
+                          return 'This field is require';
+                        } else if (value.length < 3) {
+                          return 'Too short';
+                        }
+                        return null;
+                      },
+                      inputLable: "Card Owner",
+                      hintText: "Mrh Raju",
+                      textInputType: TextInputType.text,
                     ),
-                    onChanged: (bool value) {
-                      setState(() {
-                        _toggled = value;
-                      });
-                    },
-                    value: _toggled,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SingleInput(
+                      formValidations: (value) {
+                        if (value!.isEmpty) {
+                          return "This field is required";
+                        } else if (value.length < 24 || value.length > 24) {
+                          return 'Card number should have 12 digits';
+                        }
+                        return null;
+                      },
+                      inputLable: "Card Number",
+                      hintText: "5254 7634 8734 7690",
+                      textInputType: TextInputType.number,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    DoubleRowInput(
+                      label1: 'EXP',
+                      hintText1: '24/24',
+                      label2: 'CVV',
+                      hintText2: '7763',
+                      textInputType: TextInputType.text,
+                      textInputType2: TextInputType.number,
+                      textField2Validation: (value) {
+                        if (value!.isEmpty) {
+                          return "This field is required";
+                        } else if (value.length < 4) {
+                          return 'Too short CVV';
+                        } else if (value.length > 4) {
+                          return 'Too long CVV';
+                        }
+                        return null;
+                      },
+                      textField1Validation: (value) {
+                        if (value!.isEmpty) {
+                          return "This field is required";
+                        } else if (value.length < 5) {
+                          return "Too long";
+                        } else if (value.length > 5) {
+                          return "Too short";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SwitchListTile(
+                      activeColor: Colors.green,
+                      title: const Text(
+                        "Save card info",
+                        style: TextStyle(
+                            fontSize: 15.0, fontWeight: FontWeight.bold),
+                      ),
+                      onChanged: (bool value) {
+                        setState(() {
+                          _toggled = value;
+                        });
+                      },
+                      value: _toggled,
+                    ),
+                  ],
+                ),
               )
             ],
           ),

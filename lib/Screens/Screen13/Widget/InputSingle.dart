@@ -4,7 +4,14 @@ class SingleInput extends StatefulWidget {
   String inputLable;
   String hintText;
   TextInputType textInputType;
-  SingleInput({required this.inputLable, required this.hintText, required this.textInputType, Key? key})
+  String? Function(String?) formValidations;
+
+  SingleInput(
+      {required this.inputLable,
+      required this.hintText,
+      required this.formValidations,
+      required this.textInputType,
+      Key? key})
       : super(key: key);
 
   @override
@@ -31,6 +38,7 @@ class _SingleInputState extends State<SingleInput> {
           ),
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: TextFormField(
+            validator: widget.formValidations,
             keyboardType: widget.textInputType,
             style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             cursorColor: const Color(0XffF5F6FA),
