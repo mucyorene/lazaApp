@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SizeTitle extends StatelessWidget {
-  const SizeTitle({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  sizeTitle() {
     return Row(
       children: [
         const Text("Size",
@@ -15,4 +11,4 @@ class SizeTitle extends StatelessWidget {
       ],
     );
   }
-}
+

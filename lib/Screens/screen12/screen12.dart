@@ -55,38 +55,51 @@ class _screen12State extends State<screen12> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // ListView.separated(
+              //     shrinkWrap: true,
+              //     itemBuilder: (cxt, index) => (cartList.length % 2 == 0)
+              //         ? InkWell(
+              //             child: cadBox(cartList.toList()[index].thumbnail,
+              //                 const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
+              //             onTap: () {
+              //               Navigator.push(
+              //                   context,
+              //                   CupertinoPageRoute(
+              //                       builder: (context) =>
+              //                           const AddressScreen()));
+              //             })
+              //         : cadBox(
+              //             cartList.toList()[index].thumbnail,
+              //             const Color(0XffF5F6FA),
+              //             const Color.fromRGBO(254, 254, 254, 1)),
+              //     separatorBuilder: (_, varIndex) => const SizedBox(
+              //           height: 3,
+              //         ),
+              //     itemCount: cartList.length),
+
               ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (cxt, index) => (cartList.length % 2 == 0)
-                      ? InkWell(
-                          child: cadBox(cartList.toList()[index].thumbnail,
-                              const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                        const AddressScreen()));
-                          })
-                      : cadBox(
-                          cartList.toList()[index].thumbnail,
-                          const Color(0XffF5F6FA),
-                          const Color.fromRGBO(254, 254, 254, 1)),
-                  separatorBuilder: (_, varIndex) => const SizedBox(
-                        height: 3,
-                      ),
-                  itemCount: cartList.length),
-              InkWell(
-                  child: cadBox('assets/screen12_images/img1.png',
-                      const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const AddressScreen()));
-                  }),
-              cadBox('assets/screen12_images/img2.png', const Color(0XffF5F6FA),
-                  const Color.fromRGBO(254, 254, 254, 1)),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => Cartbox(
+                    image: cartList.toList()[index].thumbnail,
+                    bgColor: const Color.fromRGBO(254, 254, 254, 1),
+                    cardColor: const Color(0XffF5F6FA),
+                    title: cartList.toList()[index].name,
+                    subTitle: cartList.toList()[index].size),
+                separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
+                itemCount: cartList.length,
+              ),
+              // InkWell(
+              //     child: cadBox('assets/screen12_images/img1.png',
+              //         const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
+              //     onTap: () {
+              //       Navigator.push(
+              //           context,
+              //           CupertinoPageRoute(
+              //               builder: (context) => const AddressScreen()));
+              //     }),
+              // cadBox('assets/screen12_images/img2.png', const Color(0XffF5F6FA),
+              //     const Color.fromRGBO(254, 254, 254, 1)),
+
               addressBox(
                 'Delivery Address',
                 'assets/screen12_images/map_img.png',
@@ -110,7 +123,7 @@ class _screen12State extends State<screen12> {
               ),
               order('Subtotal', '\$110'),
               order('Shipping Cost', '\$10'),
-              order('Total', '\$120'),
+              // order('Total', '\$120'),
             ],
           ),
         ),

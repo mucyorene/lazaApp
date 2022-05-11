@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HoddieTitle extends StatelessWidget {
-  const HoddieTitle({Key? key}) : super(key: key);
+  String name;
+  String description;
+  String price;
+
+   HoddieTitle({required this.name,required this.description,required this.price,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +13,15 @@ class HoddieTitle extends StatelessWidget {
       children: [
         Column(
           children: [
-            const Text('Men\'s printed Pullover Hoddie',
-                style: TextStyle(fontWeight: FontWeight.w200, fontSize: 13)),
+            Text(description,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w200, fontSize: 13)),
             Container(
               padding: const EdgeInsets.only(top: 8),
-              child: const Text(
-                'Nike Club Fleece',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              child: Text(
+                name,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
             )
           ],
@@ -27,8 +33,9 @@ class HoddieTitle extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.w200, fontSize: 13)),
             Container(
               padding: const EdgeInsets.only(top: 8),
-              child: const Text("\$120",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+              child: Text(price,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 22)),
             )
           ],
         )
