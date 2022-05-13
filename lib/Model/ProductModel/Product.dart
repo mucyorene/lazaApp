@@ -70,11 +70,10 @@ class Product {
         category: 'Shoes',
         thumbnails: 'assets/images/homeone.png',
         images: [
-          "assets/images/stockImageFour.png",
-          "assets/images/hometwo.png",
-          "assets/images/homeone.png",
-          "assets/images/homethree.png",
-          "assets/images/stockImageFive.png"
+         'assets/screen9_images/rect1.png',
+        'assets/screen9_images/rect2.png',
+        'assets/screen9_images/rect3.png',
+        'assets/screen9_images/rect4.png'
         ],
       ),
       Product(

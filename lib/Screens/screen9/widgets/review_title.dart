@@ -19,10 +19,8 @@ class ReviewTitle extends StatelessWidget {
             Expanded(child: Container()),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => const ReviewScreen()));
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => ReviewScreen()));
               },
               child: const Text(
                 'View All',

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
-import 'package:laza/Screens/Screen10/ReviewScreen.dart';
+
 import 'package:laza/Screens/screen12/screen12.dart';
 
 import 'package:laza/Screens/screen9/widgets/app_bar.dart';
@@ -19,7 +19,7 @@ import 'package:laza/Screens/screen9/widgets/sizeTitle.dart';
 import 'package:laza/Screens/screen9/widgets/total_price.dart';
 import 'package:laza/Screens/screen9/widgets/vBoxes.dart';
 
-import 'package:laza/common/expConta.dart';
+
 
 class Screen9 extends StatefulWidget {
   Product pro;
@@ -86,7 +86,7 @@ class _Screen9State extends State<Screen9> {
                             DescriptionTitle(),
                             Description(description: "${product.descriptions}"),
                             const ReviewTitle(),
-                            const Review(),
+                             Review(),
                             TotalPrice(price: product.price.toString())
                           ],
                         ),
