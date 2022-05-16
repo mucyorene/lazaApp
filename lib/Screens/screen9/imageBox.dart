@@ -1,5 +1,19 @@
+// import 'package:flutter/cupertino.dart';
+
+// class ImageBox {
+//   final dynamic path;
+//   ImageBox({required this.path});
+
+//  @override
+// Widget build(BuildContext context) {
+//   return Expanded(
+//                                         child: Container(
+//                                       margin: const EdgeInsets.all(2),
+//                                       child: Image.asset(path)) );
+// }
+// }
+
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/screen9/Model/clothesModel.dart';
 
 class ImageBox extends StatefulWidget {
   List<String> images;
@@ -11,18 +25,8 @@ class ImageBox extends StatefulWidget {
 }
 
 class _ImageBoxState extends State<ImageBox> {
-
   int currentSelected = 0;
 
-  String silverImage() {
-    return clothes.image[currentSelected];
-  }
-
- 
-  List<Clothes> listImages = Clothes.generateClothes();
-
-
-  // Clothes productItem= listImages[index];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +40,6 @@ class _ImageBoxState extends State<ImageBox> {
                   setState(() {
                     currentSelected = index;
                   });
-                  print(listImages.toList());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -47,18 +50,14 @@ class _ImageBoxState extends State<ImageBox> {
                       border: Border.all(
                           color: Colors.grey.withOpacity(0.1), width: 2)),
                   child: Image.asset(
-
                     widget.images[index],
-
                   ),
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(
-                width: 15,
+                width: 5,
               ),
-
           itemCount: widget.images.length),
-
     );
   }
 }
