@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  String imagePath;
+   CustomAppBar({required this.imagePath,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +25,15 @@ class CustomAppBar extends StatelessWidget {
               color: const Color(0XffF2F2F2),
               height: 387,
               width: double.infinity,
-              // alignment: Alignment.center,
+              alignment: Alignment.topCenter,
               padding: const EdgeInsets.only(top: 15),
               child: Stack(alignment: Alignment.center, children: [
                 Positioned(
-                  top: 40,
+                  bottom: 0,
                   child: Image.asset(
-                    'assets/screen9_images/bigImg.png',
+                    imagePath,
                     fit: BoxFit.cover,
+                    height: 380,
                   ),
                 ),
               ])),

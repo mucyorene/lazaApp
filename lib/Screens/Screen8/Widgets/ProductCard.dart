@@ -35,7 +35,7 @@ class _ProductCardState extends State<ProductCard> {
                       context,
                       CupertinoPageRoute(
                           builder: (context) => Screen9(
-                                product: widget.product,
+                                pro: widget.product,
                               )));
                 },
                 child: Image.asset(

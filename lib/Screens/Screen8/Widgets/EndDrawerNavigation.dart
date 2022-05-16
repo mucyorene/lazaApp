@@ -66,19 +66,19 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                    child: cadBox('assets/screen12_images/img1.png',
-                        const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => const AddressScreen()));
-                    }),
-                cadBox(
-                    'assets/screen12_images/img2.png',
-                    const Color(0XffF5F6FA),
-                    const Color.fromRGBO(254, 254, 254, 1)),
+                // InkWell(
+                //     child: cadBox('assets/screen12_images/img1.png',
+                //         const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
+                //     onTap: () {
+                //       Navigator.push(
+                //           context,
+                //           CupertinoPageRoute(
+                //               builder: (context) => const AddressScreen()));
+                //     }),
+                // cadBox(
+                //     'assets/screen12_images/img2.png',
+                //     const Color(0XffF5F6FA),
+                //     const Color.fromRGBO(254, 254, 254, 1)),
                 InkWell(
                     child: addressBox(
                         'Delivery Address',

@@ -55,52 +55,45 @@ class _screen12State extends State<screen12> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+             
+
               ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (cxt, index) => (cartList.length % 2 == 0)
-                      ? InkWell(
-                          child: cadBox(cartList.toList()[index].thumbnail,
-                              const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                        const AddressScreen()));
-                          })
-                      : cadBox(
-                          cartList.toList()[index].thumbnail,
-                          const Color(0XffF5F6FA),
-                          const Color.fromRGBO(254, 254, 254, 1)),
-                  separatorBuilder: (_, varIndex) => const SizedBox(
-                        height: 3,
-                      ),
-                  itemCount: cartList.length),
-              InkWell(
-                  child: cadBox('assets/screen12_images/img1.png',
-                      const Color(0XffFEFEFE), const Color(0XffF5F6FA)),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const AddressScreen()));
-                  }),
-              cadBox('assets/screen12_images/img2.png', const Color(0XffF5F6FA),
-                  const Color.fromRGBO(254, 254, 254, 1)),
-              addressBox(
-                'Delivery Address',
-                'assets/screen12_images/map_img.png',
-                'Chhatak, Sunamgonj 12/8AB',
-                'Sylhet',
-                'Add Address',
+                shrinkWrap: true,
+                itemBuilder: (context, index) => Cartbox(
+                    image: cartList.toList()[index].thumbnail,
+                    bgColor: (index % 2 == 0)
+                        ? const Color.fromRGBO(254, 254, 254, 1)
+                        : const Color(0XffF5F6FA),
+                    cardColor: (index % 2 == 1)
+                        ? const Color.fromRGBO(254, 254, 254, 1)
+                        : const Color(0XffF5F6FA),
+                    title: cartList.toList()[index].name,
+                    subTitle: cartList.toList()[index].size),
+                separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
+                itemCount: cartList.length,
               ),
-              addressBox(
-                'Payment Method',
-                'assets/screen12_images/visa.png',
-                'Visa Classic',
-                '****2690',
-                'Add Method',
-              ),
+              
+              AddressBox(
+                  actionTitle: 'Delivery Address',
+                  relatedImage: 'assets/screen12_images/map_img.png',
+                  description: 'Chhatak, Sunamgonj 12/8AB',
+                  subDescription: 'Sylhet',
+                  navigateButton: 'Add Address',
+                  goTo: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const AddressScreen()))),
+
+              AddressBox(
+                  actionTitle: 'Payment Method',
+                  relatedImage: 'assets/screen12_images/visa.png',
+                  description: 'Visa Classic',
+                  subDescription: '****2690',
+                  navigateButton: 'Add Method',
+                  goTo: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const Payment()))),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 child: const Text(
@@ -110,7 +103,7 @@ class _screen12State extends State<screen12> {
               ),
               order('Subtotal', '\$110'),
               order('Shipping Cost', '\$10'),
-              order('Total', '\$120'),
+              // order('Total', '\$120'),
             ],
           ),
         ),
