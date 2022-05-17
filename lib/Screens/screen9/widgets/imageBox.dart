@@ -14,11 +14,16 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen9/Model/clothesModel.dart';
+
+typedef OnImageClick = Function(int index);
 
 class ImageBox extends StatefulWidget {
   List<String> images;
+  OnImageClick onImageClick;
 
-  ImageBox({Key? key, required this.images}) : super(key: key);
+  ImageBox({Key? key, required this.images, required this.onImageClick})
+      : super(key: key);
 
   @override
   State<ImageBox> createState() => _ImageBoxState();
@@ -27,6 +32,13 @@ class ImageBox extends StatefulWidget {
 class _ImageBoxState extends State<ImageBox> {
   int currentSelected = 0;
 
+  // String silverImage() {
+  //   return clothes.image[currentSelected];
+  // }
+
+  List<Clothes> listImages = Clothes.generateClothes();
+
+  // Clothes productItem= listImages[index];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,6 +52,8 @@ class _ImageBoxState extends State<ImageBox> {
                   setState(() {
                     currentSelected = index;
                   });
+                  widget.onImageClick(index);
+                  print(listImages.toList());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -59,5 +73,9 @@ class _ImageBoxState extends State<ImageBox> {
               ),
           itemCount: widget.images.length),
     );
+  }
+
+  index() {
+    return currentSelected;
   }
 }

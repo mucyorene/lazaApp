@@ -2,9 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/ReviewModel.dart';
+import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen12/screen12.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
+import 'package:laza/Screens/screen9/widgets/review.dart';
 import 'package:laza/common/validator.dart';
 
 import '../Widgets/CustomAppBarSingle.dart';
@@ -18,9 +21,11 @@ class screen11 extends StatefulWidget {
 }
 
 class _screen11State extends State<screen11> {
-  double sliderValue = 3.0;
+  late double sliderValue;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _nameFieldController = TextEditingController();
+  final _reviewController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +35,10 @@ class _screen11State extends State<screen11> {
         buttonTextValue: 'Submit Review',
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
-          Navigator.push(context,
-              CupertinoPageRoute(builder: (context) => const screen12()));
+          if (_formKey.currentState!.validate()) {
+            Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => const screen12()));
+          }
         },
       ),
       drawer: const NavigationDrawer(),
@@ -57,38 +64,14 @@ class _screen11State extends State<screen11> {
             key: _formKey,
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 5),
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Name',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 5),
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: const Color(0XffF5F6FA),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: TextFormField(
-                    validator: Validators.validateName,
-                    style: const TextStyle(
-                        fontSize: 17, fontWeight: FontWeight.bold),
-                    cursorColor: const Color(0XffF5F6FA),
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Type your name',
-                      hintStyle: TextStyle(
-                        color: Colors.grey, // <-- Change this
-                        fontSize: null,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      ),
-                    ),
-                  ),
+                SingleInput(
+                  textEditingController: _nameFieldController,
+                  inputLable: 'Name',
+                  hintText: 'Type your Name',
+                  formValidations: (value) {
+                    return Validators.validateName(value);
+                  },
+                  textInputType: TextInputType.name,
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 20),
@@ -107,6 +90,7 @@ class _screen11State extends State<screen11> {
                   ),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
+                    controller: _reviewController,
                     validator: ((value) =>
                         value!.isEmpty ? 'leave some comment' : null),
                     keyboardType: TextInputType.multiline,

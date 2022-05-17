@@ -47,6 +47,14 @@ class Cart {
           size: 'S',
           productId: 10,
           thumbnail: 'assets/screen9_images/bigImg.png',
+          shippingCost: 20.0),
+      Cart(
+          id: 1,
+          name: 'Men\'s Tie-Dye T-Shirt',
+          price: 200.0,
+          size: 'Nike Sportswera',
+          productId: 10,
+          thumbnail: 'assets/screen9_images/bigImg.png',
           shippingCost: 20.0)
     ];
   }

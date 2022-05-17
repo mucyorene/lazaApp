@@ -14,5 +14,9 @@ class Review {
     return {id: id, name: name, experiences: experiences};
   }
 
-  static List<Review>? reviewGenerated() {}
+  static List<Review> reviewGenerated() {
+    return [
+      Review(id: 1, name: "Review 1", experiences: "Some text of review")
+    ];
+  }
 }
