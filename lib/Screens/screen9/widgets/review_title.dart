@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/screen11/Screen11.dart';
 
 import '../../Screen10/ReviewScreen.dart';
 
 class ReviewTitle extends StatelessWidget {
+  
   const ReviewTitle({Key? key}) : super(key: key);
 
   @override
@@ -19,8 +21,8 @@ class ReviewTitle extends StatelessWidget {
             Expanded(child: Container()),
             TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => ReviewScreen()));
+                // Navigator.push(context,
+                //     CupertinoPageRoute(builder: (context) => ReviewScreen(name: , comment: comment, rating: rating)));
               },
               child: const Text(
                 'View All',
