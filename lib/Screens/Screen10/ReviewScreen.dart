@@ -1,29 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:laza/Model/Others/ReviewModel.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
-import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen11/screen11.dart';
 
-import '../../Model/Others/Review.dart';
-import '../Screen14/PaymentScreen.dart';
-
 class ReviewScreen extends StatefulWidget {
-  String name;
-  String comment;
-  double rating;
-  // Review review;
-  ReviewScreen({required this.name,
-      required this.comment,
-      required this.rating,Key? key}) : super(key: key);
+  // String name;
+  // String comment;
+  // double rating;
+  //
+  // // Review review;
+  // ReviewScreen(
+  //     {required this.name,
+  //     required this.comment,
+  //     required this.rating,
+  //     Key? key})
+  //     : super(key: key);
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  List<ReviewModel> review = ReviewModel.generateReview();
+  List<Review> review = Review.reviewGenerated();
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +61,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     children: [
                       Container(
                         alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "245 Reviews",
+                        child: Text(
+                          "${review.length} Reviews",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15.0),
                         ),
                       ),
@@ -71,9 +72,9 @@ class _ReviewScreenState extends State<ReviewScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                           Text(
-                            widget.rating.toString(),
-                            style: const TextStyle(),
+                          const Text(
+                            "4.3",
+                            style: TextStyle(),
                           ),
                           const SizedBox(
                             width: 8,
@@ -143,11 +144,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 child: ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ReviewCard(
-                        review[index].image,
+                        "assets/images/reviewOne.png",
                         review[index].name,
                         DateFormat('dd MMMM, yyyy').format(DateTime.now()),
                         "4.8",
-                        review[index].description!),
+                        review[index].experiences),
                     separatorBuilder: (_, varIndex) =>
                         const SizedBox(height: 1),
                     itemCount: review.length),

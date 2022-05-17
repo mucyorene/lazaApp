@@ -11,11 +11,12 @@ class AddNewCard {
       required this.cardNumber,
       required this.expireDate,
       required this.cardCVV});
-  Map<dynamic, dynamic> toMap(){
+
+  Map<dynamic, dynamic> toMap() {
     return {
-      id:id,
-      cardNumber:cardNumber,
-      expireDate:expireDate,
+      id: id,
+      cardNumber: cardNumber,
+      expireDate: expireDate,
     };
   }
 }
