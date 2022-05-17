@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class SingleInput extends StatefulWidget {
   String inputLable;
   String hintText;
+  TextEditingController? textEditingController;
   TextInputType textInputType;
   String? Function(String?) formValidations;
 
   SingleInput(
-      {required this.inputLable,
+      {this.textEditingController,
+      required this.inputLable,
       required this.hintText,
       required this.formValidations,
       required this.textInputType,
@@ -38,6 +40,7 @@ class _SingleInputState extends State<SingleInput> {
           ),
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: TextFormField(
+            controller: widget.textEditingController,
             validator: widget.formValidations,
             keyboardType: widget.textInputType,
             style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
