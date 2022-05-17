@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
 import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
@@ -9,8 +10,13 @@ import '../../Model/Others/Review.dart';
 import '../Screen14/PaymentScreen.dart';
 
 class ReviewScreen extends StatefulWidget {
+  String name;
+  String comment;
+  double rating;
   // Review review;
-  ReviewScreen({Key? key}) : super(key: key);
+  ReviewScreen({required this.name,
+      required this.comment,
+      required this.rating,Key? key}) : super(key: key);
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
@@ -65,9 +71,9 @@ class _ReviewScreenState extends State<ReviewScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text(
-                            "4.8",
-                            style: TextStyle(),
+                           Text(
+                            widget.rating.toString(),
+                            style: const TextStyle(),
                           ),
                           const SizedBox(
                             width: 8,
@@ -139,7 +145,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     itemBuilder: (context, index) => ReviewCard(
                         review[index].image,
                         review[index].name,
-                        "13 Sep, 2020",
+                        DateFormat('dd MMMM, yyyy').format(DateTime.now()),
                         "4.8",
                         review[index].description!),
                     separatorBuilder: (_, varIndex) =>

@@ -2,8 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
-import 'package:laza/Screens/screen12/screen12.dart';
+import 'package:laza/Screens/screen11/submited.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'package:laza/common/validator.dart';
 
@@ -20,6 +21,10 @@ class screen11 extends StatefulWidget {
 class _screen11State extends State<screen11> {
   double sliderValue = 3.0;
 
+  TextEditingController name = TextEditingController();
+  TextEditingController comment = TextEditingController();
+  // TextEditingController rating = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -30,8 +35,17 @@ class _screen11State extends State<screen11> {
         buttonTextValue: 'Submit Review',
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
-          Navigator.push(context,
-              CupertinoPageRoute(builder: (context) => const screen12()));
+          if (_formKey.currentState!.validate()) {
+            return Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => SubmitedValues(
+                        name: name.text,
+                        comment: comment.text,
+                        rating: sliderValue)
+                    // ReviewScreen(name: name.text, comment: comment.text, rating:sliderValue)
+                    ));
+          }
         },
       ),
       drawer: const NavigationDrawer(),
@@ -74,6 +88,7 @@ class _screen11State extends State<screen11> {
                   ),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
+                    controller: name,
                     validator: Validators.validateName,
                     style: const TextStyle(
                         fontSize: 17, fontWeight: FontWeight.bold),
@@ -107,6 +122,7 @@ class _screen11State extends State<screen11> {
                   ),
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: TextFormField(
+                    controller: comment,
                     validator: ((value) =>
                         value!.isEmpty ? 'leave some comment' : null),
                     keyboardType: TextInputType.multiline,
