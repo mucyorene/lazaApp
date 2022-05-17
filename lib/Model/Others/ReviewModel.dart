@@ -2,8 +2,13 @@ class Review {
   int id;
   String name;
   String experiences;
+  double? rating;
 
-  Review({required this.id, required this.name, required this.experiences});
+  Review(
+      {this.rating,
+      required this.id,
+      required this.name,
+      required this.experiences});
 
   factory Review.fromJson(Map<dynamic, dynamic> fromJsonCons) => Review(
       id: fromJsonCons['id'],
@@ -15,8 +20,6 @@ class Review {
   }
 
   static List<Review> reviewGenerated() {
-    return [
-      Review(id: 1, name: "Review 1", experiences: "Some text of review")
-    ];
+    return [];
   }
 }

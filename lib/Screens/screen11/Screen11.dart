@@ -6,9 +6,9 @@ import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen11/submited.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
-import 'package:laza/Screens/screen9/widgets/review.dart';
 import 'package:laza/common/validator.dart';
 
+import '../../Model/Others/ReviewModel.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
@@ -20,16 +20,11 @@ class screen11 extends StatefulWidget {
 }
 
 class _screen11State extends State<screen11> {
-  late double sliderValue;
+  double sliderValue = 3;
 
   TextEditingController name = TextEditingController();
   TextEditingController comment = TextEditingController();
-
-  // TextEditingController rating = TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _nameFieldController = TextEditingController();
-  final _reviewController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +35,25 @@ class _screen11State extends State<screen11> {
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
+            List<Review> reviews = Review.reviewGenerated();
+            setState(() {
+              reviews.add(Review(
+                  id: 10,
+                  name: name.text,
+                  experiences: comment.text,
+                  rating: sliderValue));
+            });
             return Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (context) => SubmitedValues(
-                        name: name.text,
-                        comment: comment.text,
-                        rating: sliderValue)
-                    // ReviewScreen(name: name.text, comment: comment.text, rating:sliderValue)
-                    ));
+                context, CupertinoPageRoute(builder: (cxt) => ReviewScreen()));
+            // return Navigator.push(
+            //     context,
+            //     CupertinoPageRoute(
+            //         builder: (context) => SubmitedValues(
+            //             name: name.text,
+            //             comment: comment.text,
+            //             rating: sliderValue)
+            //         // ReviewScreen(name: name.text, comment: comment.text, rating:sliderValue)
+            //         ));
           }
         },
       ),
