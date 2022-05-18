@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Screens/Screen18/StockScreen.dart';
 import 'package:laza/Screens/Screen8/Widgets/BrandCard.dart';
@@ -25,6 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/adidas.JPG",
     "assets/images/nike.JPG"
   ];
+  List<Cart> cartLists = [];
+
+  addToCart(Cart cart) {
+    setState(() {
+      cartLists.add(cart);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const NavigationDrawer(),
-      endDrawer: const EndDrawerNav(),
+      endDrawer: EndDrawerNav(
+        cartList: cartLists,
+      ),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),
