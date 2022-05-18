@@ -27,7 +27,7 @@ class _SubmitedValuesState extends State<SubmitedValues> {
             'assets/screen9_images/bigImg.png',
             widget.name,
             DateTime.now().toString(),
-            widget.rating.toString(),
+            widget.rating.toStringAsFixed(2),
             widget.comment));
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen11/submited.dart';
@@ -12,11 +13,14 @@ import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
 class screen11 extends StatefulWidget {
-  const screen11({Key? key}) : super(key: key);
+  Function(ReviewModel)? reviewCallback;
+  screen11({ this.reviewCallback, Key? key}) : super(key: key);
 
   @override
   State<screen11> createState() => _screen11State();
 }
+
+
 
 class _screen11State extends State<screen11> {
   double sliderValue = 3.0;
@@ -36,15 +40,17 @@ class _screen11State extends State<screen11> {
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
-            return Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (context) => SubmitedValues(
-                        name: name.text,
-                        comment: comment.text,
-                        rating: sliderValue)
-                    // ReviewScreen(name: name.text, comment: comment.text, rating:sliderValue)
-                    ));
+            widget.reviewCallback!(ReviewModel(id: 13, name: name.text, image:"assets/images/reviewOne.png",description: comment.text ));
+
+            // return Navigator.push(
+            //     context,
+            //     CupertinoPageRoute(
+            //         builder: (context) => SubmitedValues(
+            //             name: name.text,
+            //             comment: comment.text,
+            //             rating: sliderValue)
+            //         // ReviewScreen(name: name.text, comment: comment.text, rating:sliderValue)
+            //         ));
           }
         },
       ),
@@ -189,4 +195,12 @@ class _screen11State extends State<screen11> {
       ),
     );
   }
+
+  // addReview() {
+  //   return ReviewModel(
+  //       id: 7,
+  //       name: name.text,
+  //       image: "assets/images/reviewthree.png",
+  //       description: comment.text);
+  // }
 }

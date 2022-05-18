@@ -26,29 +26,29 @@ class ReviewModel {
             image: "assets/images/reviewOne.png",
             description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
-        ReviewModel(
-            id: 1,
-            name: 'Jenny Wilson',
-            image: "assets/images/reviewtwo.png",
-            description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
-        ReviewModel(
-            id: 1,
-            name: 'Jenny Wilson',
-            image: "assets/images/reviewthree.png",
-            description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
-        ReviewModel(
-            id: 1,
-            name: 'Jenny Wilson',
-            image: "assets/images/reviewfour.png",
-            description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
-        ReviewModel(
-            id: 1,
-            name: 'Jenny Wilson',
-            image: "assets/images/reviewtwo.png",
-            description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet...")
+        // ReviewModel(
+        //     id: 1,
+        //     name: 'Jenny Wilson',
+        //     image: "assets/images/reviewtwo.png",
+        //     description:
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
+        // ReviewModel(
+        //     id: 1,
+        //     name: 'Jenny Wilson',
+        //     image: "assets/images/reviewthree.png",
+        //     description:
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
+        // ReviewModel(
+        //     id: 1,
+        //     name: 'Jenny Wilson',
+        //     image: "assets/images/reviewfour.png",
+        //     description:
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet..."),
+        // ReviewModel(
+        //     id: 1,
+        //     name: 'Jenny Wilson',
+        //     image: "assets/images/reviewtwo.png",
+        //     description:
+        //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada eget vitae amet...")
       ];
 }

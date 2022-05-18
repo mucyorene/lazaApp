@@ -2,21 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
-import 'package:laza/Screens/Screen13/AddressScreen.dart';
+
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen11/screen11.dart';
 
 import '../../Model/Others/Review.dart';
-import '../Screen14/PaymentScreen.dart';
 
 class ReviewScreen extends StatefulWidget {
-  String name;
-  String comment;
-  double rating;
+  // String name;
+  // String comment;
+  // double rating;
   // Review review;
-  ReviewScreen({required this.name,
-      required this.comment,
-      required this.rating,Key? key}) : super(key: key);
+  const ReviewScreen(
+      {
+      //   required this.name,
+      // required this.comment,
+      // required this.rating,
+      Key? key})
+      : super(key: key);
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
@@ -24,6 +27,14 @@ class ReviewScreen extends StatefulWidget {
 
 class _ReviewScreenState extends State<ReviewScreen> {
   List<ReviewModel> review = ReviewModel.generateReview();
+
+  // ReviewModel rev = [];
+
+  addReview(ReviewModel newReview) {
+    setState(() {
+     review.add(newReview);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +82,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                           Text(
-                            widget.rating.toString(),
-                            style: const TextStyle(),
+                          const Text(
+                            '4.5',
+                            // widget.rating.toString(),
+                            style: TextStyle(),
                           ),
                           const SizedBox(
                             width: 8,
@@ -128,7 +140,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                           Navigator.push(
                               context,
                               CupertinoPageRoute(
-                                  builder: (context) => const screen11()));
+                                  builder: (context) =>  screen11()));
                         },
                         icon: const Icon(
                           Icons.open_in_new,
