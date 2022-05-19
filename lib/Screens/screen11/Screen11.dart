@@ -1,18 +1,21 @@
 // ignore_for_file: unnecessary_const, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Model/Others/ReviewModel.dart';
+import 'package:laza/Model/providers/review_provider.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'package:laza/Screens/screen9/widgets/review.dart' as review_classes;
 import 'package:laza/common/validator.dart';
+import 'package:provider/provider.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
 class Screen11 extends StatefulWidget {
-  Function(Review)? addReviewButton;
+  // Function(Review)? addReviewButton;
 
-  Screen11({Key? key, this.addReviewButton}) : super(key: key);
+  Screen11({Key? key}) : super(key: key);
 
   @override
   State<Screen11> createState() => _Screen11State();
@@ -27,6 +30,8 @@ class _Screen11State extends State<Screen11> {
 
   @override
   Widget build(BuildContext context) {
+    ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomAppBarWidget(
@@ -34,8 +39,9 @@ class _Screen11State extends State<Screen11> {
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
-            widget.addReviewButton!(
-                Review(id: 10, name: name.text, experiences: comment.text));
+            reviewNotifier.addReview(Review(id: 1, name: name.text, experiences: comment.text));
+            // widget.addReviewButton!(
+            //     Review(id: 10, name: name.text, experiences: comment.text));
             Navigator.pop(context);
           }
         },
@@ -181,4 +187,12 @@ class _Screen11State extends State<Screen11> {
       ),
     );
   }
+
+  // addReview() {
+  //   return ReviewModel(
+  //       id: 7,
+  //       name: name.text,
+  //       image: "assets/images/reviewthree.png",
+  //       description: comment.text);
+  // }
 }

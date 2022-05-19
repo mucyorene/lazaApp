@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
 
-class Review extends StatelessWidget {
+class Reviews extends StatelessWidget {
   // ReviewModel review;
-  Review({Key? key}) : super(key: key);
+  Reviews({Key? key}) : super(key: key);
 
   List<ReviewModel> review = ReviewModel.generateReview();
 
   @override
   Widget build(BuildContext context) {
-    return ReviewCard(review.first.image, review.first.name, "13 Sep, 2020",
-        '4.8', review.first.description!);
+    return ReviewCard(review.first.image, "13 Sep, 2020",
+        '4.8');
 
     // Column(children: [
     //   Row(

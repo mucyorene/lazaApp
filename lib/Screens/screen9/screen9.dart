@@ -86,7 +86,7 @@ class _Screen9State extends State<Screen9> {
                             DescriptionTitle(),
                             Description(description: "${product.descriptions}"),
                             const ReviewTitle(),
-                            Review(),
+                            Reviews(),
                             TotalPrice(price: product.price.toString())
                           ],
                         ),
