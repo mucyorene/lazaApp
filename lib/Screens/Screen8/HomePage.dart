@@ -71,9 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const NavigationDrawer(),
-      endDrawer: EndDrawerNav(
-        cartList: cartLists,
-      ),
+      endDrawer: EndDrawerNav(),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20),

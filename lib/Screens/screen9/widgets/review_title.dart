@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/screen11/Screen11.dart';
 
 import '../../Screen10/ReviewScreen.dart';
 

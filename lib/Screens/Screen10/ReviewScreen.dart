@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Model/Others/ReviewModel.dart';
+import 'package:laza/Model/providers/review_provider.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen11/Screen11.dart';
+import 'package:provider/provider.dart';
 
 class ReviewScreen extends StatefulWidget {
   @override
@@ -12,16 +15,27 @@ class ReviewScreen extends StatefulWidget {
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  List<Review> reviews = Review.reviewGenerated();
+  // List<Review> reviews = Review.reviewGenerated();
 
-  addReview(Review review) {
-    setState(() {
-      reviews.add(review);
-    });
-  }
+  // addReview(Review review) {
+  //   setState(() {
+  //     reviews.add(review);
+  //   });
+  // }
+
+  // ReviewModel rev = [];
+
+  // addReview(Review newReview) {
+  //   setState(() {
+  //     review.add(newReview);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+
+    ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
+
     return Scaffold(
         appBar: AppBarCustom.appBarCustom(
             0.0,
@@ -56,10 +70,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                       children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            "${reviews.length} Reviews",
+                          child: const Text(
+                            "5 Reviews",
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15.0),
                           ),
                         ),
@@ -128,7 +142,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
                                 context,
                                 CupertinoPageRoute(
                                     builder: (ctxs) => Screen11(
-                                          addReviewButton: addReview,
                                         )));
                           },
                           icon: const Icon(
@@ -142,22 +155,24 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 ],
               ),
               Flexible(
-                child: reviews.isEmpty
+                child: reviewNotifier.reviewList.isEmpty
                     ? const Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text("There's no review yet"),
                       )
-                    : ListView.separated(
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => ReviewCard(
-                            "assets/images/reviewOne.png",
-                            reviews[index].name,
-                            DateFormat('dd MMM, yyyy').format(DateTime.now()),
-                            "4.8",
-                            reviews[index].experiences),
-                        separatorBuilder: (_, varIndex) =>
-                            const SizedBox(height: 1),
-                        itemCount: reviews.length),
+                      : ReviewCard("assets/images/reviewOne.png", DateFormat('dd MMM, yyyy').format(DateTime.now()), '4.2')
+                    // : ListView.separated(
+                    //     shrinkWrap: true,
+                    //     itemBuilder: (context, index) => ReviewCard(
+                    //         "assets/images/reviewOne.png",
+                    //         // '${notifier}'
+                    //         // reviews[index].name,
+                    //         DateFormat('dd MMM, yyyy').format(DateTime.now()),
+                    //         "4.8",
+                    //         reviews[index].experiences),
+                    //     separatorBuilder: (_, varIndex) =>
+                    //         const SizedBox(height: 1),
+                    //     itemCount: reviewNotifier.reviewList.length,
               ),
             ],
           ),

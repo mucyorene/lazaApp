@@ -74,8 +74,4 @@ class _ImageBoxState extends State<ImageBox> {
           itemCount: widget.images.length),
     );
   }
-
-  index() {
-    return currentSelected;
-  }
 }

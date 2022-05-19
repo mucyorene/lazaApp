@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/CartModel.dart';
+import 'package:laza/Model/providers/ShoppingCartProvider.dart';
 import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
+import 'package:provider/provider.dart';
 
 import '../../Screen14/PaymentScreen.dart';
 import '../../Widgets/CustomAppBarSingle.dart';
 
 class EndDrawerNav extends StatefulWidget {
-  List<Cart>? cartList;
-
-  EndDrawerNav({Key? key, this.cartList}) : super(key: key);
+  EndDrawerNav({Key? key}) : super(key: key);
 
   @override
   State<EndDrawerNav> createState() => _EndDrawerNavState();
@@ -29,6 +29,7 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
 
   @override
   Widget build(BuildContext context) {
+    Shopping_cart cartProvider = Provider.of<Shopping_cart>(context);
     return Drawer(
       child: Scaffold(
         backgroundColor: const Color(0XffE5E5E5),
@@ -116,7 +117,7 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                       title: listOfProductInCard.toList()[index].name,
                       subTitle: listOfProductInCard.toList()[index].size),
                   separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
-                  itemCount: listOfProductInCard.length,
+                  itemCount: cartProvider.allInCart.length,
                 ),
                 // addressBox('Payment Method', 'assets/screen12_images/visa.png',
                 //     'Visa Classic', '****2690', 'Add Method'),
