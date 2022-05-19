@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:laza/Screens/Screen1/ScreenMain.dart';
-
 import 'Screens/splash/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MaterialApp(

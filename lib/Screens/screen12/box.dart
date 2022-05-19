@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/common/expConta.dart';
 
 class Cartbox extends StatefulWidget {
@@ -83,8 +82,8 @@ class _CartboxState extends State<Cartbox> {
                               onPressed: () {
                                 // print("Clicked");
                                 setState(() {
-                                  quantity =(quantity>1)? quantity - 1:quantity;
-
+                                  quantity =
+                                      (quantity > 1) ? quantity - 1 : quantity;
                                 });
                               },
                               icon: const Icon(Icons.arrow_circle_down)),
@@ -102,15 +101,6 @@ class _CartboxState extends State<Cartbox> {
                               },
                               icon: const Icon(Icons.arrow_circle_up)),
                           exconta(),
-                          IconButton(
-                              onPressed: () {
-                                // print("Clicked");
-                                setState(() {
-                                  List<Cart> cartLists = Cart.generatedCart();
-                                  cartLists.clear();
-                                });
-                              },
-                              icon: const Icon(Icons.delete_rounded))
                         ],
                       ),
                     )
@@ -122,7 +112,6 @@ class _CartboxState extends State<Cartbox> {
     );
   }
 }
-
 // cadBox(dynamic img, dynamic bgcolor, dynamic cardcolor) {
 //   return Container(
 //     margin: const EdgeInsets.symmetric(vertical: 10),
