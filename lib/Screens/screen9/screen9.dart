@@ -19,12 +19,12 @@ import 'package:laza/Screens/screen9/widgets/sizeTitle.dart';
 import 'package:laza/Screens/screen9/widgets/total_price.dart';
 import 'package:laza/Screens/screen9/widgets/vBoxes.dart';
 
-
-
 class Screen9 extends StatefulWidget {
   Product pro;
+  Function(Cart)? addToCartCallBack;
 
-  Screen9({Key? key, required this.pro}) : super(key: key);
+  Screen9({Key? key, required this.pro, this.addToCartCallBack})
+      : super(key: key);
 
   @override
   State<Screen9> createState() => _Screen9State();
@@ -86,7 +86,7 @@ class _Screen9State extends State<Screen9> {
                             DescriptionTitle(),
                             Description(description: "${product.descriptions}"),
                             const ReviewTitle(),
-                             Review(),
+                            Review(),
                             TotalPrice(price: product.price.toString())
                           ],
                         ),
@@ -107,10 +107,8 @@ class _Screen9State extends State<Screen9> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  List<Cart> allCart = Cart.generatedCart();
-
-                  allCart.add(Cart(
-                      id: (allCart.isNotEmpty ? (allCart.length) + 1 : 1),
+                  widget.addToCartCallBack!(Cart(
+                      id: 1,
                       name: product.name,
                       price: product.price,
                       size: product.size,
@@ -118,10 +116,7 @@ class _Screen9State extends State<Screen9> {
                       thumbnail: product.thumbnails,
                       shippingCost: 12.0));
                   // print(allCart.length);
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const screen12()));
+                  Navigator.pop(context);
                 },
                 color: const Color(0Xff9775FA),
                 child: const Text(

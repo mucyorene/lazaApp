@@ -47,54 +47,56 @@ class _MainStockState extends State<MainStock> {
                   child: Image.asset("assets/images/Bag.png")),
             )
           ]),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Column(
-              children: [
-                InformationHeader(
-                    numberOfItems: 365,
-                    itemLocation: "Available in stock",
-                    iconSort: const Icon(
-                      Icons.sort,
-                      color: Colors.black,
-                    ),
-                    iconName: "Sort"),
-                const SizedBox(
-                  height: 10.0,
+      body: Container(
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                  children: [
+                  InformationHeader(
+                  numberOfItems: 366,
+                  itemLocation: "Available in stock",
+                  iconSort: const Icon(
+                    Icons.sort,
+                    color: Colors.black,
+                  ),
+                  iconName: "Sort"),
+              Expanded(
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                  const SizedBox(
+                  height: 20,
                 ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: GridView.count(
-                physics: const BouncingScrollPhysics(),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 2,
-                childAspectRatio: 5 / 9,
-                children: <Widget>[
-                  ListView.separated(
-                      itemBuilder: (context, index) => ProductCard(
-                            product: productsList.reversed.toList()[index],
-                            addToFavorite: () {},
-                          ),
-                      separatorBuilder: (_, indexes) => const SizedBox(
-                            width: 5.0,
-                          ),
-                      itemCount: productsList.length)
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      childAspectRatio: 5 / 10),
+                  itemBuilder: (cxt, index) {
+                    // print("${products.length} this is the lenght");
+                    return InkWell(
+                      child: ProductCard(
+                          product: productsList.toList()[index],
+                          addToFavorite: () {}),
+                    );
+                  },
+                  itemCount: productsList.length,
+                )
                 ],
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
+      ],
+    ),)
     );
   }
 }
