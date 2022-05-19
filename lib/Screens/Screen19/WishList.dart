@@ -18,33 +18,6 @@ class _WishListScreenState extends State<WishListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: BottomNavigationBar(items: const [
-      //   // BottomNavigationBarItem(
-      //   //   icon: Icon(
-      //   //     Icons.home,
-      //   //     color: Colors.grey,
-      //   //   ),
-      //   //   label: 'Home',
-      //   // ),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.favorite_border_outlined,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Wishlist'),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.shopping_bag_outlined,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Cart'),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.people,
-      //         color: Colors.grey,
-      //       ),
-      //       label: 'Profile'),
-      // ]),
       appBar: AppBarCustom.appBarCustom(
           0.0,
           Colors.transparent,
@@ -92,23 +65,22 @@ class _WishListScreenState extends State<WishListScreen> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: GridView.count(
+                child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                  childAspectRatio: 5 / 9,
-                  children: <Widget>[
-                    ListView.separated(
-                        itemBuilder: (context, index) => ProductCard(
-                              product: productsList.reversed.toList()[index],
-                              addToFavorite: () {},
-                            ),
-                        separatorBuilder: (_, indexes) => const SizedBox(
-                              width: 5.0,
-                            ),
-                        itemCount: productsList.length)
-                  ],
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      childAspectRatio: 5 / 10),
+                  itemBuilder: (cxt, index) {
+                    return InkWell(
+                      child: ProductCard(
+                          product: productsList.toList()[index],
+                          addToFavorite: () {}),
+                    );
+                  },
+                  itemCount: productsList.length,
                 ),
               ),
             )

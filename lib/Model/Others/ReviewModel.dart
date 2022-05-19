@@ -1,4 +1,6 @@
-class Review {
+import 'package:flutter/cupertino.dart';
+
+class Review  {
   int id;
   String name;
   String experiences;
@@ -10,16 +12,18 @@ class Review {
       required this.name,
       required this.experiences});
 
-  factory Review.fromJson(Map<dynamic, dynamic> fromJsonCons) => Review(
-      id: fromJsonCons['id'],
-      name: fromJsonCons['name'],
-      experiences: fromJsonCons['experience']);
+  // factory Review.fromJson(Map<dynamic, dynamic> fromJsonCons) => Review(
+  //     id: fromJsonCons['id'],
+  //     name: fromJsonCons['name'],
+  //     experiences: fromJsonCons['experience']);
 
-  Map<dynamic, dynamic> mapToNet() {
-    return {id: id, name: name, experiences: experiences};
-  }
+  // Map<dynamic, dynamic> mapToNet() {
+  //   return {id: id, name: name, experiences: experiences};
+  // }
 
-  static List<Review> reviewGenerated() {
-    return [];
-  }
+  // static List<Review> reviewGenerated() { 
+    
+  //   return [];
+    
+  // }
 }

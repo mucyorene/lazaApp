@@ -1,21 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen13/AddressScreen.dart';
+import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Screens/screen12/addr.dart';
-import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
 
 import '../../Screen14/PaymentScreen.dart';
 import '../../Widgets/CustomAppBarSingle.dart';
 
 class EndDrawerNav extends StatefulWidget {
-  const EndDrawerNav({Key? key}) : super(key: key);
+  List<Cart>? cartList;
+
+  EndDrawerNav({Key? key, this.cartList}) : super(key: key);
 
   @override
   State<EndDrawerNav> createState() => _EndDrawerNavState();
 }
 
 class _EndDrawerNavState extends State<EndDrawerNav> {
+  List<Cart> listOfProductInCard = Cart.generatedCart();
+
+  addCartFunction(Cart cart) {
+    setState(() {
+      listOfProductInCard.add(cart);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -79,21 +88,33 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                 //     'assets/screen12_images/img2.png',
                 //     const Color(0XffF5F6FA),
                 //     const Color.fromRGBO(254, 254, 254, 1)),
-                InkWell(
-                    child: addressBox(
-                        'Delivery Address',
-                        'assets/screen12_images/map_img.png',
-                        'Chhatak, Sunamgonj 12/8AB',
-                        'Sylhet',
-                        'Add Address'),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => const AddressScreen()));
-                    }),
-                addressBox('Payment Method', 'assets/screen12_images/visa.png',
-                    'Visa Classic', '****2690', 'Add Method'),
+                // InkWell(
+                //     child: addressBox(
+                //         'Delivery Address',
+                //         'assets/screen12_images/map_img.png',
+                //         'Chhatak, Sunamgonj 12/8AB',
+                //         'Sylhet',
+                //         'Add Address'),
+                //     onTap: () {
+                //       Navigator.push(
+                //           context,
+                //           CupertinoPageRoute(
+                //               builder: (context) => const AddressScreen()));
+                //     }),
+                ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (ctxs, index) => addressBox(
+                        'Payment Method',
+                        'assets/screen12_images/visa.png',
+                        'Visa Classic',
+                        '****2690',
+                        'Add Method'),
+                    separatorBuilder: (_, index) => const SizedBox(
+                          height: 4,
+                        ),
+                    itemCount: widget.cartList!.length),
+                // addressBox('Payment Method', 'assets/screen12_images/visa.png',
+                //     'Visa Classic', '****2690', 'Add Method'),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   child: const Text(
