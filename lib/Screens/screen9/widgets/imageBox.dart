@@ -1,3 +1,18 @@
+// import 'package:flutter/cupertino.dart';
+
+// class ImageBox {
+//   final dynamic path;
+//   ImageBox({required this.path});
+
+//  @override
+// Widget build(BuildContext context) {
+//   return Expanded(
+//                                         child: Container(
+//                                       margin: const EdgeInsets.all(2),
+//                                       child: Image.asset(path)) );
+// }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/screen9/Model/clothesModel.dart';
 
@@ -54,7 +69,7 @@ class _ImageBoxState extends State<ImageBox> {
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(
-                width: 15,
+                width: 5,
               ),
           itemCount: widget.images.length),
     );

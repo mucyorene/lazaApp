@@ -5,6 +5,7 @@ class SubmitedValues extends StatefulWidget {
   String name;
   String comment;
   double rating;
+
   SubmitedValues(
       {required this.name,
       required this.comment,

@@ -4,31 +4,32 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Screens/Screen10/ReviewScreen.dart';
+import 'package:laza/Model/Others/ReviewModel.dart';
+import 'package:laza/Screens/Screen13/Widget/InputSingle.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen11/submited.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
 import 'package:laza/common/validator.dart';
 
+import '../../Model/Others/ReviewModel.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
-class screen11 extends StatefulWidget {
+class Screen11 extends StatefulWidget {
   Function(ReviewModel)? reviewCallback;
-  screen11({ this.reviewCallback, Key? key}) : super(key: key);
+  Screen11({ this.reviewCallback, Key? key}) : super(key: key);
 
   @override
-  State<screen11> createState() => _screen11State();
+  State<Screen11> createState() => _screen11State();
 }
 
 
 
-class _screen11State extends State<screen11> {
-  double sliderValue = 3.0;
+class _screen11State extends State<Screen11> {
+  double sliderValue = 3;
 
   TextEditingController name = TextEditingController();
   TextEditingController comment = TextEditingController();
-  // TextEditingController rating = TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -40,8 +41,16 @@ class _screen11State extends State<screen11> {
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
-            widget.reviewCallback!(ReviewModel(id: 13, name: name.text, image:"assets/images/reviewOne.png",description: comment.text ));
-
+            List<Review> reviews = Review.reviewGenerated();
+            setState(() {
+              reviews.add(Review(
+                  id: 10,
+                  name: name.text,
+                  experiences: comment.text,
+                  rating: sliderValue));
+            });
+            return Navigator.push(
+                context, CupertinoPageRoute(builder: (cxt) => ReviewScreen()));
             // return Navigator.push(
             //     context,
             //     CupertinoPageRoute(

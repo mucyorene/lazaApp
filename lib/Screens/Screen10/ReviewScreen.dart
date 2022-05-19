@@ -1,38 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:laza/Model/Others/Review.dart';
+import 'package:laza/Model/Others/ReviewModel.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
-
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
+import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:laza/Screens/screen11/screen11.dart';
-
-import '../../Model/Others/Review.dart';
 
 class ReviewScreen extends StatefulWidget {
   // String name;
   // String comment;
   // double rating;
-  // Review review;
-  const ReviewScreen(
-      {
-      //   required this.name,
-      // required this.comment,
-      // required this.rating,
-      Key? key})
-      : super(key: key);
+  //
+  // // Review review;
+  // ReviewScreen(
+  //     {required this.name,
+  //     required this.comment,
+  //     required this.rating,
+  //     Key? key})
+  //     : super(key: key);
 
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  List<ReviewModel> review = ReviewModel.generateReview();
+  List<Review> review = Review.reviewGenerated();
 
   // ReviewModel rev = [];
 
-  addReview(ReviewModel newReview) {
+  addReview(Review newReview) {
     setState(() {
-     review.add(newReview);
+      review.add(newReview);
     });
   }
 
@@ -71,10 +71,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     children: [
                       Container(
                         alignment: Alignment.centerLeft,
-                        child: const Text(
-                          "245 Reviews",
+                        child: Text(
+                          "${review.length} Reviews",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15.0),
                         ),
                       ),
@@ -83,8 +83,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const Text(
-                            '4.5',
-                            // widget.rating.toString(),
+                            "4.3",
                             style: TextStyle(),
                           ),
                           const SizedBox(
@@ -137,10 +136,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
                           style: TextStyle(fontSize: 14.0, color: Colors.white),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) =>  screen11()));
+                          // Navigator.push(
+                          //     context,
+                          //     CupertinoPageRoute(
+                          //         builder: (context) =>
+                          //             Screen11(reviewCallback: addReview)));
                         },
                         icon: const Icon(
                           Icons.open_in_new,
@@ -155,11 +155,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 child: ListView.separated(
                     shrinkWrap: true,
                     itemBuilder: (context, index) => ReviewCard(
-                        review[index].image,
+                        "assets/images/reviewOne.png",
                         review[index].name,
                         DateFormat('dd MMMM, yyyy').format(DateTime.now()),
                         "4.8",
-                        review[index].description!),
+                        review[index].experiences),
                     separatorBuilder: (_, varIndex) =>
                         const SizedBox(height: 1),
                     itemCount: review.length),
