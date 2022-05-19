@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:laza/Model/providers/review_provider.dart';
 import 'package:provider/provider.dart';
+
 class ReviewCard extends StatefulWidget {
   final String circularImage;
+
   // final String title;
   final String dates;
   final String rating;
+
   // final String content;
-  const ReviewCard(this.circularImage,  this.dates, this.rating,  {Key? key}) : super(key: key);
+  const ReviewCard(this.circularImage, this.dates, this.rating, {Key? key})
+      : super(key: key);
 
   @override
   State<ReviewCard> createState() => _ReviewCardState();
@@ -16,13 +20,11 @@ class ReviewCard extends StatefulWidget {
 class _ReviewCardState extends State<ReviewCard> {
   @override
   Widget build(BuildContext context) {
-
-  ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
+    ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
 
     return ListView.separated(
-       shrinkWrap: true,
-       itemBuilder: (context , index ) =>
-       Column(
+      shrinkWrap: true,
+      itemBuilder: (context, index) => Column(
         children: [
           const SizedBox(height: 20.0),
           Column(
@@ -45,12 +47,10 @@ class _ReviewCardState extends State<ReviewCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Consumer<ReviewNotifier>(
-                            builder: (_, notifier, __) => 
-                             Text(
+                            builder: (_, notifier, __) => Text(
                               notifier.reviewList[index].name,
                               style: const TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold),
+                                  fontSize: 15.0, fontWeight: FontWeight.bold),
                             ),
                           ),
                           Row(
@@ -62,8 +62,7 @@ class _ReviewCardState extends State<ReviewCard> {
                               Text(
                                 widget.dates,
                                 style: const TextStyle(
-                                    fontSize: 11.0,
-                                    color: Color(0xff8F959E)),
+                                    fontSize: 11.0, color: Color(0xff8F959E)),
                               ),
                             ],
                           ),
@@ -79,8 +78,7 @@ class _ReviewCardState extends State<ReviewCard> {
                           Text(
                             widget.rating,
                             style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
+                                fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(
                             width: 4,
@@ -132,19 +130,17 @@ class _ReviewCardState extends State<ReviewCard> {
           ),
           Container(
             child: Consumer<ReviewNotifier>(
-                            builder: (_, notifier, __) => 
-               Text(
+              builder: (_, notifier, __) => Text(
                 notifier.reviewList[index].experiences,
-                style: const TextStyle(color: Color(0xff8F959E), fontSize: 15.0),
+                style:
+                    const TextStyle(color: Color(0xff8F959E), fontSize: 15.0),
               ),
             ),
           )
         ],
       ),
-      separatorBuilder: (_, varIndex) =>
-                            const SizedBox(height: 1),
-                        itemCount: reviewNotifier.reviewList.length,
-      
+      separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
+      itemCount: reviewNotifier.reviewList.length,
     );
   }
 }
