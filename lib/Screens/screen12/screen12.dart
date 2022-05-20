@@ -3,10 +3,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/Others/CartModel.dart';
+import 'package:laza/Model/providers/ShoppingCartProvider.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
 import 'package:laza/Screens/screen12/addr.dart';
 import 'package:laza/Screens/screen12/box.dart';
 import 'package:laza/Screens/screen12/order.dart';
+import 'package:provider/provider.dart';
 import '../Screen13/AddressScreen.dart';
 import '../Screen14/PaymentScreen.dart';
 import '../Widgets/BottomAppBarCustom.dart';
@@ -20,10 +22,10 @@ class screen12 extends StatefulWidget {
 }
 
 class _screen12State extends State<screen12> {
-  List<Cart> cartList = Cart.generatedCart();
-
   @override
   Widget build(BuildContext context) {
+    ShoppingCart cartProvider = Provider.of<ShoppingCart>(context);
+    List<Cart> cartList = cartProvider.allInCart;
     return Scaffold(
       backgroundColor: const Color(0XffE5E5E5),
       bottomNavigationBar: BottomAppBarWidget(
@@ -55,24 +57,26 @@ class _screen12State extends State<screen12> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
-
               ListView.separated(
                 shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => Cartbox(
-                    image: cartList.toList()[index].thumbnail,
-                    bgColor: (index % 2 == 0)
-                        ? const Color.fromRGBO(254, 254, 254, 1)
-                        : const Color(0XffF5F6FA),
-                    cardColor: (index % 2 == 1)
-                        ? const Color.fromRGBO(254, 254, 254, 1)
-                        : const Color(0XffF5F6FA),
-                    title: cartList.toList()[index].name,
-                    subTitle: cartList.toList()[index].size),
+                  image: cartList.toList()[index].thumbnail,
+                  bgColor: (index % 2 == 0)
+                      ? const Color.fromRGBO(254, 254, 254, 1)
+                      : const Color(0XffF5F6FA),
+                  cardColor: (index % 2 == 1)
+                      ? const Color.fromRGBO(254, 254, 254, 1)
+                      : const Color(0XffF5F6FA),
+                  title: cartList.toList()[index].name,
+                  subTitle: cartList.toList()[index].size,
+                  productIndex: index,
+                  productPrice: cartList.toList()[index].price,
+                ),
                 separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
                 itemCount: cartList.length,
               ),
-              
+
               AddressBox(
                   actionTitle: 'Delivery Address',
                   relatedImage: 'assets/screen12_images/map_img.png',

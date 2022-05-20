@@ -16,7 +16,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => ReviewNotifier()),
       ChangeNotifierProvider(
-        create: (ctx) => Shopping_cart(),
+        create: (ctx) => ShoppingCart(),
       )
     ],
     child: const MaterialApp(

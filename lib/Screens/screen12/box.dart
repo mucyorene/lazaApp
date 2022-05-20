@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Model/providers/ShoppingCartProvider.dart';
 import 'package:laza/common/expConta.dart';
+import 'package:provider/provider.dart';
+
+import '../../Model/Others/CartModel.dart';
 
 class Cartbox extends StatefulWidget {
   final String image;
@@ -7,14 +11,17 @@ class Cartbox extends StatefulWidget {
   final Color cardColor;
   final String title;
   final String subTitle;
+  final int productIndex;
+  final double productPrice;
 
-  Cartbox(
-      {required this.image,
-      required this.bgColor,
-      required this.cardColor,
-      required this.title,
-      required this.subTitle,
-      Key? key})
+  const Cartbox({required this.image,
+    required this.bgColor,
+    required this.cardColor,
+    required this.title,
+    required this.subTitle,
+    Key? key,
+    required this.productIndex,
+    required this.productPrice})
       : super(key: key);
 
   @override
@@ -26,6 +33,7 @@ class _CartboxState extends State<Cartbox> {
 
   @override
   Widget build(BuildContext context) {
+    ShoppingCart deleteItem = Provider.of<ShoppingCart>(context);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
@@ -41,7 +49,10 @@ class _CartboxState extends State<Cartbox> {
                     color: widget.cardColor,
                     borderRadius: BorderRadius.circular(15)),
                 margin: const EdgeInsets.all(2),
-                child: Image.asset(widget.image),
+                child: Image.asset(
+                  widget.image,
+                  width: 100,
+                ),
               )),
           Expanded(
             child: Container(
@@ -71,8 +82,11 @@ class _CartboxState extends State<Cartbox> {
                     ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: const Text('\$45 (-\$4.00 Tax)',
-                          style: TextStyle(
+                      // child: const Text('\${widget.} (-\$4.00 Tax)',
+                      //     style: TextStyle(
+                      //         fontWeight: FontWeight.w300, fontSize: 11)),
+                      child: Text("\$${widget.productPrice}",
+                          style: const TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 11)),
                     ),
                     Flexible(
@@ -83,13 +97,13 @@ class _CartboxState extends State<Cartbox> {
                                 // print("Clicked");
                                 setState(() {
                                   quantity =
-                                      (quantity > 1) ? quantity - 1 : quantity;
+                                  (quantity > 1) ? quantity - 1 : quantity;
                                 });
                               },
                               icon: const Icon(Icons.arrow_circle_down)),
                           Container(
                               margin:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              const EdgeInsets.symmetric(horizontal: 10),
                               child: Text('$quantity')),
                           // const Icon(Icons.arrow_circle_up),
                           IconButton(
@@ -101,6 +115,16 @@ class _CartboxState extends State<Cartbox> {
                               },
                               icon: const Icon(Icons.arrow_circle_up)),
                           exconta(),
+                          Flexible(
+                            child: IconButton(
+                                onPressed: () {
+                                  deleteItem.deleteItem(widget.productIndex);
+                                },
+                                icon: const Icon(
+                                  Icons.delete_rounded,
+                                  size: 20,
+                                )),
+                          )
                         ],
                       ),
                     )
