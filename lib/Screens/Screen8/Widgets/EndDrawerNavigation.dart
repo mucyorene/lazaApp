@@ -114,6 +114,7 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                     subTitle: listOfProductInCard.toList()[index].size,
                     productIndex: index,
                     productPrice: listOfProductInCard.toList()[index].price,
+                    itemNumber: listOfProductInCard[index].itemNumber,
                   ),
                   separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
                   itemCount: listOfProductInCard.length,

@@ -72,6 +72,7 @@ class _screen12State extends State<screen12> {
                   subTitle: cartList.toList()[index].size,
                   productIndex: index,
                   productPrice: cartList.toList()[index].price,
+                  itemNumber: cartList[index].itemNumber,
                 ),
                 separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
                 itemCount: cartList.length,

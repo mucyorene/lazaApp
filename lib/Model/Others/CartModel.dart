@@ -8,12 +8,15 @@ class Cart {
   int productId;
   String thumbnail;
   double shippingCost;
+  int itemNumber;
 
+  // int itemNumber;
   Cart(
       {required this.id,
       required this.name,
       required this.price,
       required this.size,
+      this.itemNumber = 1,
       required this.productId,
       required this.shippingCost,
       required this.thumbnail});

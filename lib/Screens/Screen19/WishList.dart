@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:laza/Model/Others/CartModel.dart';
+import 'package:laza/Model/Others/WishModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
-import 'package:laza/Screens/Screen18/Widgets/InformationHeader.dart';
+import 'package:laza/Model/providers/ShoppingCartProvider.dart';
+import 'package:laza/Screens/Screen19/Widgets/WishListCard.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
-
-import '../Screen8/Widgets/ProductCard.dart';
+import 'package:laza/Screens/screen12/box.dart';
+import 'package:provider/provider.dart';
 
 class WishListScreen extends StatefulWidget {
   const WishListScreen({Key? key}) : super(key: key);
@@ -17,6 +20,8 @@ class _WishListScreenState extends State<WishListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ShoppingCart cartProvider = Provider.of<ShoppingCart>(context);
+    List<WishModels> wishList = [];
     return Scaffold(
       appBar: AppBarCustom.appBarCustom(
           0.0,
@@ -40,52 +45,24 @@ class _WishListScreenState extends State<WishListScreen> {
                   child: Image.asset("assets/images/Bag.png")),
             ),
           ]),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, top: 10.0),
-              child: Column(
-                children: [
-                  InformationHeader(
-                      numberOfItems: 332,
-                      itemLocation: "in wishlist",
-                      iconSort: const Icon(
-                        Icons.edit,
-                        color: Colors.black,
-                      ),
-                      iconName: "Edit"),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                ],
-              ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (context, index) => WishCard(
+              size: wishList[index].size,
+              brand: wishList[index].brand,
+              thumbnails: wishList[index].thumbnails,
+              price: wishList[index].price,
+              name: wishList[index].name,
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      childAspectRatio: 5 / 10),
-                  itemBuilder: (cxt, index) {
-                    return InkWell(
-                      child: ProductCard(
-                          product: productsList.toList()[index],
-                          addToFavorite: () {}),
-                    );
-                  },
-                  itemCount: productsList.length,
-                ),
-              ),
-            )
-          ],
-        ),
+            separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
+            itemCount: wishList.length,
+          ),
+          // order('Total', '\$120'),
+        ],
       ),
     );
   }
