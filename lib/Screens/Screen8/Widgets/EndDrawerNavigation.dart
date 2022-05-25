@@ -19,17 +19,12 @@ class EndDrawerNav extends StatefulWidget {
 }
 
 class _EndDrawerNavState extends State<EndDrawerNav> {
-  List<Cart> listOfProductInCard = Cart.generatedCart();
-
-  addCartFunction(Cart cart) {
-    setState(() {
-      listOfProductInCard.add(cart);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    Shopping_cart cartProvider = Provider.of<Shopping_cart>(context);
+    ShoppingCart cartProvider = Provider.of<ShoppingCart>(context);
+
+    List<Cart> listOfProductInCard = cartProvider.allInCart;
+
     return Drawer(
       child: Scaffold(
         backgroundColor: const Color(0XffE5E5E5),
@@ -106,18 +101,23 @@ class _EndDrawerNavState extends State<EndDrawerNav> {
                 //     }),
                 ListView.separated(
                   shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => Cartbox(
-                      image: listOfProductInCard.toList()[index].thumbnail,
-                      bgColor: (index % 2 == 0)
-                          ? const Color.fromRGBO(254, 254, 254, 1)
-                          : const Color(0XffF5F6FA),
-                      cardColor: (index % 2 == 1)
-                          ? const Color.fromRGBO(254, 254, 254, 1)
-                          : const Color(0XffF5F6FA),
-                      title: listOfProductInCard.toList()[index].name,
-                      subTitle: listOfProductInCard.toList()[index].size),
+                    image: listOfProductInCard.toList()[index].thumbnail,
+                    bgColor: (index % 2 == 0)
+                        ? const Color.fromRGBO(254, 254, 254, 1)
+                        : const Color(0XffF5F6FA),
+                    cardColor: (index % 2 == 1)
+                        ? const Color.fromRGBO(254, 254, 254, 1)
+                        : const Color(0XffF5F6FA),
+                    title: listOfProductInCard.toList()[index].name,
+                    subTitle: listOfProductInCard.toList()[index].size,
+                    productIndex: index,
+                    productPrice: listOfProductInCard.toList()[index].price,
+                    itemNumber: listOfProductInCard[index].itemNumber,
+                  ),
                   separatorBuilder: (_, varIndex) => const SizedBox(height: 1),
-                  itemCount: cartProvider.allInCart.length,
+                  itemCount: listOfProductInCard.length,
                 ),
                 // addressBox('Payment Method', 'assets/screen12_images/visa.png',
                 //     'Visa Classic', '****2690', 'Add Method'),

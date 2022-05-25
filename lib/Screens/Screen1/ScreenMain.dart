@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen1/NavigationButtons.dart';
-// import 'package:laza/Screens/Screen13/AddressScreen.dart';
 import 'package:laza/Screens/screen2/screen2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Widgets/NavigationScreens.dart';
 
 class Screen2 extends StatefulWidget {
@@ -85,11 +85,16 @@ class _Screen2State extends State<Screen2> {
                               width: 10,
                             ),
                             NavigationButtons(
-                              navigationCallBack: () => Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const NavigationScreens())),
+                              navigationCallBack: () async {
+                                SharedPreferences clothesType =
+                                    await SharedPreferences.getInstance();
+                                clothesType.setString("defaultType", "Men");
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) =>
+                                            const NavigationScreens()));
+                              },
                               height: 80.0,
                               backgroundColor: 0xff9775FA,
                               textColor: 0xffFFFFFF,

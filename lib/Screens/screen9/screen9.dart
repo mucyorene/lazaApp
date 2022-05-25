@@ -47,6 +47,7 @@ class _Screen9State extends State<Screen9> {
 
   @override
   Widget build(BuildContext context) {
+    ShoppingCart shoppingProvider = Provider.of<ShoppingCart>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
