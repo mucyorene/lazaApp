@@ -3,19 +3,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:laza/Screens/Screen1/ScreenMain.dart';
-import 'package:laza/Screens/Screen5/ForgetScreen.dart';
 
-
-class splash extends StatefulWidget {
-  const splash({Key? key}) : super(key: key);
+class Splash extends StatefulWidget {
+  const Splash({Key? key}) : super(key: key);
 
   @override
-  State<splash> createState() => _SplashState();
+  State<Splash> createState() => _SplashState();
 }
 
-class _SplashState extends State<splash> {
-  bool _isvisible = false;
-
+class _SplashState extends State<Splash> {
   _SplashState() {
     // ignore: unnecessary_new
     new Timer(const Duration(milliseconds: 3000), () {

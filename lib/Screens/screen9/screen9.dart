@@ -47,12 +47,12 @@ class _Screen9State extends State<Screen9> {
 
   @override
   Widget build(BuildContext context) {
+    ShoppingCart shoppingProvider = Provider.of<ShoppingCart>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: NestedScrollView(
         floatHeaderSlivers: true,
-        headerSliverBuilder: (context, innerBoxIsScrolled) =>
-        [
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
           CustomAppBar(
             imagePath: selectedImage == null
                 ? product.thumbnails
@@ -107,9 +107,7 @@ class _Screen9State extends State<Screen9> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  Shopping_cart shoppingProvider =
-                  Provider.of<Shopping_cart>(context);
-                  shoppingProvider.allInCart.add(Cart(
+                  shoppingProvider.addToCart(Cart(
                       id: 1,
                       name: product.name,
                       price: product.price,
