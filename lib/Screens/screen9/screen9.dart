@@ -107,8 +107,6 @@ class _Screen9State extends State<Screen9> {
             child: RaisedButton(
                 elevation: 0,
                 onPressed: () {
-                  ShoppingCart shoppingProvider =
-                      Provider.of<ShoppingCart>(context);
                   shoppingProvider.addToCart(Cart(
                       id: 1,
                       name: product.name,
