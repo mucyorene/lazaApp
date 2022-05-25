@@ -8,9 +8,13 @@ class ReviewCard extends StatefulWidget {
   // final String title;
   final String dates;
   final String rating;
+  final String reviewerName;
+  final String comment;
 
   // final String content;
-  const ReviewCard(this.circularImage, this.dates, this.rating, {Key? key})
+  const ReviewCard(this.circularImage, this.reviewerName, this.comment,
+      this.dates, this.rating,
+      {Key? key})
       : super(key: key);
 
   @override
@@ -23,6 +27,7 @@ class _ReviewCardState extends State<ReviewCard> {
     ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
 
     return ListView.separated(
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) => Column(
         children: [

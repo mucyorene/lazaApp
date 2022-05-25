@@ -160,7 +160,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                         padding: EdgeInsets.all(10.0),
                         child: Text("There's no review yet"),
                       )
-                      : ReviewCard("assets/images/reviewOne.png", DateFormat('dd MMM, yyyy').format(DateTime.now()), '4.2')
+                      : ReviewCard("assets/images/reviewOne.png", 'my name','no comment',DateFormat('dd MMM, yyyy').format(DateTime.now()), '4.2')
                     // : ListView.separated(
                     //     shrinkWrap: true,
                     //     itemBuilder: (context, index) => ReviewCard(
