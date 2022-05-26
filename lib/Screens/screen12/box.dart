@@ -13,16 +13,15 @@ class Cartbox extends StatefulWidget {
   final double productPrice;
   int itemNumber;
 
-  Cartbox(
-      {required this.image,
-      required this.bgColor,
-      required this.cardColor,
-      required this.title,
-      required this.subTitle,
-      required this.itemNumber,
-      Key? key,
-      required this.productIndex,
-      required this.productPrice})
+  Cartbox({required this.image,
+    required this.bgColor,
+    required this.cardColor,
+    required this.title,
+    required this.subTitle,
+    required this.itemNumber,
+    Key? key,
+    required this.productIndex,
+    required this.productPrice})
       : super(key: key);
 
   @override
@@ -87,7 +86,8 @@ class _CartboxState extends State<Cartbox> {
                       //     style: TextStyle(
                       //         fontWeight: FontWeight.w300, fontSize: 11)),
                       child: Text(
-                          "\$${shoppingCartProvider.summation(widget.productIndex)} (-\$4.0 Tax)",
+                          "\$${(widget.productPrice *
+                              widget.itemNumber)} (-\$4.0 Tax)",
                           style: const TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 11)),
                     ),
@@ -99,13 +99,13 @@ class _CartboxState extends State<Cartbox> {
                                 // print("Clicked");
                                 widget.itemNumber > 1
                                     ? shoppingCartProvider.decrementItemNumber(
-                                        widget.productIndex)
+                                    widget.productIndex)
                                     : widget.itemNumber;
                               },
                               icon: const Icon(Icons.arrow_circle_down)),
                           Container(
                               margin:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              const EdgeInsets.symmetric(horizontal: 10),
                               child: Text('${widget.itemNumber}')),
                           // const Icon(Icons.arrow_circle_up),
                           IconButton(

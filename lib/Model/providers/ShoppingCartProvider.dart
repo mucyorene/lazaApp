@@ -19,7 +19,6 @@ class ShoppingCart extends ChangeNotifier {
   double summation(int index) {
     double totalItemPrice =
         _cartList[index].price * _cartList[index].itemNumber;
-    notifyListeners();
     return totalItemPrice;
   }
 
