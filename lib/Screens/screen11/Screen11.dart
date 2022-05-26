@@ -39,7 +39,7 @@ class _Screen11State extends State<Screen11> {
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
-            reviewNotifier.addReview(Review(id: 1, name: name.text, experiences: comment.text));
+            reviewNotifier.addReview(Review(id: 1, name: name.text, rating:sliderValue ,experiences: comment.text));
             // widget.addReviewButton!(
             //     Review(id: 10, name: name.text, experiences: comment.text));
             Navigator.pop(context);

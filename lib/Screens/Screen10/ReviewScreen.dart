@@ -15,26 +15,20 @@ class ReviewScreen extends StatefulWidget {
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  // List<Review> reviews = Review.reviewGenerated();
-
-  // addReview(Review review) {
-  //   setState(() {
-  //     reviews.add(review);
-  //   });
-  // }
-
-  // ReviewModel rev = [];
-
-  // addReview(Review newReview) {
-  //   setState(() {
-  //     review.add(newReview);
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-
     ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
+
+    averageRating() {
+      // List<Review> reviews = ReviewNotifier().reviewList;
+      double sum = 0;
+      for (var index = 0; index < reviewNotifier.reviewList.length; index++) {
+        sum = sum + reviewNotifier.reviewList[index].rating;
+      }
+      var average = sum / reviewNotifier.reviewList.length;
+      // print(reviews);
+      return average;
+    }
 
     return Scaffold(
         appBar: AppBarCustom.appBarCustom(
@@ -70,10 +64,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
                       children: [
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(
-                            "5 Reviews",
+                          child: Text(
+                            "${reviewNotifier.reviewList.length} Reviews",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 15.0),
                           ),
                         ),
@@ -81,9 +75,9 @@ class _ReviewScreenState extends State<ReviewScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const Text(
-                              "4.3",
-                              style: TextStyle(),
+                            Text(
+                              averageRating().toStringAsFixed(2),
+                              style: const TextStyle(),
                             ),
                             const SizedBox(
                               width: 8,
@@ -141,8 +135,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                             Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (ctxs) => Screen11(
-                                        )));
+                                    builder: (ctxs) => Screen11()));
                           },
                           icon: const Icon(
                             Icons.open_in_new,
@@ -155,25 +148,29 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 ],
               ),
               Flexible(
-                child: reviewNotifier.reviewList.isEmpty
-                    ? const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("There's no review yet"),
-                      )
-                      : ReviewCard("assets/images/reviewOne.png", 'my name','no comment',DateFormat('dd MMM, yyyy').format(DateTime.now()), '4.2')
-                    // : ListView.separated(
-                    //     shrinkWrap: true,
-                    //     itemBuilder: (context, index) => ReviewCard(
-                    //         "assets/images/reviewOne.png",
-                    //         // '${notifier}'
-                    //         // reviews[index].name,
-                    //         DateFormat('dd MMM, yyyy').format(DateTime.now()),
-                    //         "4.8",
-                    //         reviews[index].experiences),
-                    //     separatorBuilder: (_, varIndex) =>
-                    //         const SizedBox(height: 1),
-                    //     itemCount: reviewNotifier.reviewList.length,
-              ),
+                  child: reviewNotifier.reviewList.isEmpty
+                      ? const Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text("There's no review yet"),
+                        )
+                      : ReviewCard(
+                          "assets/images/reviewOne.png",
+                          'my name',
+                          'no comment',
+                          DateFormat('dd MMM, yyyy').format(DateTime.now()))
+                  // : ListView.separated(
+                  //     shrinkWrap: true,
+                  //     itemBuilder: (context, index) => ReviewCard(
+                  //         "assets/images/reviewOne.png",
+                  //         // '${notifier}'
+                  //         // reviews[index].name,
+                  //         DateFormat('dd MMM, yyyy').format(DateTime.now()),
+                  //         "4.8",
+                  //         reviews[index].experiences),
+                  //     separatorBuilder: (_, varIndex) =>
+                  //         const SizedBox(height: 1),
+                  //     itemCount: reviewNotifier.reviewList.length,
+                  ),
             ],
           ),
         ));
