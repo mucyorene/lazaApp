@@ -7,13 +7,13 @@ class ReviewCard extends StatefulWidget {
 
   // final String title;
   final String dates;
-  final String rating;
+  // final String rating;
   final String reviewerName;
   final String comment;
 
   // final String content;
-  const ReviewCard(this.circularImage, this.reviewerName, this.comment,
-      this.dates, this.rating,
+  const ReviewCard(
+      this.circularImage, this.reviewerName, this.comment, this.dates,
       {Key? key})
       : super(key: key);
 
@@ -75,57 +75,57 @@ class _ReviewCardState extends State<ReviewCard> {
                       ),
                     ),
                   ),
-                  Container(
-                    child: Column(children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            widget.rating,
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          const Text(
-                            "rating",
-                            style: TextStyle(
-                                fontSize: 11, color: Color(0xff8F959E)),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 11,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 11,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 11,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 11,
-                          ),
-                          Icon(
-                            Icons.star_outline,
-                            color: Colors.grey,
-                            size: 11,
-                          )
-                        ],
-                      )
-                    ]),
-                  ),
+                  Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          reviewNotifier.reviewList[index].rating
+                              .toStringAsFixed(2),
+                          // widget.rating,
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        const Text(
+                          "rating",
+                          style:
+                              TextStyle(fontSize: 11, color: Color(0xff8F959E)),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 11,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 11,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 11,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 11,
+                        ),
+                        Icon(
+                          Icons.star_outline,
+                          color: Colors.grey,
+                          size: 11,
+                        )
+                      ],
+                    )
+                  ]),
                 ],
               ),
             ],
