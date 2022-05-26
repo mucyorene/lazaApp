@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/Others/WishModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
-import 'package:laza/Model/providers/ShoppingCartProvider.dart';
+import 'package:laza/Model/providers/Other_controllers.dart';
 import 'package:laza/Screens/Screen19/Widgets/WishListCard.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
-import 'package:laza/Screens/screen12/box.dart';
 import 'package:provider/provider.dart';
 
 class WishListScreen extends StatefulWidget {
@@ -20,8 +18,9 @@ class _WishListScreenState extends State<WishListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ShoppingCart cartProvider = Provider.of<ShoppingCart>(context);
-    List<WishModels> wishList = [];
+    ProviderController wishListProvider =
+        Provider.of<ProviderController>(context);
+    List<Product> wishList = wishListProvider.wishList;
     return Scaffold(
       appBar: AppBarCustom.appBarCustom(
           0.0,
@@ -29,9 +28,7 @@ class _WishListScreenState extends State<WishListScreen> {
           true,
           50.0,
           40.0,
-          const BackButton(
-            color: Colors.black,
-          ),
+          null,
           const Text(
             "Wishlist",
             style: TextStyle(color: Colors.black, fontSize: 17.0),

@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
-import '../../screen9/screen9.dart';
+import 'package:laza/Model/providers/Other_controllers.dart';
+import 'package:laza/Screens/screen9/screen9.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
-  VoidCallback addToFavorite;
   Product product;
 
   ProductCard({
     Key? key,
     required this.product,
-    required this.addToFavorite,
   }) : super(key: key);
 
   @override
@@ -20,6 +20,9 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+    ProviderController providerController =
+        Provider.of<ProviderController>(context);
+    List<Product> productList = providerController.wishList;
     return Column(
       children: [
         Container(
@@ -50,8 +53,20 @@ class _ProductCardState extends State<ProductCard> {
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(
                       color: Colors.grey,
-                      onPressed: widget.addToFavorite,
-                      icon: const Icon(Icons.favorite_border_outlined),
+                      onPressed: () {
+                        print("Add to Wish List clicked");
+                        productList[widget.product.id].name ==
+                                widget.product.name
+                            ? print("This product already exists")
+                            : providerController.addToWishList(widget.product);
+                      },
+                      icon: productList[widget.product.id].name ==
+                              widget.product.name
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            )
+                          : const Icon(Icons.favorite_border_outlined),
                     ),
                   )),
             ],
