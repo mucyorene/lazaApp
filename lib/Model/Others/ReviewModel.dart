@@ -4,10 +4,10 @@ class Review  {
   int id;
   String name;
   String experiences;
-  double? rating;
+  double rating;
 
   Review(
-      {this.rating,
+      {required this.rating,
       required this.id,
       required this.name,
       required this.experiences});

@@ -3,9 +3,11 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
 import 'package:laza/Model/providers/ShoppingCartProvider.dart';
+import 'package:laza/Model/providers/review_provider.dart';
 import 'package:laza/Screens/screen9/widgets/app_bar.dart';
 import 'package:laza/Screens/screen9/widgets/description_body.dart';
 import 'package:laza/Screens/screen9/widgets/description_title.dart';
@@ -47,6 +49,7 @@ class _Screen9State extends State<Screen9> {
 
   @override
   Widget build(BuildContext context) {
+    ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
     ShoppingCart shoppingProvider = Provider.of<ShoppingCart>(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -86,7 +89,19 @@ class _Screen9State extends State<Screen9> {
                             DescriptionTitle(),
                             Description(description: "${product.descriptions}"),
                             const ReviewTitle(),
-                            Reviews(),
+                            Container(
+                              child: reviewNotifier.reviewList.isEmpty
+                                  ? const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Text(" "),
+                                    )
+                                  : ProductReview(
+                                      "assets/images/reviewOne.png",
+                                      'my name',
+                                      'no comment',
+                                      DateFormat('dd MMM, yyyy')
+                                          .format(DateTime.now())),
+                            ),
                             TotalPrice(price: product.price.toString())
                           ],
                         ),
