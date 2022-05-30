@@ -28,12 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   List<Cart> cartLists = [];
 
-  addToCart(Cart cart) {
-    setState(() {
-      cartLists.add(cart);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +124,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             // print("${products.length} this is the lenght");
                             return InkWell(
                               child: ProductCard(
-                                  product: products.toList()[index],
-                                  addToFavorite: () {}),
+                                product: products.toList()[index],
+                              ),
                             );
                           },
                           itemCount: products.length,
