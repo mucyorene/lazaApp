@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:laza/Model/Others/Review.dart';
-import 'package:laza/Model/Others/ReviewModel.dart';
 import 'package:laza/Model/providers/review_provider.dart';
 import 'package:laza/Screens/Screen10/Widgets/ReviewCard.dart';
 import 'package:laza/Screens/Widgets/CustomAppBarSingle.dart';
@@ -10,6 +8,7 @@ import 'package:laza/Screens/screen11/Screen11.dart';
 import 'package:provider/provider.dart';
 
 class ReviewScreen extends StatefulWidget {
+
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
 }
@@ -135,7 +134,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                             Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                    builder: (ctxs) => Screen11()));
+                                    builder: (ctxs) => const Screen11()));
                           },
                           icon: const Icon(
                             Icons.open_in_new,
