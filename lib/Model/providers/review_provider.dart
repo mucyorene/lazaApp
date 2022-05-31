@@ -15,4 +15,18 @@ class ReviewNotifier extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  delereReview(index) {
+    _reviewList
+        .removeWhere((_review) => _review.name == reviewList[index].name);
+
+    notifyListeners();
+  }
+
+  updateReview(index, Review review) {
+    _reviewList[index] = review;
+
+    // _reviewList.updateR
+    notifyListeners();
+  }
 }

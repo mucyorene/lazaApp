@@ -93,7 +93,7 @@ class _Screen9State extends State<Screen9> {
                               child: reviewNotifier.reviewList.isEmpty
                                   ? const Padding(
                                       padding: EdgeInsets.all(10.0),
-                                      child: Text(" "),
+                                      child: Text("no review "),
                                     )
                                   : ProductReview(
                                       "assets/images/reviewOne.png",

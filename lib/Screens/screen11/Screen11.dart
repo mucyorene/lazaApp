@@ -1,21 +1,18 @@
 // ignore_for_file: unnecessary_const, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:laza/Model/Others/Review.dart';
 import 'package:laza/Model/Others/ReviewModel.dart';
 import 'package:laza/Model/providers/review_provider.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/screen17/navigation_drawer.dart';
-import 'package:laza/Screens/screen9/widgets/review.dart' as review_classes;
 import 'package:laza/common/validator.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/CustomAppBarSingle.dart';
 
 // ignore: camel_case_types
 class Screen11 extends StatefulWidget {
-  // Function(Review)? addReviewButton;
-
-  Screen11({Key? key}) : super(key: key);
+  final Review? review;
+  const Screen11({this.review, Key? key}) : super(key: key);
 
   @override
   State<Screen11> createState() => _Screen11State();
@@ -23,6 +20,7 @@ class Screen11 extends StatefulWidget {
 
 class _Screen11State extends State<Screen11> {
   double sliderValue = 3;
+  // int index = widget.review.i
 
   TextEditingController name = TextEditingController();
   TextEditingController comment = TextEditingController();
@@ -35,11 +33,24 @@ class _Screen11State extends State<Screen11> {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomAppBarWidget(
-        buttonTextValue: 'Submit Review',
+        buttonTextValue:
+            widget.review == null ? 'Submit Review' : 'Submit to update',
         buttonBackgroundColor: 0Xff9775FA,
         validationCallBack: () {
           if (_formKey.currentState!.validate()) {
-            reviewNotifier.addReview(Review(id: 1, name: name.text, rating:sliderValue ,experiences: comment.text));
+            widget.review == null
+                ? reviewNotifier.addReview(Review(
+                    rating: sliderValue,
+                    id: 1,
+                    name: name.text,
+                    experiences: comment.text))
+                : reviewNotifier.updateReview(
+                    reviewNotifier.reviewList.indexOf(widget.review),
+                    Review(
+                        rating: sliderValue,
+                        id: 1,
+                        name: name.text,
+                        experiences: comment.text));
             // widget.addReviewButton!(
             //     Review(id: 10, name: name.text, experiences: comment.text));
             Navigator.pop(context);
@@ -91,10 +102,15 @@ class _Screen11State extends State<Screen11> {
                     style: const TextStyle(
                         fontSize: 17, fontWeight: FontWeight.bold),
                     cursorColor: const Color(0XffF5F6FA),
-                    decoration: const InputDecoration(
+                    // initialValue: (widget.review?.name == null)
+                    //     ? ''
+                    //     : '${widget.review?.name}',
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Type your name',
-                      hintStyle: TextStyle(
+                      hintText: widget.review?.name == null
+                          ? ' your name'
+                          : '${widget.review?.name}',
+                      hintStyle: const TextStyle(
                         color: Colors.grey, // <-- Change this
                         fontSize: null,
                         fontWeight: FontWeight.w400,
@@ -129,10 +145,12 @@ class _Screen11State extends State<Screen11> {
                     style: const TextStyle(
                         fontSize: 17, fontWeight: FontWeight.bold),
                     cursorColor: const Color(0XffF5F6FA),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Describe your experience',
-                      hintStyle: TextStyle(
+                      hintText: widget.review?.experiences == null
+                          ? 'Describe your experience'
+                          : '${widget.review?.experiences}',
+                      hintStyle: const TextStyle(
                         color: Colors.grey, // <-- Change this
                         fontSize: null,
                         fontWeight: FontWeight.w400,

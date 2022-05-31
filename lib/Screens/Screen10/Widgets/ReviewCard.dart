@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/providers/review_provider.dart';
+import 'package:laza/Screens/screen11/Screen11.dart';
+import 'package:laza/common/expConta.dart';
 import 'package:provider/provider.dart';
 
 class ReviewCard extends StatefulWidget {
@@ -36,12 +39,10 @@ class _ReviewCardState extends State<ReviewCard> {
             children: [
               Row(
                 children: [
-                  Container(
-                    child: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: AssetImage(widget.circularImage),
-                      backgroundColor: const Color(0xffCCD9E0),
-                    ),
+                  CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: AssetImage(widget.circularImage),
+                    backgroundColor: const Color(0xffCCD9E0),
                   ),
                   const SizedBox(
                     width: 10.0,
@@ -133,15 +134,35 @@ class _ReviewCardState extends State<ReviewCard> {
           const SizedBox(
             height: 20.0,
           ),
-          Container(
-            child: Consumer<ReviewNotifier>(
-              builder: (_, notifier, __) => Text(
-                notifier.reviewList[index].experiences,
-                style:
-                    const TextStyle(color: Color(0xff8F959E), fontSize: 15.0),
-              ),
+          Consumer<ReviewNotifier>(
+            builder: (_, notifier, __) => Text(
+              notifier.reviewList[index].experiences,
+              style: const TextStyle(color: Color(0xff8F959E), fontSize: 15.0),
             ),
-          )
+          ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => Screen11(
+                              review: reviewNotifier.reviewList[index],
+                            ))),
+                icon: const Icon(Icons.edit_note_outlined),
+                color: Colors.orange,
+              ),
+              exconta(),
+              Consumer<ReviewNotifier>(
+                builder: (_, notifier, __) => IconButton(
+                    onPressed: () => notifier.delereReview(index),
+                    icon: const Icon(
+                      Icons.delete_outline,
+                    ),
+                    color: Colors.yellow),
+              ),
+            ],
+          ),
         ],
       ),
       separatorBuilder: (_, varIndex) => const SizedBox(height: 1),

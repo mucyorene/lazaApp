@@ -137,7 +137,7 @@ class ProductReview extends StatefulWidget {
 class _ProductReviewState extends State<ProductReview> {
   @override
   Widget build(BuildContext context) {
-    ReviewNotifier reviewNotifier = Provider.of<ReviewNotifier>(context);
+    ReviewNotifier? reviewNotifier = Provider.of<ReviewNotifier>(context);
 
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
@@ -165,8 +165,8 @@ class _ProductReviewState extends State<ProductReview> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Consumer<ReviewNotifier>(
-                            builder: (_, notifier, __) => Text(
-                              notifier.reviewList.last.name,
+                            builder: (_, notifier, __) => Text(notifier.reviewList.isNotEmpty?
+                              notifier.reviewList.last.name :'' ,
                               style: const TextStyle(
                                   fontSize: 15.0, fontWeight: FontWeight.bold),
                             ),
@@ -192,9 +192,9 @@ class _ProductReviewState extends State<ProductReview> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
+                        Text(reviewNotifier.reviewList.isNotEmpty?
                           reviewNotifier.reviewList.last.rating
-                              .toStringAsFixed(2),
+                              .toStringAsFixed(2): '' ,
                           // widget.rating,
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
@@ -248,8 +248,8 @@ class _ProductReviewState extends State<ProductReview> {
           ),
           Container(
             child: Consumer<ReviewNotifier>(
-              builder: (_, notifier, __) => Text(
-                notifier.reviewList.last.experiences,
+              builder: (_, notifier, __) => Text( notifier.reviewList.isNotEmpty?
+                notifier.reviewList.last.experiences: '',
                 style:
                     const TextStyle(color: Color(0xff8F959E), fontSize: 15.0),
               ),
