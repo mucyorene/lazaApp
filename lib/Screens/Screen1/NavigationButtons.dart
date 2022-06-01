@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Widgets/NavigationScreens.dart';
 
 class NavigationButtons extends StatefulWidget {
   VoidCallback navigationCallBack;
@@ -9,13 +8,12 @@ class NavigationButtons extends StatefulWidget {
   int textColor;
   String buttonString;
 
-  NavigationButtons(
-      {required this.navigationCallBack,
-      required this.height,
-      required this.buttonString,
-      required this.backgroundColor,
-      required this.textColor,
-      Key? key})
+  NavigationButtons({required this.navigationCallBack,
+    required this.height,
+    required this.buttonString,
+    required this.backgroundColor,
+    required this.textColor,
+    Key? key})
       : super(key: key);
 
   @override
