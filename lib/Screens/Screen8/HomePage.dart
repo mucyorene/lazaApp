@@ -125,6 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             return InkWell(
                               child: ProductCard(
                                 product: products.toList()[index],
+                                productIndex: index,
                               ),
                             );
                           },

@@ -84,6 +84,7 @@ class _MainStockState extends State<MainStock> {
                               return InkWell(
                                 child: ProductCard(
                                   product: productsList.toList()[index],
+                                  productIndex: index,
                                 ),
                               );
                             },

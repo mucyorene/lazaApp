@@ -63,7 +63,7 @@ class Product {
       Product(
         id: 2,
         name: 'Product Two',
-        price: 120.0,
+        price: 25.0,
         size: 'M',
         descriptions: 'Description',
         brand: 'Adidas',

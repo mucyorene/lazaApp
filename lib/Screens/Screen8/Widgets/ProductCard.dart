@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
-import 'package:laza/Model/providers/Other_controllers.dart';
+import 'package:laza/Model/providers/ShoppingCartProvider.dart';
 import 'package:laza/Screens/screen9/screen9.dart';
 import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
   Product product;
+  int productIndex;
 
-  ProductCard({
-    Key? key,
-    required this.product,
-  }) : super(key: key);
+  ProductCard({Key? key, required this.product, required this.productIndex})
+      : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -20,9 +19,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    ProviderController providerController =
-        Provider.of<ProviderController>(context);
-    List<Product> productList = providerController.wishList;
+    ShoppingCart shoppingCart = Provider.of<ShoppingCart>(context);
     return Column(
       children: [
         Container(
@@ -48,25 +45,34 @@ class _ProductCardState extends State<ProductCard> {
               ),
               Positioned(
                   top: -15.0,
-                  left: 85.0,
+                  left: 110.0,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(
                       color: Colors.grey,
                       onPressed: () {
-                        print("Add to Wish List clicked");
-                        productList[widget.product.id].name ==
-                                widget.product.name
-                            ? print("This product already exists")
-                            : providerController.addToWishList(widget.product);
+                        if (widget.productIndex != 0) {
+                          print(
+                              "Add to Wish List clicked ${widget.productIndex}");
+
+                          shoppingCart.wishList[widget.productIndex].name ==
+                                  widget.product.name
+                              ? null
+                              : shoppingCart.addToWishList(widget.product);
+                        }
                       },
-                      icon: productList[widget.product.id].name ==
-                              widget.product.name
-                          ? const Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            )
-                          : const Icon(Icons.favorite_border_outlined),
+                      icon: const Icon(
+                        Icons.favorite_border_outlined,
+                        color: Colors.red,
+                      ),
+                      // icon: shoppingCart
+                      //             .wishList[widget.productIndex != 0
+                      //                 ? widget.productIndex
+                      //                 : widget.productIndex++]
+                      //             .name ==
+                      //         widget.product.name
+                      //     ? const Icon(Icons.favorite)
+                      //     : const Icon(Icons.favorite_border_outlined),
                     ),
                   )),
             ],
