@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
 
@@ -9,6 +10,23 @@ class ShoppingCart extends ChangeNotifier {
   int get itemLenth => _cartList.length;
 
   List<Product> get wishList => _wishList;
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
+  GoogleSignInAccount? _loggedUser;
+
+  GoogleSignInAccount? get user => _loggedUser;
+
+  Future googleLogin() async {
+    final singedUser = await _googleSignIn.signIn();
+    if (singedUser == null) return;
+    _loggedUser = singedUser;
+    notifyListeners();
+  }
+
+  Future googleLogout() async {
+    await _googleSignIn.signOut();
+    notifyListeners();
+  }
 
   void incrementItem(indexIncrement) {
     _cartList[indexIncrement].itemNumber++;

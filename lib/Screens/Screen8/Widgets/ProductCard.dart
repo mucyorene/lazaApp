@@ -34,7 +34,8 @@ class _ProductCardState extends State<ProductCard> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => Screen9(
+                          builder: (context) =>
+                              Screen9(
                                 pro: widget.product,
                               )));
                 },
@@ -43,38 +44,41 @@ class _ProductCardState extends State<ProductCard> {
                   fit: BoxFit.cover,
                 ),
               ),
-              Positioned(
-                  top: -15.0,
-                  left: 110.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                      color: Colors.grey,
-                      onPressed: () {
-                        if (widget.productIndex != 0) {
-                          print(
-                              "Add to Wish List clicked ${widget.productIndex}");
+              Flexible(
+                child: Positioned(
+                    top: -15.0,
+                    left: 110.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        color: Colors.grey,
+                        onPressed: () {
+                          if (widget.productIndex != 0) {
+                            print(
+                                "Add to Wish List clicked ${widget
+                                    .productIndex}");
 
-                          shoppingCart.wishList[widget.productIndex].name ==
-                                  widget.product.name
-                              ? null
-                              : shoppingCart.addToWishList(widget.product);
-                        }
-                      },
-                      icon: const Icon(
-                        Icons.favorite_border_outlined,
-                        color: Colors.red,
+                            shoppingCart.wishList[widget.productIndex].name ==
+                                widget.product.name
+                                ? null
+                                : shoppingCart.addToWishList(widget.product);
+                          }
+                        },
+                        icon: const Icon(
+                          Icons.favorite_border_outlined,
+                          color: Colors.red,
+                        ),
+                        // icon: shoppingCart
+                        //             .wishList[widget.productIndex != 0
+                        //                 ? widget.productIndex
+                        //                 : widget.productIndex++]
+                        //             .name ==
+                        //         widget.product.name
+                        //     ? const Icon(Icons.favorite)
+                        //     : const Icon(Icons.favorite_border_outlined),
                       ),
-                      // icon: shoppingCart
-                      //             .wishList[widget.productIndex != 0
-                      //                 ? widget.productIndex
-                      //                 : widget.productIndex++]
-                      //             .name ==
-                      //         widget.product.name
-                      //     ? const Icon(Icons.favorite)
-                      //     : const Icon(Icons.favorite_border_outlined),
-                    ),
-                  )),
+                    )),
+              ),
             ],
           ),
         ),

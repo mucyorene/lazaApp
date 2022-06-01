@@ -4,15 +4,20 @@ class SocialMediaButtons extends StatelessWidget {
   final Color buttonColor;
   final IconData? mediaIcon;
   final String media;
+  Function()? mediaHouse;
 
-  const SocialMediaButtons({required this.buttonColor,required this.mediaIcon,required this.media
-  ,Key? key})
+  SocialMediaButtons(
+      {this.mediaHouse,
+      required this.buttonColor,
+      required this.mediaIcon,
+      required this.media,
+      Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: buttonColor,
       ),
@@ -20,14 +25,14 @@ class SocialMediaButtons extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
       width: double.infinity,
       child: RaisedButton.icon(
-        onPressed: () {},
-        icon:  Icon(
+        onPressed: mediaHouse,
+        icon: Icon(
           mediaIcon,
           color: Colors.white,
         ),
-        label:  Text(
+        label: Text(
           media,
-          style: TextStyle(fontSize: 17),
+          style: const TextStyle(fontSize: 17, color: Colors.white),
         ),
         textColor: Colors.white,
         color: buttonColor,

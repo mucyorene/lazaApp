@@ -111,7 +111,7 @@ class _Screen2State extends State<Screen2> {
                                 context,
                                 CupertinoPageRoute(
                                     builder: (context) =>
-                                        const SignInScreen()));
+                                        SignInScreen()));
                           },
                           child: const Text(
                             "Skip",

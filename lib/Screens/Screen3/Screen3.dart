@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laza/Screens/Screen8/HomePage.dart';
 import 'package:laza/Screens/Widgets/BottomAppBarCustom.dart';
 import 'package:laza/Screens/Widgets/NavigationScreens.dart';
 import 'package:laza/common/validator.dart';
@@ -59,7 +58,6 @@ class _Screen3State extends State<Screen3> {
         buttonBackgroundColor: 0Xff9775FA,
         buttonTextValue: 'Sign up',
       ),
-      
       appBar: AppBar(
         backgroundColor: const Color(0xffFFFFFF),
         elevation: 0,
