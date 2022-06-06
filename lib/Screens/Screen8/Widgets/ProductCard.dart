@@ -34,7 +34,8 @@ class _ProductCardState extends State<ProductCard> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => Screen9(
+                          builder: (context) =>
+                              Screen9(
                                 pro: widget.product,
                               )));
                 },
@@ -53,10 +54,11 @@ class _ProductCardState extends State<ProductCard> {
                       onPressed: () {
                         if (widget.productIndex != 0) {
                           print(
-                              "Add to Wish List clicked ${widget.productIndex}");
+                              "Add to Wish List clicked ${widget
+                                  .productIndex}");
 
                           shoppingCart.wishList[widget.productIndex].name ==
-                                  widget.product.name
+                              widget.product.name
                               ? null
                               : shoppingCart.addToWishList(widget.product);
                         }
