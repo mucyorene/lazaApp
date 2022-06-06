@@ -19,8 +19,6 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
-
   @override
   Widget build(BuildContext context) {
     // GoogleSignInAccount? loggedUser = _googleSignIn.currentUser;
@@ -58,14 +56,18 @@ class _SignInScreenState extends State<SignInScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 )),
             SocialMediaButtons(
-                buttonColor: const Color(0Xff4267B2),
-                mediaIcon: FontAwesomeIcons.facebookF,
-                media: 'Facebook'),
+              buttonColor: const Color(0Xff4267B2),
+              mediaIcon: FontAwesomeIcons.facebookF,
+              media: 'Facebook',
+              mediaHouse: () {
+                print("Facebook Clicked");
+                _shoppingProvider.facebookLogin();
+              },
+            ),
             SocialMediaButtons(
               buttonColor: const Color(0Xff1DA1F2),
               mediaIcon: FontAwesomeIcons.twitter,
-              media:
-                  'Tweeter ${_shoppingProvider.user == null ? '' : 'Sign out'}',
+              media: 'Tweeter',
               mediaHouse: () {
                 _shoppingProvider.googleLogout();
               },
@@ -73,11 +75,20 @@ class _SignInScreenState extends State<SignInScreen> {
             SocialMediaButtons(
               buttonColor: const Color(0XfFEA4335),
               mediaIcon: FontAwesomeIcons.google,
-              media: 'Google',
+              media:
+                  'Google ${_shoppingProvider.user == null ? '' : 'Sign out'}',
               mediaHouse: () {
                 _shoppingProvider.googleLogin();
               },
             ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     _shoppingProvider.facebookLogout();
+            //   },
+            //   child: Text(_shoppingProvider.fbLoggedUser == null
+            //       ? "Sign in Facebook"
+            //       : "Sign out FB"),
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

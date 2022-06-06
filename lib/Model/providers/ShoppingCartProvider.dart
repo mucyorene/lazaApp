@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:laza/Model/Others/CartModel.dart';
 import 'package:laza/Model/ProductModel/Product.dart';
@@ -8,10 +9,13 @@ class ShoppingCart extends ChangeNotifier {
   final List<Product> _wishList = [];
 
   int get itemLenth => _cartList.length;
+  Map? _facebookUserData;
 
   List<Product> get wishList => _wishList;
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
+  get fbLoggedUser => _facebookUserData;
+
+  final _googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _loggedUser;
 
   GoogleSignInAccount? get user => _loggedUser;
@@ -25,6 +29,23 @@ class ShoppingCart extends ChangeNotifier {
 
   Future googleLogout() async {
     await _googleSignIn.signOut();
+    _loggedUser = null;
+    notifyListeners();
+  }
+
+  Future facebookLogin() async {
+    final results =
+    await FacebookAuth.i.login(permissions: ["public_profile", "email"]);
+    if (results.status == LoginStatus.success) {
+      final userData = await FacebookAuth.i.getUserData(fields: "email, name");
+      _facebookUserData = userData;
+      notifyListeners();
+    }
+  }
+
+  Future facebookLogout() async {
+    await FacebookAuth.i.logOut();
+    _facebookUserData = null;
     notifyListeners();
   }
 

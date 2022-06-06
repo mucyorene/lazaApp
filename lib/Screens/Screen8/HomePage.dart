@@ -124,9 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // print("${products.length} this is the lenght");
                             return InkWell(
                               child: ProductCard(
-                                product: products.toList()[index],
-                                productIndex: index,
-                              ),
+                                  product: products.toList()[index]),
                             );
                           },
                           itemCount: products.length,

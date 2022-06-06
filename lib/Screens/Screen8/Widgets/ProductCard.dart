@@ -7,9 +7,8 @@ import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
   Product product;
-  int productIndex;
 
-  ProductCard({Key? key, required this.product, required this.productIndex})
+  ProductCard({Key? key, required this.product})
       : super(key: key);
 
   @override
@@ -53,16 +52,16 @@ class _ProductCardState extends State<ProductCard> {
                       child: IconButton(
                         color: Colors.grey,
                         onPressed: () {
-                          if (widget.productIndex != 0) {
-                            print(
-                                "Add to Wish List clicked ${widget
-                                    .productIndex}");
-
-                            shoppingCart.wishList[widget.productIndex].name ==
-                                widget.product.name
-                                ? null
-                                : shoppingCart.addToWishList(widget.product);
-                          }
+                          // if (widget.productIndex != 0) {
+                          //   print(
+                          //       "Add to Wish List clicked ${widget
+                          //           .productIndex}");
+                          //
+                          //   shoppingCart.wishList[widget.productIndex].name ==
+                          //       widget.product.name
+                          //       ? null
+                          //       : shoppingCart.addToWishList(widget.product);
+                          // }
                         },
                         icon: const Icon(
                           Icons.favorite_border_outlined,

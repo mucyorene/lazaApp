@@ -74,17 +74,16 @@ class _MainStockState extends State<MainStock> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisSpacing: 10,
-                                    mainAxisSpacing: 10,
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 5 / 10),
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                crossAxisCount: 2,
+                                childAspectRatio: 5 / 10),
                             itemBuilder: (cxt, index) {
                               // print("${products.length} this is the lenght");
                               return InkWell(
                                 child: ProductCard(
                                   product: productsList.toList()[index],
-                                  productIndex: index,
                                 ),
                               );
                             },
